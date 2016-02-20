@@ -232,4 +232,7 @@
   <data name="1455627626_edit-alignment-bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1455627626_edit-alignment-bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="enesyIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enesyIcon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

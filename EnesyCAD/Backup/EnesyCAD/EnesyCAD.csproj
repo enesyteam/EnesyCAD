@@ -28,6 +28,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Reference Include="AcDbMgd, Version=17.0.51.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\2007\AcDbMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AcMgd, Version=17.0.51.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\2007\AcMgd.dll</HintPath>
+=======
     <Reference Include="acdbmgd, Version=17.0.54.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\AutoCAD 2007\acdbmgd.dll</HintPath>
@@ -37,6 +46,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\AutoCAD 2007\acmgd.dll</HintPath>
       <Private>False</Private>
+>>>>>>> df9dcc2cf774b85c7ef656923e659947b0f414f0
     </Reference>
     <Reference Include="Enesy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -50,6 +60,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityProperties.cs" />
+<<<<<<< HEAD
+    <Compile Include="Manager\CommandsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\CommandsManager.Designer.cs">
+      <DependentUpon>CommandsManager.cs</DependentUpon>
+    </Compile>
+=======
+>>>>>>> df9dcc2cf774b85c7ef656923e659947b0f414f0
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -92,6 +111,13 @@
     <Compile Include="Utilities\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Manager\CommandsManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CommandsManager.cs</DependentUpon>
+    </EmbeddedResource>
+=======
+>>>>>>> df9dcc2cf774b85c7ef656923e659947b0f414f0
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>

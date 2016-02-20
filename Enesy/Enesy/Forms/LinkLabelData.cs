@@ -10,20 +10,6 @@ namespace Enesy.Forms
 {
     public partial class LinkLabelData : System.Windows.Forms.LinkLabel
     {
-        public LinkLabelData()
-        {
-            InitializeComponent();
-            positionChangedHandler = new EventHandler(dataManager_PositionChanged);
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            // TODO: Add custom paint code here
-
-            // Calling the base class OnPaint
-            base.OnPaint(pe);
-        }
-
         #region Properties & Field
 
         /// <summary>
@@ -108,6 +94,23 @@ namespace Enesy.Forms
         #endregion
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        public LinkLabelData()
+        {
+            InitializeComponent();
+            positionChangedHandler = new EventHandler(dataManager_PositionChanged);
+        }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            // TODO: Add custom paint code here
+
+            // Calling the base class OnPaint
+            base.OnPaint(pe);
+        }        
+
+        /// <summary>
         /// The next code shows the method tryDataBinding. 
         /// It gets the CurrencyManager by the BindingContext (see above), 
         /// unwires the old CurrencyManager (if needed), and wires the new CurrencyManager. 
@@ -150,12 +153,44 @@ namespace Enesy.Forms
             }
         }
 
+        /// <summary>
+        /// When dataGridView, dataSource have just be initilized, linkLabel is not updated
+        /// Regen() method do updating action
+        /// </summary>
+        public void Regen()
+        {
+            this.Text = "";
+            if (dataSource != null && displayMember != "")
+            {
+                try
+                {
+                    DataTable dt = dataSource as DataTable;
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRowCollection rows = dt.Rows;
+                        DataRow row = rows[dataManager.Position];
+                        this.Text = row[displayMember] as string;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error-LinkLabel-Regen:\n" + ex.Message);
+                }
+            }
+        }
 
         #region Events
         protected override void OnBindingContextChanged(EventArgs e)
         {
             this.tryDataBinding();
             base.OnBindingContextChanged(e);
+        }
+
+        protected override void OnLinkClicked(LinkLabelLinkClickedEventArgs e)
+        {
+            base.OnLinkClicked(e);
+
+            System.Diagnostics.Process.Start(this.Text);
         }
 
         /// <summary>
@@ -169,10 +204,17 @@ namespace Enesy.Forms
         private void dataManager_PositionChanged(object sender, EventArgs e)
         {
             this.Text = "";
-            DataTable dt = dataSource as DataTable;
-            DataRowCollection rows = dt.Rows;
-            DataRow row = rows[dataManager.Position];
-            this.Text = row[displayMember] as string;
+            try
+            {
+                DataTable dt = dataSource as DataTable;
+                DataRowCollection rows = dt.Rows;
+                DataRow row = rows[dataManager.Position];
+                this.Text = row[displayMember] as string;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error-LinkLabel: " + ex.Message);
+            }
         }
         #endregion
     }

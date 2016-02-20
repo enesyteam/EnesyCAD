@@ -13,7 +13,8 @@ namespace Enesy.Forms
         public SearchBox()
         {
             InitializeComponent();
-            
+
+            this.txtFilter.Text = "Search...";
             this.ContextMenuStrip = this.mnusColumn;
             this.mnusColumn.ItemClicked += 
                 new ToolStripItemClickedEventHandler(mnusColumn_ItemClicked);
@@ -50,6 +51,21 @@ namespace Enesy.Forms
             }
         }
 
+        /// <summary>
+        /// DisplayMember of search box
+        /// </summary>
+        public string DisplayMember
+        {
+            get
+            {
+                return this.txtFilter.DisplayMember;
+            }
+            set
+            {
+                this.txtFilter.DisplayMember = value;
+            }
+        }
+
         protected virtual void OnDataSourceChanged()
         {
             this.txtFilter.DataSource = this.dataSource;
@@ -71,12 +87,22 @@ namespace Enesy.Forms
 
         private void butColumn_Click(object sender, EventArgs e)
         {
-            mnusColumn.Show(Cursor.Position);            
+            mnusColumn.Show(Cursor.Position);
         }
-
+        
         void mnusColumn_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             this.txtFilter.DisplayMember = e.ClickedItem.Text;
+        }
+
+        private void SearchBox_SizeChanged(object sender, EventArgs e)
+        {
+            this.Height = this.txtFilter.Height + 10;
+        }
+
+        private void txtFilter_Click(object sender, EventArgs e)
+        {
+            this.txtFilter.SelectAll();
         }
     }
 }

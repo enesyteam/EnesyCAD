@@ -86,6 +86,12 @@
     <Compile Include="Forms\TextBoxNumeric.Designer.cs">
       <DependentUpon>TextBoxNumeric.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TextBoxNumericLargerZero.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\TextBoxNumericLargerZero.Designer.cs">
+      <DependentUpon>TextBoxNumericLargerZero.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TextBoxSearch.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -109,6 +115,7 @@
     <Compile Include="Utilities\Utilities.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WebPageLink.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\SearchBox.resx">

@@ -155,7 +155,11 @@ namespace EnesyCAD.Utilities.Text
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(164, 25);
             this.Controls.Add(this.panel1);
+<<<<<<< HEAD
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+=======
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+>>>>>>> df9dcc2cf774b85c7ef656923e659947b0f414f0
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TextAligmentDialog";

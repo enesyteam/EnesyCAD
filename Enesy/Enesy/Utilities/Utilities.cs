@@ -20,6 +20,19 @@ namespace Enesy
         }
 
         /// <summary>
+        /// Determines whether the specified value can be converted to valid number larger 0
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsNumericLargerZero(object value)
+        {
+            if (!IsNumeric(value)) return false;
+            double dbl;
+            dbl = double.Parse(value.ToString());
+            return (dbl > 0) ? true : false;
+        }
+
+        /// <summary>
         /// Trim all Space and Tab char in string
         /// </summary>
         /// <param name="value"></param>

@@ -1,0 +1,15 @@
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\bin\Debug\EnesyCAD.dll
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\bin\Debug\EnesyCAD.pdb
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\bin\Debug\Enesy.dll
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\bin\Debug\Enesy.pdb
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.Manager.CommandsManagerDialog.resources
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.Properties.Resources.resources
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.Utilities.Plot.PaletteControl.resources
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.Utilities.Text.TextAligmentDialog.resources
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.Utilities.Text.Modifier.TextModifierDialog.resources
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.csproj.GenerateResource.Cache
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.dll
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.pdb
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.csprojResolveAssemblyReference.cache
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.Test.Form1.resources
+E:\Quan_A2Z\GitHub\CADTool\EnesyCAD\EnesyCAD\obj\Debug\EnesyCAD.Utilities.Text.TextParagraphDialog.resources

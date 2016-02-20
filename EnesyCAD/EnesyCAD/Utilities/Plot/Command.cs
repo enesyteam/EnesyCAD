@@ -19,7 +19,13 @@ namespace EnesyCAD.Utilities.Plot
         /// <summary>
         /// AutoCAD command (is called directly at commandLine)
         /// </summary>
-        [CommandMethod("TE")]
+        [EnesyCAD.Runtime.EnesyCADCommandMethod("MP",
+            "Plot",
+            "Multiple ploting",
+            "EnesyCAD",
+            "quandt@enesy.vn",
+            Enesy.WebPageLink.EnesyCadYoutube
+            )]
         public void QuickPlot()
         {
             if (m_ps == null)

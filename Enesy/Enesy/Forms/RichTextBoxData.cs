@@ -10,21 +10,6 @@ namespace Enesy.Forms
 {
     public partial class RichTextBoxData : System.Windows.Forms.RichTextBox
     {
-        public RichTextBoxData()
-        {
-            InitializeComponent();
-            positionChangedHandler = new EventHandler(dataManager_PositionChanged);
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            // TODO: Add custom paint code here
-
-            // Calling the base class OnPaint
-            base.OnPaint(pe);
-        }
-
-
         #region Properties & Field
 
         /// <summary>
@@ -107,7 +92,23 @@ namespace Enesy.Forms
         private EventHandler positionChangedHandler;
 
         #endregion
-        
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public RichTextBoxData()
+        {
+            InitializeComponent();
+            positionChangedHandler = new EventHandler(dataManager_PositionChanged);
+        }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            // TODO: Add custom paint code here
+
+            // Calling the base class OnPaint
+            base.OnPaint(pe);
+        }        
 
         /// <summary>
         /// The next code shows the method tryDataBinding. 
@@ -152,6 +153,32 @@ namespace Enesy.Forms
                                 positionChangedHandler;
                     this.TextChanged +=
                         new EventHandler(RichTextBoxData_TextChanged);
+                }
+            }
+        }
+
+        /// <summary>
+        /// When dataGridView, dataSource have just be initilized, richTxtBox is not updated
+        /// Regen() method do updating action
+        /// </summary>
+        public void Regen()
+        {
+            this.Text = "";
+            if (dataSource != null && displayMember != "")
+            {
+                try
+                {
+                    DataTable dt = dataSource as DataTable;
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRowCollection rows = dt.Rows;
+                        DataRow row = rows[dataManager.Position];
+                        this.Text = row[displayMember] as string;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error-RichTextBox-Regen:\n" + ex.Message);
                 }
             }
         }
