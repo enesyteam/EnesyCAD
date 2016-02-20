@@ -6,3 +6,11 @@ E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.Properties.Resources.reso
 E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
 E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.dll
 E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.pdb
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\bin\Debug\Enesy.dll
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\bin\Debug\Enesy.pdb
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.csprojResolveAssemblyReference.cache
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.Forms.SearchBox.resources
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.Properties.Resources.resources
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.dll
+E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.pdb

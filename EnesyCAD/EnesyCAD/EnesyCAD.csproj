@@ -83,6 +83,7 @@
     <Compile Include="Test\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tét.cs" />
     <Compile Include="Utilities\Plot\BaseFrame.cs" />
     <Compile Include="Utilities\Plot\Command.cs" />
     <Compile Include="Utilities\Plot\Functions.cs" />
