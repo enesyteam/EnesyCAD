@@ -38,14 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="acdbmgd, Version=17.0.54.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\AutoCAD 2007\acdbmgd.dll</HintPath>
+    <Reference Include="AcDbMgd">
+      <HintPath>..\..\References\2007\AcDbMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd, Version=17.0.54.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\AutoCAD 2007\acmgd.dll</HintPath>
+    <Reference Include="AcMgd">
+      <HintPath>..\..\References\2007\AcMgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -55,6 +53,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnesyCAD\Utilities\Utils\Calculating.cs" />
+    <Compile Include="EnesyCAD\Utilities\Utils\GetInfo.cs" />
+    <Compile Include="EnesyCAD\Utilities\Utils\Selection.cs" />
+    <Compile Include="EnesyCAD\Utilities\Utils\Modify.cs" />
+    <Compile Include="Information\CommandsHelp.cs" />
+    <Compile Include="EnesyCAD\EntityProperties.cs" />
+    <Compile Include="EnesyCAD\Forms\Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnesyCAD\Manager\Command.cs" />
+    <Compile Include="EnesyCAD\Manager\CommandsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnesyCAD\Manager\CommandsManager.Designer.cs">
+      <DependentUpon>CommandsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnesyCAD\Plot\BaseFrame.cs" />
+    <Compile Include="EnesyCAD\Plot\Command.cs" />
+    <Compile Include="EnesyCAD\Plot\Functions.cs" />
+    <Compile Include="EnesyCAD\Plot\PaletteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EnesyCAD\Plot\PaletteControl.Designer.cs">
+      <DependentUpon>PaletteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnesyCAD\Plot\PlotArea.cs" />
+    <Compile Include="EnesyCAD\Plot\QPlotConfig.cs" />
+    <Compile Include="EnesyCAD\Plot\RefreshEngine.cs" />
+    <Compile Include="EnesyCAD\Runtime\CommandInfo.cs" />
+    <Compile Include="EnesyCAD\Runtime\CommandMethod.cs" />
+    <Compile Include="EnesyCAD\Utilities\Coordinate\Commands.cs" />
+    <Compile Include="EnesyCAD\Utilities\Coordinate\CoordinatePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnesyCAD\Utilities\Coordinate\CoordinatePicker.Designer.cs">
+      <DependentUpon>CoordinatePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnesyCAD\Utilities\Text\Aligment\AligmentPoint.cs" />
+    <Compile Include="EnesyCAD\Utilities\Text\Aligment\Commands.cs" />
+    <Compile Include="EnesyCAD\Utilities\Text\Aligment\TextAligment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnesyCAD\Utilities\Text\Aligment\TextAligment.Designer.cs">
+      <DependentUpon>TextAligment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnesyCAD\Utilities\Text\Paragraph\Commands.cs" />
+    <Compile Include="EnesyCAD\Utilities\Text\Paragraph\Paragraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnesyCAD\Utilities\Text\Paragraph\Paragraph.Designer.cs">
+      <DependentUpon>Paragraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EnesyCAD\Utilities\Utils\Others.cs" />
     <Compile Include="Forms\DragHelper.cs" />
     <Compile Include="Forms\LinkLabelData.cs">
       <SubType>Component</SubType>
@@ -115,9 +166,24 @@
     <Compile Include="Utilities\Utilities.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="WebPageLink.cs" />
+    <Compile Include="Information\WebPage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EnesyCAD\Manager\CommandsManager.resx">
+      <DependentUpon>CommandsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnesyCAD\Plot\PaletteControl.resx">
+      <DependentUpon>PaletteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnesyCAD\Utilities\Coordinate\CoordinatePicker.resx">
+      <DependentUpon>CoordinatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnesyCAD\Utilities\Text\Aligment\TextAligment.resx">
+      <DependentUpon>TextAligment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnesyCAD\Utilities\Text\Paragraph\Paragraph.resx">
+      <DependentUpon>Paragraph.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchBox.resx">
       <DependentUpon>SearchBox.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -151,6 +217,73 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clear16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enesyIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455795385_facebook_circle_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1456239772_Globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455795873_YouTube.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1453733694_Select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1453708145_gtk-sort-descending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1453707705_printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1453707592_arrow-refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1453709979_old-go-top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1453725839_cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455627626_edit-alignment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455627626_edit-alignment-bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455627626_edit-alignment-top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455627655_edit-alignment-center.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455627655_edit-alignment-middle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1455627657_edit-alignment-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EnesyCAD\IO\" />
+    <Folder Include="Xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

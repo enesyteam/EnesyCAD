@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enesy", "Enesy\Enesy.csproj", "{809BA199-3C18-4283-978E-6D335C2B2FF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnesyCAD", "..\EnesyCAD\EnesyCAD\EnesyCAD.csproj", "{21F5CE9E-9C82-462C-BA96-60F0FBB888D1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{809BA199-3C18-4283-978E-6D335C2B2FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{809BA199-3C18-4283-978E-6D335C2B2FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{809BA199-3C18-4283-978E-6D335C2B2FF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21F5CE9E-9C82-462C-BA96-60F0FBB888D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21F5CE9E-9C82-462C-BA96-60F0FBB888D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21F5CE9E-9C82-462C-BA96-60F0FBB888D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21F5CE9E-9C82-462C-BA96-60F0FBB888D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

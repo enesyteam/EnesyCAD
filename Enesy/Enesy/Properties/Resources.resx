@@ -139,4 +139,67 @@
   <data name="clear16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clear16x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enesyIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enesyIcon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\preview.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1453707592_arrow_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1453707592_arrow-refresh.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1453707705_printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1453707705_printer.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1453708145_gtk_sort_descending" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1453708145_gtk-sort-descending.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1453709979_old_go_top" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1453709979_old-go-top.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1453725839_cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1453725839_cut.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1453733694_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1453733694_Select.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455627626_edit_alignment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455627626_edit-alignment.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455627626_edit_alignment_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455627626_edit-alignment-bottom.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455627626_edit_alignment_top" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455627626_edit-alignment-top.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455627655_edit_alignment_center" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455627655_edit-alignment-center.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455627655_edit_alignment_middle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455627655_edit-alignment-middle.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455627657_edit_alignment_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455627657_edit-alignment-right.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455795385_facebook_circle_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455795385_facebook_circle_color.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1455795873_YouTube" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455795873_YouTube.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1456239772_Globe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1456239772_Globe.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

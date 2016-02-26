@@ -10,15 +10,6 @@ namespace Enesy.Forms
 {
     public partial class SearchBox : UserControl
     {
-        public SearchBox()
-        {
-            InitializeComponent();
-
-            this.txtFilter.Text = "Search...";
-            this.ContextMenuStrip = this.mnusColumn;
-            this.mnusColumn.ItemClicked += 
-                new ToolStripItemClickedEventHandler(mnusColumn_ItemClicked);
-        }
 
         #region Properties & Field
 
@@ -83,11 +74,53 @@ namespace Enesy.Forms
             }
         }
 
+        /// <summary>
+        /// Text of textBox
+        /// </summary>
+        public override string Text
+        {
+            get
+            {
+                return this.txtFilter.Text;
+            }
+            set
+            {
+                this.txtFilter.Text = value;
+            }
+        }
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public SearchBox()
+        {
+            InitializeComponent();
+
+            this.txtFilter.Text = "Search...";
+            this.ContextMenuStrip = this.mnusColumn;
+            this.mnusColumn.ItemClicked += 
+                new ToolStripItemClickedEventHandler(mnusColumn_ItemClicked);
+        }
+
+        /// <summary>
+        /// DataSource Filter
+        /// </summary>
+        public void Regen()
+        {
+            if (dataSource != null)
+            {
+                this.txtFilter.Filter();
+            }
+        }
+
+        // Events -----------------------------------------------------------------------------
         private void butColumn_Click(object sender, EventArgs e)
         {
-            mnusColumn.Show(Cursor.Position);
+            //mnusColumn.Show(Cursor.Position);
+            Control ctr = sender as Control;
+            Point p = ctr.Location;
+            mnusColumn.Show(ctr.PointToScreen(new Point(p.X, p.Y + ctr.Height)));
         }
         
         void mnusColumn_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

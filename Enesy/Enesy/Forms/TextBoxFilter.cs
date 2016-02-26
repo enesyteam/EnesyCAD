@@ -10,19 +10,6 @@ namespace Enesy.Forms
 {
     public partial class TextBoxFilter : System.Windows.Forms.TextBox
     {
-        public TextBoxFilter()
-        {
-            InitializeComponent();
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            // TODO: Add custom paint code here
-
-            // Calling the base class OnPaint
-            base.OnPaint(pe);
-        }
-
         #region Properties & Field
 
         /// <summary>
@@ -81,7 +68,21 @@ namespace Enesy.Forms
         }
         #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TextBoxFilter()
+        {
+            InitializeComponent();
+        }
 
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            // TODO: Add custom paint code here
+
+            // Calling the base class OnPaint
+            base.OnPaint(pe);
+        }
 
         #region Event
 
@@ -102,7 +103,7 @@ namespace Enesy.Forms
         }
         #endregion
 
-        protected virtual void Filter()
+        public void Filter()
         {
             DataTable dt = this.dataSource as DataTable;
             DataView dv = dt.DefaultView;
