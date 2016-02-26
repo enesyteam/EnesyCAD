@@ -24,13 +24,13 @@ namespace Enesy.EnesyCAD.Forms
         public virtual void ShowModal()
         {
             acApp.ShowModalDialog(this);
-            this.Icon = Properties.Resources.enesyIcon;
+            this.Icon = Enesy.Drawing.Icons.enesyIcon;
         }
 
         public virtual void ShowModeless()
         {
             acApp.ShowModelessDialog(this);
-            this.Icon = Properties.Resources.enesyIcon;
+            this.Icon = Enesy.Drawing.Icons.enesyIcon;
         }
 
         public virtual void ShowModeless(bool displayImpliedSelection)

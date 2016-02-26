@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1ACDE011-29EA-40FF-B6E2-67A4AEF270B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EnesyCAD</RootNamespace>
+    <AssemblyName>EnesyCAD</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AcDbMgd">
+      <HintPath>..\..\References\2007\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>..\..\References\2007\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Enesy">
+      <HintPath>..\Enesy\bin\Debug\Enesy.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandsHelp.cs" />
+    <Compile Include="EntityProperties.cs" />
+    <Compile Include="Forms\Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\Command.cs" />
+    <Compile Include="Manager\CommandsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\CommandsManager.Designer.cs">
+      <DependentUpon>CommandsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plot\BaseFrame.cs" />
+    <Compile Include="Plot\Command.cs" />
+    <Compile Include="Plot\Functions.cs" />
+    <Compile Include="Plot\PaletteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Plot\PaletteControl.Designer.cs">
+      <DependentUpon>PaletteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plot\PlotArea.cs" />
+    <Compile Include="Plot\QPlotConfig.cs" />
+    <Compile Include="Plot\RefreshEngine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runtime\CommandInfo.cs" />
+    <Compile Include="Runtime\CommandMethod.cs" />
+    <Compile Include="Utilities\Coordinate\Commands.cs" />
+    <Compile Include="Utilities\Coordinate\CoordinatePicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\Coordinate\CoordinatePicker.Designer.cs">
+      <DependentUpon>CoordinatePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Text\Aligment\AligmentPoint.cs" />
+    <Compile Include="Utilities\Text\Aligment\Commands.cs" />
+    <Compile Include="Utilities\Text\Aligment\TextAligment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\Text\Aligment\TextAligment.Designer.cs">
+      <DependentUpon>TextAligment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Text\Paragraph\Commands.cs" />
+    <Compile Include="Utilities\Text\Paragraph\Paragraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\Text\Paragraph\Paragraph.Designer.cs">
+      <DependentUpon>Paragraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Utils\Calculating.cs" />
+    <Compile Include="Utilities\Utils\GetInfo.cs" />
+    <Compile Include="Utilities\Utils\Modify.cs" />
+    <Compile Include="Utilities\Utils\Others.cs" />
+    <Compile Include="Utilities\Utils\Selection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Manager\CommandsManager.resx">
+      <DependentUpon>CommandsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plot\PaletteControl.resx">
+      <DependentUpon>PaletteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\Coordinate\CoordinatePicker.resx">
+      <DependentUpon>CoordinatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\Text\Aligment\TextAligment.resx">
+      <DependentUpon>TextAligment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\Text\Paragraph\Paragraph.resx">
+      <DependentUpon>Paragraph.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IO\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

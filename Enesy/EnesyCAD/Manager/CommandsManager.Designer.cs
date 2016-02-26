@@ -47,12 +47,16 @@ namespace Enesy.EnesyCAD.Manager
             this.panel1 = new System.Windows.Forms.Panel();
             this.mnuMain = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCommandStore = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayFavorite = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayDescription = new System.Windows.Forms.ToolStripMenuItem();
-            this.displayCommandfavoriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDisplayCommand = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuError = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlLinkButton = new System.Windows.Forms.Panel();
             this.butFanPage = new System.Windows.Forms.Button();
             this.butHomePage = new System.Windows.Forms.Button();
@@ -82,10 +86,15 @@ namespace Enesy.EnesyCAD.Manager
             this.dgrvCommands.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgrvCommands.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvCommands.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrvCommands.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgrvCommands.Location = new System.Drawing.Point(0, 3);
             this.dgrvCommands.Name = "dgrvCommands";
             this.dgrvCommands.ReadOnly = true;
+            this.dgrvCommands.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgrvCommands.RowTemplate.ReadOnly = true;
+            this.dgrvCommands.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgrvCommands.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgrvCommands.ShowEditingIcon = false;
             this.dgrvCommands.Size = new System.Drawing.Size(515, 178);
             this.dgrvCommands.TabIndex = 0;
             this.dgrvCommands.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvCommands_CellDoubleClick);
@@ -220,30 +229,52 @@ namespace Enesy.EnesyCAD.Manager
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.mnuOpen,
+            this.mnuImport,
+            this.mnuSave,
+            this.mnuCommandStore,
+            this.mnuClose});
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "File";
             // 
-            // openToolStripMenuItem
+            // mnuOpen
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.openToolStripMenuItem.Text = "Import ...";
+            this.mnuOpen.Name = "mnuOpen";
+            this.mnuOpen.Size = new System.Drawing.Size(172, 22);
+            this.mnuOpen.Text = "Open ...";
             // 
-            // saveToolStripMenuItem
+            // mnuImport
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.mnuImport.Name = "mnuImport";
+            this.mnuImport.Size = new System.Drawing.Size(172, 22);
+            this.mnuImport.Text = "Import ...";
+            // 
+            // mnuSave
+            // 
+            this.mnuSave.Name = "mnuSave";
+            this.mnuSave.Size = new System.Drawing.Size(172, 22);
+            this.mnuSave.Text = "Save";
+            // 
+            // mnuCommandStore
+            // 
+            this.mnuCommandStore.Name = "mnuCommandStore";
+            this.mnuCommandStore.Size = new System.Drawing.Size(172, 22);
+            this.mnuCommandStore.Text = "Command store ...";
+            // 
+            // mnuClose
+            // 
+            this.mnuClose.Name = "mnuClose";
+            this.mnuClose.Size = new System.Drawing.Size(172, 22);
+            this.mnuClose.Text = "Close";
             // 
             // mnuView
             // 
             this.mnuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDisplayFavorite,
             this.mnuDisplayDescription,
-            this.displayCommandfavoriteToolStripMenuItem});
+            this.mnuDisplayCommand,
+            this.mnuError});
             this.mnuView.Name = "mnuView";
             this.mnuView.Size = new System.Drawing.Size(44, 20);
             this.mnuView.Text = "View";
@@ -266,14 +297,20 @@ namespace Enesy.EnesyCAD.Manager
             this.mnuDisplayDescription.Text = "Display Description";
             this.mnuDisplayDescription.Click += new System.EventHandler(this.mnuDisplayDescription_Click);
             // 
-            // displayCommandfavoriteToolStripMenuItem
+            // mnuDisplayCommand
             // 
-            this.displayCommandfavoriteToolStripMenuItem.Checked = true;
-            this.displayCommandfavoriteToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.displayCommandfavoriteToolStripMenuItem.Enabled = false;
-            this.displayCommandfavoriteToolStripMenuItem.Name = "displayCommandfavoriteToolStripMenuItem";
-            this.displayCommandfavoriteToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.displayCommandfavoriteToolStripMenuItem.Text = "Display Command name";
+            this.mnuDisplayCommand.Checked = true;
+            this.mnuDisplayCommand.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuDisplayCommand.Enabled = false;
+            this.mnuDisplayCommand.Name = "mnuDisplayCommand";
+            this.mnuDisplayCommand.Size = new System.Drawing.Size(205, 22);
+            this.mnuDisplayCommand.Text = "Display Command name";
+            // 
+            // mnuError
+            // 
+            this.mnuError.Name = "mnuError";
+            this.mnuError.Size = new System.Drawing.Size(205, 22);
+            this.mnuError.Text = "Error log";
             // 
             // pnlLinkButton
             // 
@@ -289,7 +326,7 @@ namespace Enesy.EnesyCAD.Manager
             // butFanPage
             // 
             this.butFanPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.butFanPage.BackgroundImage = global::Enesy.Properties.Resources._1455795385_facebook_circle_color;
+            this.butFanPage.BackgroundImage = global::Enesy.Drawing.Icons._1455795385_facebook_circle_color;
             this.butFanPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butFanPage.FlatAppearance.BorderSize = 0;
             this.butFanPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -304,7 +341,7 @@ namespace Enesy.EnesyCAD.Manager
             // butHomePage
             // 
             this.butHomePage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.butHomePage.BackgroundImage = global::Enesy.Properties.Resources._1456239772_Globe;
+            this.butHomePage.BackgroundImage = global::Enesy.Drawing.Icons._1456239772_Globe;
             this.butHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butHomePage.FlatAppearance.BorderSize = 0;
             this.butHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -319,7 +356,7 @@ namespace Enesy.EnesyCAD.Manager
             // butYoutube
             // 
             this.butYoutube.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.butYoutube.BackgroundImage = global::Enesy.Properties.Resources._1455795873_YouTube;
+            this.butYoutube.BackgroundImage = global::Enesy.Drawing.Icons._1455795873_YouTube;
             this.butYoutube.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butYoutube.FlatAppearance.BorderSize = 0;
             this.butYoutube.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -458,12 +495,16 @@ namespace Enesy.EnesyCAD.Manager
         private System.Windows.Forms.Button butYoutube;
         private System.Windows.Forms.ToolStripMenuItem mnuDisplayFavorite;
         private System.Windows.Forms.ToolStripMenuItem mnuDisplayDescription;
-        private System.Windows.Forms.ToolStripMenuItem displayCommandfavoriteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuDisplayCommand;
+        private System.Windows.Forms.ToolStripMenuItem mnuImport;
+        private System.Windows.Forms.ToolStripMenuItem mnuSave;
         private System.Windows.Forms.ContextMenuStrip cmnuRoot;
         private System.Windows.Forms.ContextMenuStrip cmnuSub;
         private System.Windows.Forms.ContextMenuStrip cmnuCommand;
         private System.Windows.Forms.ContextMenuStrip cmnuExpand;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpen;
+        private System.Windows.Forms.ToolStripMenuItem mnuClose;
+        private System.Windows.Forms.ToolStripMenuItem mnuError;
+        private System.Windows.Forms.ToolStripMenuItem mnuCommandStore;
     }
 }

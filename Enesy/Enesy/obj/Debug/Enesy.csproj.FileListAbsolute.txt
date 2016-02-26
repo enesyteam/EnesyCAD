@@ -13,7 +13,6 @@ E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.Properties.Resourc
 E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
 E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.dll
 E:\Projects\enesy\CADTool\CADTool\Enesy\Enesy\obj\Debug\Enesy.pdb
-E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.csprojResolveAssemblyReference.cache
 E:\Quan_A2Z\CADTool\Enesy\Enesy\obj\Debug\Enesy.csprojResolveAssemblyReference.cache
 E:\Quan_A2Z\CADTool\Enesy\Enesy\obj\Debug\Enesy.Forms.SearchBox.resources
 E:\Quan_A2Z\CADTool\Enesy\Enesy\obj\Debug\Enesy.Properties.Resources.resources
@@ -27,8 +26,4 @@ E:\Quan_A2Z\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Utilities.CoordinatePic
 E:\Quan_A2Z\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Plot.PaletteControl.resources
 E:\Quan_A2Z\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Utilities.Text.TextAligmentDialog.resources
 E:\Quan_A2Z\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Utilities.Text.TextParagraphDialog.resources
-E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Manager.CommandsManagerDialog.resources
-E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Plot.PaletteControl.resources
-E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Utilities.CoordinatePickerDialog.resources
-E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Utilities.Text.TextAligmentDialog.resources
-E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.EnesyCAD.Utilities.Text.TextParagraphDialog.resources
+E:\Quan_A2Z\GitHub\CADTool\Enesy\Enesy\obj\Debug\Enesy.Drawing.Icons.resources

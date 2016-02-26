@@ -58,7 +58,7 @@ namespace Enesy.EnesyCAD.Utilities.Text
             // 
             // butTop
             // 
-            this.butTop.BackgroundImage = global::Enesy.Properties.Resources._1455627626_edit_alignment_top;
+            this.butTop.BackgroundImage = global::Enesy.Drawing.Icons._1455627626_edit_alignment_top;
             this.butTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.butTop.Dock = System.Windows.Forms.DockStyle.Left;
             this.butTop.FlatAppearance.BorderSize = 0;
@@ -72,7 +72,7 @@ namespace Enesy.EnesyCAD.Utilities.Text
             // 
             // butMiddle
             // 
-            this.butMiddle.BackgroundImage = global::Enesy.Properties.Resources._1455627655_edit_alignment_middle;
+            this.butMiddle.BackgroundImage = global::Enesy.Drawing.Icons._1455627655_edit_alignment_middle;
             this.butMiddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.butMiddle.Dock = System.Windows.Forms.DockStyle.Left;
             this.butMiddle.FlatAppearance.BorderSize = 0;
@@ -86,7 +86,7 @@ namespace Enesy.EnesyCAD.Utilities.Text
             // 
             // butBottom
             // 
-            this.butBottom.BackgroundImage = global::Enesy.Properties.Resources._1455627626_edit_alignment_bottom;
+            this.butBottom.BackgroundImage = global::Enesy.Drawing.Icons._1455627626_edit_alignment_bottom;
             this.butBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.butBottom.Dock = System.Windows.Forms.DockStyle.Left;
             this.butBottom.FlatAppearance.BorderSize = 0;
@@ -108,7 +108,7 @@ namespace Enesy.EnesyCAD.Utilities.Text
             // 
             // butRight
             // 
-            this.butRight.BackgroundImage = global::Enesy.Properties.Resources._1455627657_edit_alignment_right;
+            this.butRight.BackgroundImage = global::Enesy.Drawing.Icons._1455627657_edit_alignment_right;
             this.butRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.butRight.Dock = System.Windows.Forms.DockStyle.Left;
             this.butRight.FlatAppearance.BorderSize = 0;
@@ -122,7 +122,7 @@ namespace Enesy.EnesyCAD.Utilities.Text
             // 
             // butCenter
             // 
-            this.butCenter.BackgroundImage = global::Enesy.Properties.Resources._1455627655_edit_alignment_center;
+            this.butCenter.BackgroundImage = global::Enesy.Drawing.Icons._1455627655_edit_alignment_center;
             this.butCenter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.butCenter.Dock = System.Windows.Forms.DockStyle.Left;
             this.butCenter.FlatAppearance.BorderSize = 0;
@@ -136,7 +136,7 @@ namespace Enesy.EnesyCAD.Utilities.Text
             // 
             // butLeft
             // 
-            this.butLeft.BackgroundImage = global::Enesy.Properties.Resources._1455627626_edit_alignment;
+            this.butLeft.BackgroundImage = global::Enesy.Drawing.Icons._1455627626_edit_alignment;
             this.butLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.butLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.butLeft.FlatAppearance.BorderSize = 0;

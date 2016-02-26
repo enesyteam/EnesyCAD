@@ -190,7 +190,7 @@ namespace Enesy.EnesyCAD.Plot
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackgroundImage = global::Enesy.Properties.Resources._1453733694_Select;
+            this.button2.BackgroundImage = global::Enesy.Drawing.Icons._1453733694_Select;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.Location = new System.Drawing.Point(227, 43);
             this.button2.Name = "button2";
@@ -660,7 +660,7 @@ namespace Enesy.EnesyCAD.Plot
             // butRemove
             // 
             this.butRemove.AutoSize = true;
-            this.butRemove.BackgroundImage = global::Enesy.Properties.Resources.delete;
+            this.butRemove.BackgroundImage = global::Enesy.Drawing.Icons.Delete;
             this.butRemove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butRemove.Dock = System.Windows.Forms.DockStyle.Left;
             this.butRemove.Location = new System.Drawing.Point(168, 0);
@@ -700,7 +700,7 @@ namespace Enesy.EnesyCAD.Plot
             // butCut
             // 
             this.butCut.AutoSize = true;
-            this.butCut.BackgroundImage = global::Enesy.Properties.Resources._1453725839_cut;
+            this.butCut.BackgroundImage = global::Enesy.Drawing.Icons._1453725839_cut;
             this.butCut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butCut.Dock = System.Windows.Forms.DockStyle.Left;
             this.butCut.Location = new System.Drawing.Point(96, 0);
@@ -713,7 +713,7 @@ namespace Enesy.EnesyCAD.Plot
             // butBottom
             // 
             this.butBottom.AutoSize = true;
-            this.butBottom.BackgroundImage = global::Enesy.Properties.Resources.bottom;
+            this.butBottom.BackgroundImage = global::Enesy.Drawing.Icons.bottom;
             this.butBottom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butBottom.Dock = System.Windows.Forms.DockStyle.Left;
             this.butBottom.Location = new System.Drawing.Point(72, 0);
@@ -726,7 +726,7 @@ namespace Enesy.EnesyCAD.Plot
             // butDown
             // 
             this.butDown.AutoSize = true;
-            this.butDown.BackgroundImage = global::Enesy.Properties.Resources.down;
+            this.butDown.BackgroundImage = global::Enesy.Drawing.Icons.down;
             this.butDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butDown.Dock = System.Windows.Forms.DockStyle.Left;
             this.butDown.Location = new System.Drawing.Point(48, 0);
@@ -739,7 +739,7 @@ namespace Enesy.EnesyCAD.Plot
             // butUp
             // 
             this.butUp.AutoSize = true;
-            this.butUp.BackgroundImage = global::Enesy.Properties.Resources.up;
+            this.butUp.BackgroundImage = global::Enesy.Drawing.Icons.up;
             this.butUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butUp.Dock = System.Windows.Forms.DockStyle.Left;
             this.butUp.Location = new System.Drawing.Point(24, 0);
@@ -752,7 +752,7 @@ namespace Enesy.EnesyCAD.Plot
             // butTop
             // 
             this.butTop.AutoSize = true;
-            this.butTop.BackgroundImage = global::Enesy.Properties.Resources._1453709979_old_go_top;
+            this.butTop.BackgroundImage = global::Enesy.Drawing.Icons._1453709979_old_go_top;
             this.butTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butTop.Dock = System.Windows.Forms.DockStyle.Left;
             this.butTop.Location = new System.Drawing.Point(0, 0);
@@ -765,7 +765,7 @@ namespace Enesy.EnesyCAD.Plot
             // butPreview
             // 
             this.butPreview.AutoSize = true;
-            this.butPreview.BackgroundImage = global::Enesy.Properties.Resources.preview;
+            this.butPreview.BackgroundImage = global::Enesy.Drawing.Icons.preview;
             this.butPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butPreview.Dock = System.Windows.Forms.DockStyle.Right;
             this.butPreview.Location = new System.Drawing.Point(238, 0);
@@ -799,7 +799,7 @@ namespace Enesy.EnesyCAD.Plot
             // 
             // butPublish
             // 
-            this.butPublish.BackgroundImage = global::Enesy.Properties.Resources._1453707705_printer;
+            this.butPublish.BackgroundImage = global::Enesy.Drawing.Icons._1453707705_printer;
             this.butPublish.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butPublish.Location = new System.Drawing.Point(114, 0);
             this.butPublish.Name = "butPublish";
@@ -809,7 +809,7 @@ namespace Enesy.EnesyCAD.Plot
             // 
             // butRefresh
             // 
-            this.butRefresh.BackgroundImage = global::Enesy.Properties.Resources._1453707592_arrow_refresh;
+            this.butRefresh.BackgroundImage = global::Enesy.Drawing.Icons._1453707592_arrow_refresh;
             this.butRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.butRefresh.Location = new System.Drawing.Point(56, 0);
             this.butRefresh.Name = "butRefresh";
@@ -820,7 +820,7 @@ namespace Enesy.EnesyCAD.Plot
             // 
             // butSchedule
             // 
-            this.butSchedule.BackgroundImage = global::Enesy.Properties.Resources._1453708145_gtk_sort_descending;
+            this.butSchedule.BackgroundImage = global::Enesy.Drawing.Icons._1453708145_gtk_sort_descending;
             this.butSchedule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butSchedule.Location = new System.Drawing.Point(85, 0);
             this.butSchedule.Name = "butSchedule";
