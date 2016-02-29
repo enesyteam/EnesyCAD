@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 
 using Enesy.EnesyCAD.Runtime;
-using EnesyCAD.Utilities;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;

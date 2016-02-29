@@ -213,6 +213,16 @@ namespace Enesy.Drawing {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _1456569911_Open_file {
+            get {
+                object obj = ResourceManager.GetObject("_1456569911_Open_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap bottom {
             get {
                 object obj = ResourceManager.GetObject("bottom", resourceCulture);

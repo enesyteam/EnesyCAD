@@ -7,7 +7,7 @@
     <ProjectGuid>{1ACDE011-29EA-40FF-B6E2-67A4AEF270B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EnesyCAD</RootNamespace>
+    <RootNamespace>Enesy.EnesyCAD</RootNamespace>
     <AssemblyName>EnesyCAD</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,12 +54,20 @@
     <Compile Include="Forms\Form.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="IO\LispFunction.cs" />
+    <Compile Include="IO\LispReader.cs" />
     <Compile Include="Manager\Command.cs" />
     <Compile Include="Manager\CommandsManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Manager\CommandsManager.Designer.cs">
       <DependentUpon>CommandsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ImportLispDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager\ImportLispDialog.Designer.cs">
+      <DependentUpon>ImportLispDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Plot\BaseFrame.cs" />
     <Compile Include="Plot\Command.cs" />
@@ -74,6 +82,11 @@
     <Compile Include="Plot\QPlotConfig.cs" />
     <Compile Include="Plot\RefreshEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Runtime\CommandInfo.cs" />
     <Compile Include="Runtime\CommandMethod.cs" />
     <Compile Include="Utilities\Coordinate\Commands.cs" />
@@ -98,18 +111,25 @@
     <Compile Include="Utilities\Text\Paragraph\Paragraph.Designer.cs">
       <DependentUpon>Paragraph.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\Utils\Calculating.cs" />
-    <Compile Include="Utilities\Utils\GetInfo.cs" />
-    <Compile Include="Utilities\Utils\Modify.cs" />
-    <Compile Include="Utilities\Utils\Others.cs" />
-    <Compile Include="Utilities\Utils\Selection.cs" />
+    <Compile Include="Utils\Calculating.cs" />
+    <Compile Include="Utils\GetInfo.cs" />
+    <Compile Include="Utils\Modify.cs" />
+    <Compile Include="Utils\Others.cs" />
+    <Compile Include="Utils\Selection.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Manager\CommandsManager.resx">
       <DependentUpon>CommandsManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Manager\ImportLispDialog.resx">
+      <DependentUpon>ImportLispDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Plot\PaletteControl.resx">
       <DependentUpon>PaletteControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\Coordinate\CoordinatePicker.resx">
       <DependentUpon>CoordinatePicker.cs</DependentUpon>
@@ -121,9 +141,7 @@
       <DependentUpon>Paragraph.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

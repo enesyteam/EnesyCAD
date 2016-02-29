@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
-using Enesy.EnesyCAD.Utilities;
+using Enesy.EnesyCAD;
 
-namespace EnesyCAD.Utilities.Plot
+namespace Enesy.EnesyCAD.Plot
 {
     class BaseFrame
     {

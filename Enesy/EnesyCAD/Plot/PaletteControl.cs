@@ -11,6 +11,7 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using app = Autodesk.AutoCAD.ApplicationServices.Application;
+using Enesy.EnesyCAD;
 using Enesy.EnesyCAD.Utilities;
 
 namespace Enesy.EnesyCAD.Plot

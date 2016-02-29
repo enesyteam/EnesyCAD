@@ -8,5 +8,6 @@ namespace Enesy.EnesyCAD
         public const string TextAligment = Enesy.Page.CadYoutube;
         public const string TextParagraph = Enesy.Page.CadYoutube;
         public const string CoordinatePicker= Enesy.Page.CadYoutube;
+        public const string ImportLisp = Enesy.Page.CadYoutube;
     }
 }

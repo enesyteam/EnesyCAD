@@ -8,7 +8,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
-namespace Enesy.EnesyCAD.Utilities
+namespace Enesy.EnesyCAD
 {
     partial class Utils
     {
@@ -21,7 +21,7 @@ namespace Enesy.EnesyCAD.Utilities
         /// <param name="bsPoint"></param>
         public static void AligmentText(Database db,
                                         ObjectIdCollection txtIdColl,
-                                        Text.Aligment aligment,
+                                        Enesy.EnesyCAD.Utilities.Text.Aligment aligment,
                                         Point3d bsPoint
             )
         {

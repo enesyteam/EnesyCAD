@@ -1,6 +1,6 @@
 using Autodesk.AutoCAD.Geometry;
 
-namespace EnesyCAD.Utilities.Plot
+namespace Enesy.EnesyCAD.Plot
 {
     class PlotArea
     {

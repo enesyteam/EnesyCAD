@@ -202,4 +202,7 @@
   <data name="_1456239772_Globe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1456239772_Globe.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_1456569911_Open_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1456569911_Open_file.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

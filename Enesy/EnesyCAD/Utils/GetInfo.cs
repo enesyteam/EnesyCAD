@@ -2,7 +2,7 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 
-namespace Enesy.EnesyCAD.Utilities
+namespace Enesy.EnesyCAD
 {
     partial class Utils
     {

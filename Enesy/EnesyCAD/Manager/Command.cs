@@ -24,8 +24,7 @@ namespace Enesy.EnesyCAD.Manager
             {
                 this.cmdMngDia = new CommandsManagerDialog();
             }
-            //Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(cmdMngDia);
-            cmdMngDia.ShowModal();
+            Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(cmdMngDia);
         }
     }
 }

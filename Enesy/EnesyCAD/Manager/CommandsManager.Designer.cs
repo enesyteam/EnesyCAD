@@ -29,6 +29,7 @@ namespace Enesy.EnesyCAD.Manager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandsManagerDialog));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Enesy.vn");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Autodesk");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All", new System.Windows.Forms.TreeNode[] {
@@ -50,13 +51,15 @@ namespace Enesy.EnesyCAD.Manager
             this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCommandStore = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCommandsStore = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayFavorite = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayDescription = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayCommand = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuError = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuManager = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlLinkButton = new System.Windows.Forms.Panel();
             this.butFanPage = new System.Windows.Forms.Button();
             this.butHomePage = new System.Windows.Forms.Button();
@@ -217,7 +220,8 @@ namespace Enesy.EnesyCAD.Manager
             this.mnuMain.BackColor = System.Drawing.Color.Transparent;
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
-            this.mnuView});
+            this.mnuView,
+            this.toolsToolStripMenuItem});
             this.mnuMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.mnuMain.Location = new System.Drawing.Point(3, 3);
             this.mnuMain.Name = "mnuMain";
@@ -232,7 +236,7 @@ namespace Enesy.EnesyCAD.Manager
             this.mnuOpen,
             this.mnuImport,
             this.mnuSave,
-            this.mnuCommandStore,
+            this.mnuCommandsStore,
             this.mnuClose});
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
@@ -241,31 +245,32 @@ namespace Enesy.EnesyCAD.Manager
             // mnuOpen
             // 
             this.mnuOpen.Name = "mnuOpen";
-            this.mnuOpen.Size = new System.Drawing.Size(172, 22);
+            this.mnuOpen.Size = new System.Drawing.Size(177, 22);
             this.mnuOpen.Text = "Open ...";
             // 
             // mnuImport
             // 
             this.mnuImport.Name = "mnuImport";
-            this.mnuImport.Size = new System.Drawing.Size(172, 22);
+            this.mnuImport.Size = new System.Drawing.Size(177, 22);
             this.mnuImport.Text = "Import ...";
+            this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
             // 
             // mnuSave
             // 
             this.mnuSave.Name = "mnuSave";
-            this.mnuSave.Size = new System.Drawing.Size(172, 22);
+            this.mnuSave.Size = new System.Drawing.Size(177, 22);
             this.mnuSave.Text = "Save";
             // 
-            // mnuCommandStore
+            // mnuCommandsStore
             // 
-            this.mnuCommandStore.Name = "mnuCommandStore";
-            this.mnuCommandStore.Size = new System.Drawing.Size(172, 22);
-            this.mnuCommandStore.Text = "Command store ...";
+            this.mnuCommandsStore.Name = "mnuCommandsStore";
+            this.mnuCommandsStore.Size = new System.Drawing.Size(177, 22);
+            this.mnuCommandsStore.Text = "Commands store ...";
             // 
             // mnuClose
             // 
             this.mnuClose.Name = "mnuClose";
-            this.mnuClose.Size = new System.Drawing.Size(172, 22);
+            this.mnuClose.Size = new System.Drawing.Size(177, 22);
             this.mnuClose.Text = "Close";
             // 
             // mnuView
@@ -312,6 +317,20 @@ namespace Enesy.EnesyCAD.Manager
             this.mnuError.Size = new System.Drawing.Size(205, 22);
             this.mnuError.Text = "Error log";
             // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuManager});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // mnuManager
+            // 
+            this.mnuManager.Name = "mnuManager";
+            this.mnuManager.Size = new System.Drawing.Size(133, 22);
+            this.mnuManager.Text = "Manager ...";
+            // 
             // pnlLinkButton
             // 
             this.pnlLinkButton.Controls.Add(this.butFanPage);
@@ -326,7 +345,7 @@ namespace Enesy.EnesyCAD.Manager
             // butFanPage
             // 
             this.butFanPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.butFanPage.BackgroundImage = global::Enesy.Drawing.Icons._1455795385_facebook_circle_color;
+            this.butFanPage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butFanPage.BackgroundImage")));
             this.butFanPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butFanPage.FlatAppearance.BorderSize = 0;
             this.butFanPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -341,7 +360,7 @@ namespace Enesy.EnesyCAD.Manager
             // butHomePage
             // 
             this.butHomePage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.butHomePage.BackgroundImage = global::Enesy.Drawing.Icons._1456239772_Globe;
+            this.butHomePage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butHomePage.BackgroundImage")));
             this.butHomePage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butHomePage.FlatAppearance.BorderSize = 0;
             this.butHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -356,7 +375,7 @@ namespace Enesy.EnesyCAD.Manager
             // butYoutube
             // 
             this.butYoutube.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.butYoutube.BackgroundImage = global::Enesy.Drawing.Icons._1455795873_YouTube;
+            this.butYoutube.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butYoutube.BackgroundImage")));
             this.butYoutube.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.butYoutube.FlatAppearance.BorderSize = 0;
             this.butYoutube.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -505,6 +524,8 @@ namespace Enesy.EnesyCAD.Manager
         private System.Windows.Forms.ToolStripMenuItem mnuOpen;
         private System.Windows.Forms.ToolStripMenuItem mnuClose;
         private System.Windows.Forms.ToolStripMenuItem mnuError;
-        private System.Windows.Forms.ToolStripMenuItem mnuCommandStore;
+        private System.Windows.Forms.ToolStripMenuItem mnuCommandsStore;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuManager;
     }
 }

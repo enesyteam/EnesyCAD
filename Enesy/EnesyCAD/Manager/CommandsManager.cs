@@ -16,13 +16,19 @@ using System.IO;
 
 namespace Enesy.EnesyCAD.Manager
 {
-    public partial class CommandsManagerDialog : Enesy.EnesyCAD.Forms.Form
+    public partial class CommandsManagerDialog : System.Windows.Forms.Form
     {
         /// <summary>
         /// Datatable for restore, filter commands
         /// This is source of viewer (dataGridView) and somne control (searchBox, helpLink,..)
         /// </summary>
         private System.Data.DataTable m_commandsData = new System.Data.DataTable();
+
+        /// <summary>
+        /// Link for help
+        /// </summary>
+        [DefaultValue(Enesy.Page.CadYoutube)]
+        private string Help { get; set; }
 
         /// <summary>
         /// Constructor
@@ -168,6 +174,28 @@ namespace Enesy.EnesyCAD.Manager
         }
         #endregion
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.searchBox.Text = "";
+                searchBox.Regen();
+            }
+            if (keyData == Keys.F1)
+            {
+                System.Diagnostics.Process.Start(Help);
+            }
+            if (keyData == (Keys.F | Keys.Control))
+            {
+                searchBox.Focus();
+            }
+            if (keyData == (Keys.I | Keys.Control))
+            {
+                mnuImport.PerformClick();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         /// <summary>
         /// Override OnFormClosing of this form
         /// </summary>
@@ -217,7 +245,7 @@ namespace Enesy.EnesyCAD.Manager
             {
                 System.Diagnostics.Process.Start(Enesy.Page.CadYoutube);
             }
-            catch (System.Exception ex)
+            catch
             {
                 // Do nothing
             }
@@ -273,6 +301,13 @@ namespace Enesy.EnesyCAD.Manager
                 mnuDisplayDescription.Checked = true;
                 pnlDescription.Visible = true;
             }
+        }
+
+        private void mnuImport_Click(object sender, EventArgs e)
+        {
+            ImportLispDialog ild = new ImportLispDialog();
+            ild.DataSource = m_commandsData;
+            ild.ShowModal();
         }
     }
 }

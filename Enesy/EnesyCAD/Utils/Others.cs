@@ -8,7 +8,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
 using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
-namespace Enesy.EnesyCAD.Utilities
+namespace Enesy.EnesyCAD
 {
     partial class Utils
     {

@@ -11,6 +11,12 @@ namespace Enesy.Forms
     public partial class TextBoxFilter : System.Windows.Forms.TextBox
     {
         #region Properties & Field
+        /// <summary>
+        /// Store previous text
+        /// For fixing error when keyPressed event occur, text changed even when ctrl pressed
+        /// </summary>
+        string m_textBeforeTheChange = String.Empty;
+        bool m_ctrlPressed = false;
 
         /// <summary>
         /// DataSource for filter
@@ -31,23 +37,17 @@ namespace Enesy.Forms
                 if (this.dataSource != value)
                 {
                     this.dataSource = value;
-                    OnDataSourceChanged(new FilterEventArgs(this.dataSource));
+                    if (DataSource != null)
+                    {
+                        this.TextChanged -= new EventHandler(TextboxFilter_TextChanged);
+                        this.TextChanged += new EventHandler(TextboxFilter_TextChanged);
+                    }
+                    else
+                    {
+                        this.TextChanged -= new EventHandler(TextboxFilter_TextChanged);
+                    }
                 }
             }
-        }
-        public delegate void OnDataSourceChangedHandler(object sender, FilterEventArgs e);
-
-        public event OnDataSourceChangedHandler DataSourceChanged;
-
-
-        protected virtual void OnDataSourceChanged(FilterEventArgs e)
-        {
-            if (DataSourceChanged != null)
-            {
-                DataSourceChanged(this, e);
-            }
-            this.TextChanged -= new EventHandler(TextboxFilter_TextChanged);
-            this.TextChanged += new EventHandler(TextboxFilter_TextChanged);
         }
 
         /// <summary>
@@ -63,6 +63,7 @@ namespace Enesy.Forms
                 if (displayMember != value)
                 {
                     this.displayMember = value;
+                    this.Filter();
                 }
             }
         }
@@ -74,6 +75,18 @@ namespace Enesy.Forms
         public TextBoxFilter()
         {
             InitializeComponent();
+            m_textBeforeTheChange = this.Text;
+            this.KeyDown += TextBoxFilter_KeyDown;
+        }
+
+        void TextBoxFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                m_textBeforeTheChange = this.Text;
+                m_ctrlPressed = true;
+            }
+            //throw new NotImplementedException();            
         }
 
         protected override void OnPaint(PaintEventArgs pe)
@@ -85,11 +98,15 @@ namespace Enesy.Forms
         }
 
         #region Event
-
         void TextboxFilter_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                if (m_ctrlPressed)
+                {
+                    this.Text = m_textBeforeTheChange;
+                    return;
+                }
                 if ((this.dataSource != null) && 
                     (ColumnExist(this.displayMember, this.dataSource)))
                 {
@@ -139,33 +156,6 @@ namespace Enesy.Forms
         {
             DataTable dt = datasource as DataTable;
             return dt.Columns.Contains(column);
-        }
-    }
-
-    public class FilterEventArgs : EventArgs
-    {
-        private object _dataSource;
-
-        public FilterEventArgs()
-        {
-
-        }
-
-        /// <summary>
-        /// Constructor with parameters to initialize values
-        /// </summary>
-        /// <param name="DataSource">DataSource</param>
-        public FilterEventArgs(object DataSource)
-        {
-            this._dataSource = DataSource;
-        }
-
-        /// <summary>
-        /// Property to get dataSource
-        /// </summary>
-        public object DataSource
-        {
-            get { return this._dataSource; }
         }
     }
 }

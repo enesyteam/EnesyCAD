@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnesyCAD.Utilities.Plot
+namespace Enesy.EnesyCAD.Plot
 {
     class QPlotConfig
     {

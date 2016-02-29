@@ -12,6 +12,10 @@ namespace Enesy.Forms
     {
 
         #region Properties & Field
+        /// <summary>
+        /// For control column when displayMember changed
+        /// </summary>
+        bool m_isInit = true;
 
         /// <summary>
         /// Contextmenustrip to show & select column
@@ -37,7 +41,19 @@ namespace Enesy.Forms
                 if (this.dataSource != value)
                 {
                     this.dataSource = value;
-                    OnDataSourceChanged();
+                    this.txtFilter.DataSource = this.dataSource;
+                    if (this.dataSource != null)
+                    {
+                        DataTable dt = this.dataSource as DataTable;
+                        DataColumnCollection dcc = dt.Columns;
+                        if (dcc.Count == 0) return;
+
+                        mnusColumn.Items.Clear();
+                        foreach (DataColumn dc in dcc)
+                        {
+                            mnusColumn.Items.Add(dc.ColumnName);
+                        }
+                    }
                 }
             }
         }
@@ -54,23 +70,8 @@ namespace Enesy.Forms
             set
             {
                 this.txtFilter.DisplayMember = value;
-            }
-        }
-
-        protected virtual void OnDataSourceChanged()
-        {
-            this.txtFilter.DataSource = this.dataSource;
-            if (this.dataSource != null)
-            {
-                DataTable dt = this.dataSource as DataTable;
-                DataColumnCollection dcc = dt.Columns;
-                if (dcc.Count == 0) return;
-
-                mnusColumn.Items.Clear();
-                foreach (DataColumn dc in dcc)
-                {
-                    mnusColumn.Items.Add(dc.ColumnName);
-                }
+                if (m_isInit)
+                    this.txtFilter.Text = "Search " + this.txtFilter.DisplayMember;
             }
         }
 
@@ -96,7 +97,7 @@ namespace Enesy.Forms
         public SearchBox()
         {
             InitializeComponent();
-
+            this.m_isInit = true;
             this.txtFilter.Text = "Search...";
             this.ContextMenuStrip = this.mnusColumn;
             this.mnusColumn.ItemClicked += 

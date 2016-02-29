@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 
 namespace Enesy
 {
@@ -41,6 +42,38 @@ namespace Enesy
             char tab = '\u0009';
             value = value.Replace(" ", "");            
             return value.Replace(tab.ToString(), "");
+        }
+
+        /// <summary>
+        /// Create filter expression for dataTable
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="colname"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public string CreateExpression(DataTable dt, string colname, string value)
+        {
+            if (value == "") return "";
+
+            string expression = null;
+
+            if (colname != null && dt.Columns[colname] != null)
+            {
+                if ("Byte,Decimal,Double,Int16,Int32,Int64,SByte,Single,UInt16,UInt32,UInt64,".Contains(dt.Columns[colname].DataType.Name + ","))
+                {
+                    expression = colname + "=" + value;
+                }
+                else if (dt.Columns[colname].DataType == typeof(string))
+                {
+                    expression = string.Format(colname + " LIKE '%{0}%'", value);
+                }
+                else if (dt.Columns[colname].DataType == typeof(DateTime))
+                {
+                    expression = colname + " = #" + value + "#";
+                }
+            }
+
+            return expression;
         }
     }
 }
