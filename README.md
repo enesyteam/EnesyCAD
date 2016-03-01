@@ -1,10 +1,18 @@
 # EnesyCAD Project
-<br>OPEN SOURCE PROJECT FOR VIETNAMESE AUTOCAD COMMUNITY
-<br>THIS PROJECT ARE GOVERNED BY THE GNU GENERAL PUBLIC LICENSE
+Công cụ quản lý các Lisp mở rộng trong AutoCAD dành cho Kỹ sư
 
-Heading
+Các tính năng
+=======
+Các tính năng chính:
+* Quản lý các lệnh mặc định của AutoCAD
+* Quản lý các Lisp, các lệnh của Lisp
+* Tạo các danh sách lệnh yêu thích
+* Tra cứu nhanh đến các lệnh
+Demos
 =======
 
-Subheading
----------
+Download
+=======
+
+
 
