@@ -1,4 +1,4 @@
-﻿namespace Enesy.EnesyCAD.Manager
+﻿namespace Enesy.EnesyCAD.CommandManager
 {
     partial class ImportLispDialog
     {
@@ -42,7 +42,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblStatus = new System.Windows.Forms.Label();
             this.pnlProgress = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.prgImportFiles = new System.Windows.Forms.ProgressBar();
             this.butError = new System.Windows.Forms.Button();
             this.butFunction = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -175,29 +175,30 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblStatus.Location = new System.Drawing.Point(148, 7);
+            this.lblStatus.Location = new System.Drawing.Point(-51, 7);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(62, 14);
+            this.lblStatus.Size = new System.Drawing.Size(261, 14);
             this.lblStatus.TabIndex = 0;
-            this.lblStatus.Text = "Importing ...";
+            this.lblStatus.Text = "Click Open button or press Ctrl + O to import .lsp files";
             // 
             // pnlProgress
             // 
-            this.pnlProgress.Controls.Add(this.progressBar1);
+            this.pnlProgress.Controls.Add(this.prgImportFiles);
             this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlProgress.Location = new System.Drawing.Point(363, 0);
             this.pnlProgress.Name = "pnlProgress";
             this.pnlProgress.Padding = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.pnlProgress.Size = new System.Drawing.Size(255, 29);
             this.pnlProgress.TabIndex = 2;
+            this.pnlProgress.Visible = false;
             // 
-            // progressBar1
+            // prgImportFiles
             // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(3, 7);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(249, 15);
-            this.progressBar1.TabIndex = 0;
+            this.prgImportFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.prgImportFiles.Location = new System.Drawing.Point(3, 7);
+            this.prgImportFiles.Name = "prgImportFiles";
+            this.prgImportFiles.Size = new System.Drawing.Size(249, 15);
+            this.prgImportFiles.TabIndex = 0;
             // 
             // butError
             // 
@@ -263,7 +264,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Panel pnlProgress;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar prgImportFiles;
         private System.Windows.Forms.DataGridView dgrvFunction;
         private System.Windows.Forms.DataGridView dgrvError;
         private System.Windows.Forms.Button butOpen;

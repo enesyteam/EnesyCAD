@@ -8,10 +8,16 @@ using System.Windows.Forms;
 
 using Enesy.EnesyCAD.IO;
 
-namespace Enesy.EnesyCAD.Manager
+namespace Enesy.EnesyCAD.CommandManager
 {
-    public partial class ImportLispDialog : Enesy.EnesyCAD.Forms.Form
+    public partial class ImportLispDialog : System.Windows.Forms.Form
     {
+        /// <summary>
+        /// Link for help
+        /// </summary>
+        [DefaultValue(Enesy.Page.CadYoutube)]
+        private string Help { get; set; }
+
         /// <summary>
         /// Store information of lisp function and errors
         /// </summary>
@@ -64,8 +70,16 @@ namespace Enesy.EnesyCAD.Manager
 
             // Init searchBox
             searchBox.DataSource = m_function;
-            this.butFunction.PerformClick();
             m_funcDisplayMember = searchBox.DisplayMember;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.O))
+            {
+                butOpen.PerformClick();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         /// <summary>
@@ -83,7 +97,7 @@ namespace Enesy.EnesyCAD.Manager
             foreach (string file in fileNames)
             {
                 LispReader rd = new LispReader(file);
-                List<LispFunction> lspFunc = rd.ListAllFuntion();
+                List<LispFunction> lspFunc = rd.ListMainFunction();
                 foreach (LispFunction func in lspFunc)
                 {
                     if (!CheckExist(func, DataSource))
@@ -114,6 +128,7 @@ namespace Enesy.EnesyCAD.Manager
                         r[3] = func.Line;
                         m_error.Rows.Add(r);
                     }
+                    prgImportFiles.PerformStep();
                 }
             }
         }
@@ -167,7 +182,28 @@ namespace Enesy.EnesyCAD.Manager
             ofd.Filter = "Lisp file|*.lsp" + "|Xml file|*.xml";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                this.ImportLispFiles(ofd.FileNames);
+                string[] files = ofd.FileNames;
+                if (files.Length > 0)
+                {
+                    // Init progressBar & status
+                    pnlProgress.Visible = true;
+                    prgImportFiles.Maximum = 100;
+                    prgImportFiles.Step = 100 / files.Length;
+                    prgImportFiles.Value = 0;
+                    lblStatus.Text = "Importing ...";
+
+                    // Importing lisp function
+                    this.ImportLispFiles(files);
+
+                    // Invisible progress bar
+                    pnlProgress.Visible = false;
+                    lblStatus.Text = "Found " + files.Length.ToString() + " function & "
+                        + dgrvError.Rows.Count.ToString() + " error(s)";
+
+                    // Press Function / Error button
+                    if (dgrvError.Rows.Count > 0) butError.PerformClick();
+                    else butFunction.PerformClick();
+                }
             }
         }
     }

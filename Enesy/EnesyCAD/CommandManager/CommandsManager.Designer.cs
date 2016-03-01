@@ -1,4 +1,4 @@
-namespace Enesy.EnesyCAD.Manager
+namespace Enesy.EnesyCAD.CommandManager
 {
     partial class CommandsManagerDialog
     {

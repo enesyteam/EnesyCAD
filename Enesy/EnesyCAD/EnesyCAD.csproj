@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandManager\CommandInfoCollection.cs" />
     <Compile Include="CommandsHelp.cs" />
     <Compile Include="EntityProperties.cs" />
     <Compile Include="Forms\Form.cs">
@@ -56,17 +57,17 @@
     </Compile>
     <Compile Include="IO\LispFunction.cs" />
     <Compile Include="IO\LispReader.cs" />
-    <Compile Include="Manager\Command.cs" />
-    <Compile Include="Manager\CommandsManager.cs">
+    <Compile Include="CommandManager\Command.cs" />
+    <Compile Include="CommandManager\CommandsManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Manager\CommandsManager.Designer.cs">
+    <Compile Include="CommandManager\CommandsManager.Designer.cs">
       <DependentUpon>CommandsManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manager\ImportLispDialog.cs">
+    <Compile Include="CommandManager\ImportLispDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Manager\ImportLispDialog.Designer.cs">
+    <Compile Include="CommandManager\ImportLispDialog.Designer.cs">
       <DependentUpon>ImportLispDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Plot\BaseFrame.cs" />
@@ -87,7 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Runtime\CommandInfo.cs" />
+    <Compile Include="CommandManager\CommandInfo.cs" />
     <Compile Include="Runtime\CommandMethod.cs" />
     <Compile Include="Utilities\Coordinate\Commands.cs" />
     <Compile Include="Utilities\Coordinate\CoordinatePicker.cs">
@@ -118,10 +119,10 @@
     <Compile Include="Utils\Selection.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Manager\CommandsManager.resx">
+    <EmbeddedResource Include="CommandManager\CommandsManager.resx">
       <DependentUpon>CommandsManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manager\ImportLispDialog.resx">
+    <EmbeddedResource Include="CommandManager\ImportLispDialog.resx">
       <DependentUpon>ImportLispDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Plot\PaletteControl.resx">

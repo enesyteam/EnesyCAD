@@ -5,7 +5,7 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.EditorInput;
 using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
-namespace Enesy.EnesyCAD.Manager
+namespace Enesy.EnesyCAD.CommandManager
 {
     public class Command
     {

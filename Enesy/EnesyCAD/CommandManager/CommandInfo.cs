@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Enesy.EnesyCAD.Runtime
+namespace Enesy.EnesyCAD.CommandManager
 {
     public class CommandInfo
     {

@@ -165,25 +165,6 @@ namespace Enesy.EnesyCAD.Runtime
             this.WebLink = webLink;
         }
 
-        public EnesyCADCommandMethod(CommandInfo comInfo, CommandFlags flag)
-        {
-            // Interface member
-            this.m_globalName = comInfo.GlobalName;
-            this.m_groupName = null;
-            this.m_localizedNameId = null;
-            this.m_flags = flag;
-            this.m_contextMenuExtensionType = null;
-            this.m_helpFileName = null;
-            this.m_helpTopic = null;
-
-            // Custom member
-            this.Tag = comInfo.Tag;
-            this.Description = comInfo.Description;
-            this.Author = comInfo.Author;
-            this.Email = comInfo.Email;
-            this.WebLink = comInfo.WebLink;
-        }
-
         public EnesyCADCommandMethod(string globalName,
                                     bool isTest,
                                     string description

@@ -14,7 +14,7 @@ using Autodesk.AutoCAD.Runtime;
 using System.Net;
 using System.IO;
 
-namespace Enesy.EnesyCAD.Manager
+namespace Enesy.EnesyCAD.CommandManager
 {
     public partial class CommandsManagerDialog : System.Windows.Forms.Form
     {
@@ -307,7 +307,7 @@ namespace Enesy.EnesyCAD.Manager
         {
             ImportLispDialog ild = new ImportLispDialog();
             ild.DataSource = m_commandsData;
-            ild.ShowModal();
+            Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(ild);
         }
     }
 }

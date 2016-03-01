@@ -63,7 +63,6 @@ namespace Enesy.Forms
                 if (displayMember != value)
                 {
                     this.displayMember = value;
-                    this.Filter();
                 }
             }
         }
