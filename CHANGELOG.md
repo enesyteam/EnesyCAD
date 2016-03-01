@@ -2,12 +2,12 @@
 
 Performance:
 
-  - Thay đổi
+  - Các thay đổi về hiệu suất chương trình
 
 Features:
 
-  - Thay đổi
+  - Các thay đổi về tính năng chương trình
 
 Bugfixes:
 
-  - Thay đổi
+  - Các fix lỗi
