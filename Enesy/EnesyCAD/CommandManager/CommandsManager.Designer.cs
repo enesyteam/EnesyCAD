@@ -30,11 +30,11 @@ namespace Enesy.EnesyCAD.CommandManager
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandsManagerDialog));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Enesy.vn");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Autodesk");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("All", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Enesy.vn");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Autodesk");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("All", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
             this.dgrvCommands = new System.Windows.Forms.DataGridView();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.dgrvCommands.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgrvCommands.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgrvCommands.ShowEditingIcon = false;
-            this.dgrvCommands.Size = new System.Drawing.Size(515, 178);
+            this.dgrvCommands.Size = new System.Drawing.Size(515, 164);
             this.dgrvCommands.TabIndex = 0;
             this.dgrvCommands.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvCommands_CellDoubleClick);
             this.dgrvCommands.MouseHover += new System.EventHandler(this.dgrvCommands_MouseHover);
@@ -109,7 +109,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.lblDescription.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDescription.Location = new System.Drawing.Point(3, 6);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(61, 14);
+            this.lblDescription.Size = new System.Drawing.Size(60, 13);
             this.lblDescription.TabIndex = 2;
             this.lblDescription.Text = "Description";
             // 
@@ -118,7 +118,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblStatus.Location = new System.Drawing.Point(365, 3);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(150, 14);
+            this.lblStatus.Size = new System.Drawing.Size(150, 13);
             this.lblStatus.TabIndex = 5;
             this.lblStatus.Text = "Status...";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -129,7 +129,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.lblHelp.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblHelp.Location = new System.Drawing.Point(3, 3);
             this.lblHelp.Name = "lblHelp";
-            this.lblHelp.Size = new System.Drawing.Size(31, 14);
+            this.lblHelp.Size = new System.Drawing.Size(32, 13);
             this.lblHelp.TabIndex = 3;
             this.lblHelp.Text = "Help:";
             // 
@@ -141,7 +141,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlViewer.Location = new System.Drawing.Point(0, 0);
             this.pnlViewer.Name = "pnlViewer";
-            this.pnlViewer.Size = new System.Drawing.Size(518, 293);
+            this.pnlViewer.Size = new System.Drawing.Size(518, 272);
             this.pnlViewer.TabIndex = 4;
             // 
             // pnlData
@@ -151,7 +151,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlData.Location = new System.Drawing.Point(0, 0);
             this.pnlData.Name = "pnlData";
             this.pnlData.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.pnlData.Size = new System.Drawing.Size(518, 184);
+            this.pnlData.Size = new System.Drawing.Size(518, 170);
             this.pnlData.TabIndex = 2;
             // 
             // pnlDescription
@@ -159,10 +159,10 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlDescription.Controls.Add(this.lblDescription);
             this.pnlDescription.Controls.Add(this.txtDescription);
             this.pnlDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlDescription.Location = new System.Drawing.Point(0, 184);
+            this.pnlDescription.Location = new System.Drawing.Point(0, 170);
             this.pnlDescription.Name = "pnlDescription";
             this.pnlDescription.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.pnlDescription.Size = new System.Drawing.Size(518, 89);
+            this.pnlDescription.Size = new System.Drawing.Size(518, 83);
             this.pnlDescription.TabIndex = 1;
             // 
             // txtDescription
@@ -172,10 +172,10 @@ namespace Enesy.EnesyCAD.CommandManager
             this.txtDescription.DataMember = null;
             this.txtDescription.DisplayMember = "";
             this.txtDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtDescription.Location = new System.Drawing.Point(3, 23);
+            this.txtDescription.Location = new System.Drawing.Point(3, 22);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(512, 63);
+            this.txtDescription.Size = new System.Drawing.Size(512, 58);
             this.txtDescription.TabIndex = 3;
             this.txtDescription.Text = "...";
             // 
@@ -185,10 +185,10 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlStatus.Controls.Add(this.lblHelp);
             this.pnlStatus.Controls.Add(this.lblWebLink);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlStatus.Location = new System.Drawing.Point(0, 273);
+            this.pnlStatus.Location = new System.Drawing.Point(0, 253);
             this.pnlStatus.Name = "pnlStatus";
             this.pnlStatus.Padding = new System.Windows.Forms.Padding(3);
-            this.pnlStatus.Size = new System.Drawing.Size(518, 20);
+            this.pnlStatus.Size = new System.Drawing.Size(518, 19);
             this.pnlStatus.TabIndex = 0;
             // 
             // lblWebLink
@@ -198,7 +198,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.lblWebLink.DisplayMember = "";
             this.lblWebLink.Location = new System.Drawing.Point(40, 3);
             this.lblWebLink.Name = "lblWebLink";
-            this.lblWebLink.Size = new System.Drawing.Size(40, 14);
+            this.lblWebLink.Size = new System.Drawing.Size(43, 13);
             this.lblWebLink.TabIndex = 4;
             this.lblWebLink.TabStop = true;
             this.lblWebLink.Text = "https://";
@@ -212,7 +212,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3);
-            this.panel1.Size = new System.Drawing.Size(694, 29);
+            this.panel1.Size = new System.Drawing.Size(694, 27);
             this.panel1.TabIndex = 7;
             // 
             // mnuMain
@@ -339,7 +339,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlLinkButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlLinkButton.Location = new System.Drawing.Point(341, 3);
             this.pnlLinkButton.Name = "pnlLinkButton";
-            this.pnlLinkButton.Size = new System.Drawing.Size(98, 23);
+            this.pnlLinkButton.Size = new System.Drawing.Size(98, 21);
             this.pnlLinkButton.TabIndex = 4;
             // 
             // butFanPage
@@ -352,7 +352,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.butFanPage.Location = new System.Drawing.Point(5, 0);
             this.butFanPage.Name = "butFanPage";
             this.butFanPage.Padding = new System.Windows.Forms.Padding(3);
-            this.butFanPage.Size = new System.Drawing.Size(23, 23);
+            this.butFanPage.Size = new System.Drawing.Size(23, 21);
             this.butFanPage.TabIndex = 6;
             this.butFanPage.UseVisualStyleBackColor = true;
             this.butFanPage.Click += new System.EventHandler(this.butFanPage_Click);
@@ -367,7 +367,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.butHomePage.Location = new System.Drawing.Point(34, 0);
             this.butHomePage.Name = "butHomePage";
             this.butHomePage.Padding = new System.Windows.Forms.Padding(3);
-            this.butHomePage.Size = new System.Drawing.Size(23, 23);
+            this.butHomePage.Size = new System.Drawing.Size(23, 21);
             this.butHomePage.TabIndex = 5;
             this.butHomePage.UseVisualStyleBackColor = true;
             this.butHomePage.Click += new System.EventHandler(this.butHomePage_Click);
@@ -381,7 +381,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.butYoutube.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butYoutube.Location = new System.Drawing.Point(63, 0);
             this.butYoutube.Name = "butYoutube";
-            this.butYoutube.Size = new System.Drawing.Size(23, 23);
+            this.butYoutube.Size = new System.Drawing.Size(23, 21);
             this.butYoutube.TabIndex = 4;
             this.butYoutube.UseVisualStyleBackColor = true;
             this.butYoutube.Click += new System.EventHandler(this.butYoutube_Click);
@@ -395,7 +395,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.searchBox.Enabled = false;
             this.searchBox.Location = new System.Drawing.Point(439, 3);
             this.searchBox.Margin = new System.Windows.Forms.Padding(0);
-            this.searchBox.MinimumSize = new System.Drawing.Size(130, 23);
+            this.searchBox.MinimumSize = new System.Drawing.Size(130, 21);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(252, 23);
             this.searchBox.TabIndex = 0;
@@ -405,7 +405,7 @@ namespace Enesy.EnesyCAD.CommandManager
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 29);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 27);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -416,7 +416,7 @@ namespace Enesy.EnesyCAD.CommandManager
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pnlViewer);
-            this.splitContainer1.Size = new System.Drawing.Size(694, 293);
+            this.splitContainer1.Size = new System.Drawing.Size(694, 272);
             this.splitContainer1.SplitterDistance = 171;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 8;
@@ -426,15 +426,15 @@ namespace Enesy.EnesyCAD.CommandManager
             this.trvSubCommands.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trvSubCommands.Location = new System.Drawing.Point(3, 3);
             this.trvSubCommands.Name = "trvSubCommands";
-            treeNode1.Name = "ndoEnesy";
-            treeNode1.Text = "Enesy.vn";
-            treeNode2.Name = "ndoAutodesk";
-            treeNode2.Text = "Autodesk";
-            treeNode3.Name = "ndoRoot";
-            treeNode3.Text = "All";
+            treeNode4.Name = "ndoEnesy";
+            treeNode4.Text = "Enesy.vn";
+            treeNode5.Name = "ndoAutodesk";
+            treeNode5.Text = "Autodesk";
+            treeNode6.Name = "ndoRoot";
+            treeNode6.Text = "All";
             this.trvSubCommands.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
-            this.trvSubCommands.Size = new System.Drawing.Size(168, 287);
+            treeNode6});
+            this.trvSubCommands.Size = new System.Drawing.Size(168, 266);
             this.trvSubCommands.TabIndex = 0;
             // 
             // cmnuRoot
@@ -459,14 +459,14 @@ namespace Enesy.EnesyCAD.CommandManager
             // 
             // CommandsManagerDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 322);
+            this.ClientSize = new System.Drawing.Size(694, 299);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.HelpButton = true;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(670, 214);
+            this.MinimumSize = new System.Drawing.Size(670, 201);
             this.Name = "CommandsManagerDialog";
             this.ShowInTaskbar = false;
             this.Text = "Commands Manager";

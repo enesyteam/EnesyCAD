@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandManager\CmdInfo.cs" />
     <Compile Include="CommandManager\CommandInfoCollection.cs" />
+    <Compile Include="CommandManager\DatabaseCreator.cs" />
+    <Compile Include="CommandManager\ManagerBoard.cs" />
     <Compile Include="CommandsHelp.cs" />
     <Compile Include="EntityProperties.cs" />
     <Compile Include="Forms\Form.cs">
@@ -90,12 +93,18 @@
     </Compile>
     <Compile Include="CommandManager\CommandInfo.cs" />
     <Compile Include="Runtime\CommandMethod.cs" />
-    <Compile Include="Utilities\Coordinate\Commands.cs" />
-    <Compile Include="Utilities\Coordinate\CoordinatePicker.cs">
+    <Compile Include="Utilities\Coordinate\ExportCoordinates\Commands.cs" />
+    <Compile Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utilities\Coordinate\CoordinatePicker.Designer.cs">
+    <Compile Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.Designer.cs">
       <DependentUpon>CoordinatePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Coordinate\ExportCoordinates\ExportOptionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\Coordinate\ExportCoordinates\ExportOptionDialog.Designer.cs">
+      <DependentUpon>ExportOptionDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Text\Aligment\AligmentPoint.cs" />
     <Compile Include="Utilities\Text\Aligment\Commands.cs" />
@@ -112,7 +121,14 @@
     <Compile Include="Utilities\Text\Paragraph\Paragraph.Designer.cs">
       <DependentUpon>Paragraph.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Xref\Absolute2Relative\ConvertAbsoluteRelativeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\Xref\Absolute2Relative\ConvertAbsoluteRelativeDialog.Designer.cs">
+      <DependentUpon>ConvertAbsoluteRelativeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Calculating.cs" />
+    <Compile Include="Utils\ConvertAndTranslate.cs" />
     <Compile Include="Utils\GetInfo.cs" />
     <Compile Include="Utils\Modify.cs" />
     <Compile Include="Utils\Others.cs" />
@@ -132,8 +148,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utilities\Coordinate\CoordinatePicker.resx">
+    <EmbeddedResource Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.resx">
       <DependentUpon>CoordinatePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\Coordinate\ExportCoordinates\ExportOptionDialog.resx">
+      <DependentUpon>ExportOptionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\Text\Aligment\TextAligment.resx">
       <DependentUpon>TextAligment.cs</DependentUpon>
@@ -141,6 +160,12 @@
     <EmbeddedResource Include="Utilities\Text\Paragraph\Paragraph.resx">
       <DependentUpon>Paragraph.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\Xref\Absolute2Relative\ConvertAbsoluteRelativeDialog.resx">
+      <DependentUpon>ConvertAbsoluteRelativeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Autodesk.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

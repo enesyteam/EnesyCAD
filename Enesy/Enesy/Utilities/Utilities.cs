@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
+using System.Reflection;
 
 namespace Enesy
 {
-    public class Utilities
+    public static class Utilities
     {
         /// <summary>
         /// Determines whether the specified
@@ -51,7 +52,7 @@ namespace Enesy
         /// <param name="colname"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public string CreateExpression(DataTable dt, string colname, string value)
+        public static string CreateExpression(DataTable dt, string colname, string value)
         {
             if (value == "") return "";
 

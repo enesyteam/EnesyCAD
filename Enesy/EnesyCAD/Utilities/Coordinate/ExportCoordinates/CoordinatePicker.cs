@@ -20,11 +20,11 @@ namespace Enesy.EnesyCAD.Utilities
 
         EntityType m_objType = EntityType.None;
 
-        List<Point3d> m_vertices = new List<Point3d>();
+        Point3dCollection m_vertices = new Point3dCollection();
 
         public CoordinatePickerDialog()
         {
-            InitializeComponent();
+            InitializeComponent();            
 
             // Init combobox - List name of all UCS
             Document doc = acApp.DocumentManager.MdiActiveDocument;
@@ -38,6 +38,24 @@ namespace Enesy.EnesyCAD.Utilities
             else
             {
                 rdoUcsName.Enabled = false;
+            }
+
+            // Init combobox of options
+            cboOption.SelectedIndex = 0;
+
+            // Init radioButton
+            Editor ed = doc.Editor;
+            CoordinateSystem3d cur = ed.CurrentUserCoordinateSystem.CoordinateSystem3d;
+            // Check if current UCS is WCS
+            if (cur.Origin == Point3d.Origin && cur.Xaxis == Vector3d.XAxis
+                    && cur.Yaxis == Vector3d.YAxis && cur.Zaxis == Vector3d.ZAxis)
+            {
+                if (rdoCurrent.Checked) rdoWorld.Checked = true;
+                rdoCurrent.Enabled = false;
+            }
+            else
+            {
+                rdoCurrent.Enabled = true;
             }
         }
 
@@ -78,6 +96,41 @@ namespace Enesy.EnesyCAD.Utilities
         private void butBlock_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void butExport_Click(object sender, EventArgs e)
+        {
+            if (m_objIdColl.Count == 0)
+            {
+                MessageBox.Show("Not founds any objects!");
+                return;
+            }
+
+            if (m_vertices.Count == 0)
+            {
+                MessageBox.Show("It has no point!");
+                return;
+            }
+
+            if (rdoCurrent.Checked)
+            {
+                m_vertices = Utils.Wcs2Ucs(m_vertices);
+            }
+            if (rdoUcsName.Checked)
+            {
+                m_vertices = Utils.Wcs2Ucs(m_vertices, cboUcs.Text);
+            }
+            
+            if (cboOption.SelectedIndex == 0)
+            {
+                string s = "";
+                foreach (Point3d p in m_vertices)
+                {
+                    s += p.X + "\t" + p.Y + "\n";
+                }
+                System.Windows.Forms.Clipboard.SetText(s);
+            }
+            this.Close();
         }
     }
 }

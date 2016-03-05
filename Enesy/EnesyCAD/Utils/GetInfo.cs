@@ -19,7 +19,7 @@ namespace Enesy.EnesyCAD
                 // Open the UCS table for read
                 UcsTable acUCSTbl;
                 acUCSTbl = tr.GetObject(db.UcsTableId, OpenMode.ForRead) as UcsTable;                
-
+                
                 // Listing
                 foreach (ObjectId ucs in acUCSTbl)
                 {
@@ -42,9 +42,9 @@ namespace Enesy.EnesyCAD
         /// <param name="tr"></param>
         /// <param name="polylines">Polylines objectID</param>
         /// <returns></returns>
-        public static List<Point3d> ListVertices(Transaction tr, ObjectIdCollection polylines)
+        public static Point3dCollection ListVertices(Transaction tr, ObjectIdCollection polylines)
         {
-            List<Point3d> coords = new List<Point3d>();
+            Point3dCollection coords = new Point3dCollection();
 
             using (tr)
             {
