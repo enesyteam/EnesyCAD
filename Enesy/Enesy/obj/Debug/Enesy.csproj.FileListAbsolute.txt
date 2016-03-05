@@ -36,3 +36,11 @@ F:\Quan_A2Z\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.dll
 F:\Quan_A2Z\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.pdb
 F:\Quan_A2Z\GitHub\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.dll
 F:\Quan_A2Z\GitHub\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.pdb
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.dll
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.pdb
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Drawing.Icons.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Forms.SearchBox.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Properties.Resources.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.dll
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.pdb
