@@ -54,6 +54,13 @@
     <Compile Include="CommandManager\DatabaseCreator.cs" />
     <Compile Include="CommandManager\ManagerBoard.cs" />
     <Compile Include="CommandsHelp.cs" />
+    <Compile Include="DEMO\CE\CEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DEMO\CE\CEForm.Designer.cs">
+      <DependentUpon>CEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DEMO\CE\Commands.cs" />
     <Compile Include="EntityProperties.cs" />
     <Compile Include="Forms\Form.cs">
       <SubType>Form</SubType>
@@ -141,6 +148,9 @@
     <EmbeddedResource Include="CommandManager\ImportLispDialog.resx">
       <DependentUpon>ImportLispDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DEMO\CE\CEForm.resx">
+      <DependentUpon>CEForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Plot\PaletteControl.resx">
       <DependentUpon>PaletteControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,7 +177,18 @@
   <ItemGroup>
     <None Include="bin\Debug\Autodesk.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\Setup\AutoCAD\2016 64bits\metroframework-modern-ui-master\MetroFramework\MetroFramework.csproj">
+      <Project>{bb41ac8b-cbed-4387-a7e0-4567edb3f57f}</Project>
+      <Name>MetroFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mobile_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enesy_newcolor.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

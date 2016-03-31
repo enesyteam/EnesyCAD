@@ -47,3 +47,6 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Util
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csproj.GenerateResource.Cache
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.pdb
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\MetroFramework.dll
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\MetroFramework.pdb
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.DEMO.CE.CEForm.resources

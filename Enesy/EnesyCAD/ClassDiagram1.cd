@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Enesy.EnesyCAD.CommandManager.Command" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandManager\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CommandManager.CommandInfo" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAgAAAAgAAAAAAAAAEAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>CommandManager\CommandInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CommandManager.CommandInfoCollection" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandManager\CommandInfoCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CommandManager.CommandsManagerDialog" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QICiQIAAgSwYABABAECACBgCAEKEUSEAlmhYEwgAASA=</HashCode>
+      <FileName>CommandManager\CommandsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CommandManager.DatabaseCreator" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandManager\DatabaseCreator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CommandManager.ImportLispDialog" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABQCQIAwAJAOCAAAACAQBAAAAABIAUKQkIgQA=</HashCode>
+      <FileName>CommandManager\ImportLispDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CommandManager.ManagerBoard" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAACAAAAAAQAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>CommandManager\ManagerBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CommandsHelp" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAACAAAAQAAAAAAAAQAAAAAAAAAAAAAIACAAAA=</HashCode>
+      <FileName>CommandsHelp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utils" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAEAAAAAAAICABQJAEAAAAAABSA=</HashCode>
+      <FileName>Utils\Calculating.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.DEMO.CE.CEForm" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAACAAAAAAAE=</HashCode>
+      <FileName>DEMO\CE\CEForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.CE.Command" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DEMO\CE\Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Forms.Form" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAEAAQIAAAAAEAAAAACAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Forms\Form.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.IO.LispFunction" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAABBAAA=</HashCode>
+      <FileName>IO\LispFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.IO.LispReader" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAgAAAAQAgAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>IO\LispReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Plot.BaseFrame" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACAAAKAAAAAAAAAAIAAAAAAgAAAAAQAEAAAAUAAAAA=</HashCode>
+      <FileName>Plot\BaseFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Plot.Functions" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAACIAAAAAAAAAAAAAAACAAACAAAAAAAAQ=</HashCode>
+      <FileName>Plot\Functions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Plot.PaletteControl" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MQKVNGBBuiABQDAwFICBAVAiEqQSMAgQECAiAQQIgDM=</HashCode>
+      <FileName>Plot\PaletteControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Plot.PlotArea" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Plot\PlotArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Plot.QPlotConfig" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAABAIAABAAAAEAAAABAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Plot\QPlotConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Plot.RefreshEngine" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAIAAAgBARABIAkAggBAMAAEABAAAgKQAAAICAICAg=</HashCode>
+      <FileName>Plot\RefreshEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utilities.Command" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Plot\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utilities.Commands" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAgAAAAAAAAEAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Utilities\Coordinate\ExportCoordinates\Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utilities.CoordinatePickerDialog" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABBCIAERCgAAiACAACAEACAAICQDAQIgQgQAA=</HashCode>
+      <FileName>Utilities\Coordinate\ExportCoordinates\CoordinatePicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Properties.Resources" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAABAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Runtime.EnesyCADCommandMethod" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAABBGAgAEAAgAAAAAAAAUEIAgAAhAEAAAAABEE=</HashCode>
+      <FileName>Runtime\CommandMethod.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utilities.Coordinate.ExportOptionDialog" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAAAACAACAAAAASAAAACAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Coordinate\ExportCoordinates\ExportOptionDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utilities.Text.TextAligmentDialog" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAGABQAABAACAgICCgAACAMAAAAAAAQAAAAA=</HashCode>
+      <FileName>Utilities\Text\Aligment\TextAligment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utilities.Text.TextParagraphDialog" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAAAACAAABAggAKAAAACAQAAAAAAAAACAAAAgAI=</HashCode>
+      <FileName>Utilities\Text\Paragraph\Paragraph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enesy.EnesyCAD.Utilities.Xref.Absolute2Relative.ConvertAbsoluteRelativeDialog" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Xref\Absolute2Relative\ConvertAbsoluteRelativeDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Enesy.EnesyCAD.CommandManager.CmdInfo" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAoAAAAgAAAAAAAAEEAAAAAAAAAAABBAAA=</HashCode>
+      <FileName>CommandManager\CmdInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Enesy.EnesyCAD.EntityType" Collapsed="true">
+    <Position X="11" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEBAAA=</HashCode>
+      <FileName>EntityProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Enesy.EnesyCAD.BlockName" Collapsed="true">
+    <Position X="9.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAIAAABAAAA=</HashCode>
+      <FileName>EntityProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Enesy.EnesyCAD.Utilities.Text.Aligment" Collapsed="true">
+    <Position X="7.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAACACQAAAIAAA=</HashCode>
+      <FileName>Utilities\Text\Aligment\AligmentPoint.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
