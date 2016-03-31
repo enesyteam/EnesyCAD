@@ -50,6 +50,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ButtonNoborder.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\DragHelper.cs" />
     <Compile Include="Forms\LinkLabelData.cs">
       <SubType>Component</SubType>
