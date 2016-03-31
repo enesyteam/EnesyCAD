@@ -54,17 +54,14 @@
     <Compile Include="CommandManager\DatabaseCreator.cs" />
     <Compile Include="CommandManager\ManagerBoard.cs" />
     <Compile Include="CommandsHelp.cs" />
-    <Compile Include="DEMO\CE\CEForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DEMO\CE\CEForm.Designer.cs">
-      <DependentUpon>CEForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DEMO\CE\Commands.cs" />
     <Compile Include="EntityProperties.cs" />
     <Compile Include="Forms\Form.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Geometry\RectangleEx.cs" />
+    <Compile Include="Helper\Point2d.cs" />
+    <Compile Include="Helper\Point3d.cs" />
+    <Compile Include="Helper\TextBound.cs" />
     <Compile Include="IO\LispFunction.cs" />
     <Compile Include="IO\LispReader.cs" />
     <Compile Include="CommandManager\Command.cs" />
@@ -121,6 +118,7 @@
     <Compile Include="Utilities\Text\Aligment\TextAligment.Designer.cs">
       <DependentUpon>TextAligment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Text\AutoNumber\AutoNumber.cs" />
     <Compile Include="Utilities\Text\Paragraph\Commands.cs" />
     <Compile Include="Utilities\Text\Paragraph\Paragraph.cs">
       <SubType>Form</SubType>
@@ -147,9 +145,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CommandManager\ImportLispDialog.resx">
       <DependentUpon>ImportLispDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DEMO\CE\CEForm.resx">
-      <DependentUpon>CEForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Plot\PaletteControl.resx">
       <DependentUpon>PaletteControl.cs</DependentUpon>
@@ -178,16 +173,14 @@
     <None Include="bin\Debug\Autodesk.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\Setup\AutoCAD\2016 64bits\metroframework-modern-ui-master\MetroFramework\MetroFramework.csproj">
-      <Project>{bb41ac8b-cbed-4387-a7e0-4567edb3f57f}</Project>
-      <Name>MetroFramework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="mobile_64x64.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\enesy_newcolor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApplicationServices\" />
+    <Folder Include="DatabaseServices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

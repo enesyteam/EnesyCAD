@@ -34,7 +34,6 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\EnesyCAD.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\EnesyCAD.pdb
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\Enesy.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\Enesy.pdb
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csprojResolveAssemblyReference.cache
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.CommandsManagerDialog.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.ImportLispDialog.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Plot.PaletteControl.resources
@@ -47,6 +46,3 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Util
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csproj.GenerateResource.Cache
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.pdb
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\MetroFramework.dll
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\MetroFramework.pdb
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.DEMO.CE.CEForm.resources

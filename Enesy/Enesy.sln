@@ -5,9 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enesy", "Enesy\Enesy.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnesyCAD", "EnesyCAD\EnesyCAD.csproj", "{1ACDE011-29EA-40FF-B6E2-67A4AEF270B1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Refs", "Refs", "{0133AFB1-FF55-46CC-B711-3C20FF2F153F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroFramework", "..\..\..\..\..\Setup\AutoCAD\2016 64bits\metroframework-modern-ui-master\MetroFramework\MetroFramework.csproj", "{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnesyLOAD", "EnesyLOAD\EnesyLOAD.csproj", "{EB6B56EF-8284-40FB-B48C-D62CC294E15B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,19 +27,14 @@ Global
 		{1ACDE011-29EA-40FF-B6E2-67A4AEF270B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ACDE011-29EA-40FF-B6E2-67A4AEF270B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1ACDE011-29EA-40FF-B6E2-67A4AEF270B1}.Release|x86.ActiveCfg = Release|Any CPU
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Debug|x86.ActiveCfg = Debug|x86
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Debug|x86.Build.0 = Debug|x86
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Release|x86.ActiveCfg = Release|x86
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F}.Release|x86.Build.0 = Release|x86
+		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{BB41AC8B-CBED-4387-A7E0-4567EDB3F57F} = {0133AFB1-FF55-46CC-B711-3C20FF2F153F}
 	EndGlobalSection
 EndGlobal
