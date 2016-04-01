@@ -15,7 +15,7 @@ Example:
 ```
         [EnesyCAD.Runtime.EnesyCADCommandMethod("ANU",
         "Text",
-        "Đánh số (chữ) tự động trong AutoCAD",
+        "Auto Generated numbers or characters",
         "EnesyCAD",
         "cad@enesy.vn",
         "https://www.youtube.com/watch?v=ma6t7cuxvNw",
