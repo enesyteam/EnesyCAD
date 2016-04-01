@@ -1,4 +1,4 @@
-# AutoCAD Commands Manager
+# EnesyCAD (AutoCAD Plugin)
 ***One Plugin for All Engineers***
 .NET tool for management AutoCAD native commands, extend AutoCAD commands by C#, AutoLisp language. It's very usefull for Engineers, it optimize your work performance. Let's try it! you'll love it!
 
@@ -33,9 +33,9 @@ Notes: Some functions maybe not updated in Youtube chanel at present (we're prep
 
 ## How to build
 1. Download Source code
-2. Open Enesy.sln solution file in Visual Studio (2012 version and newer)
+2. Open `Enesy.sln` solution file in `Visual Studio` (2012 version and newer)
 3. Build Solution
 
 ## Documentation
-For API document and Help please visit: [http://cad.enesy.vn/](http://cad.enesy.vn/)
+For `API` document and `Help` please visit: [http://cad.enesy.vn/](http://cad.enesy.vn/)
 Notes: Some documents maybe not updated in website at present (we're prepairing)
