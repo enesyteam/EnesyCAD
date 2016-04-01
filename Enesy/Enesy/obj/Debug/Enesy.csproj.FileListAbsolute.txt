@@ -44,4 +44,3 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Properties.Resou
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.pdb
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csprojResolveAssemblyReference.cache
