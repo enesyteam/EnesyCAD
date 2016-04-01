@@ -33,12 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AcDbMgd">
-      <HintPath>..\..\References\2007\AcDbMgd.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\lib\2007\AcDbMgd.dll</HintPath>
     </Reference>
     <Reference Include="AcMgd">
-      <HintPath>..\..\References\2007\AcMgd.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\lib\2007\AcMgd.dll</HintPath>
     </Reference>
     <Reference Include="Enesy">
       <HintPath>..\Enesy\bin\Debug\Enesy.dll</HintPath>
