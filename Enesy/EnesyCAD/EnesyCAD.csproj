@@ -71,6 +71,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DatabaseServices\LispFunction.cs" />
+    <Compile Include="Geometry\RectangleEx.cs" />
+    <Compile Include="Helper\Point2d.cs" />
+    <Compile Include="Helper\Point3d.cs" />
+    <Compile Include="Helper\TextBound.cs" />
     <Compile Include="IO\LspImporter.cs" />
     <Compile Include="IO\LspReader.cs" />
     <Compile Include="CommandManager\Command.cs" />
@@ -122,6 +126,7 @@
     <Compile Include="Utilities\Text\Aligment\TextAligment.Designer.cs">
       <DependentUpon>TextAligment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Text\AutoNumber\AutoNumber.cs" />
     <Compile Include="Utilities\Text\Paragraph\Commands.cs" />
     <Compile Include="Utilities\Text\Paragraph\Paragraph.cs">
       <SubType>Form</SubType>
