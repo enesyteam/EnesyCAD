@@ -9,7 +9,7 @@
 * Create List of your favourite commands
 
 ## For Developers
-Are you an Engineer? Have you been developed some AutoCAD plugins before? If you're intersted in our project, you can joy our team.
+Are you an Engineer? Have you been developed some AutoCAD plugins before? If you're intersted in our project, you can joint our team.
 
 ## **Making money** with EnesyCAD
 You can write your own commands, then making instruction videos about your commands and upload it to Your Chanel, put  video link in command attribute.
