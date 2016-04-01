@@ -109,6 +109,14 @@
     </Compile>
     <Compile Include="Runtime\CommandMethod.cs" />
     <Compile Include="ApplicationServices\EneApplication.cs" />
+    <Compile Include="Utilities\ClipboardManager\Clipboard.cs" />
+    <Compile Include="Utilities\ClipboardManager\ClipboardPalette.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilities\ClipboardManager\ClipboardPalette.Designer.cs">
+      <DependentUpon>ClipboardPalette.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\ClipboardManager\DemandLoadding.cs" />
     <Compile Include="Utilities\Coordinate\ExportCoordinates\Commands.cs" />
     <Compile Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.cs">
       <SubType>Form</SubType>
@@ -162,6 +170,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\ClipboardManager\ClipboardPalette.resx">
+      <DependentUpon>ClipboardPalette.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.resx">
       <DependentUpon>CoordinatePicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationServices\Readme.txt" />
+    <None Include="Resources\ClearClipBoard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
