@@ -29,7 +29,7 @@ namespace Enesy.EnesyCAD.Utilities
 
         [EnesyCAD.Runtime.EnesyCADCommandMethod("ANU",
         "Text",
-        "Đánh số tự động trong AutoCAD",
+        "Đánh số (chữ) tự động trong AutoCAD",
         "EnesyCAD",
         "cad@enesy.vn",
         "https://www.youtube.com/watch?v=ma6t7cuxvNw",

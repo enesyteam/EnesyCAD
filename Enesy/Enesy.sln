@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnesyLOAD", "EnesyLOAD\Enes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "zTest", "zTest", "{5CC8FEC7-3F2D-4EA1-8F63-76B8440F74DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DWGPreview", "DWGPreview\DWGPreview.csproj", "{4574C2D5-A93A-40C4-8EDB-EAA1C453933E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,17 +35,8 @@ Global
 		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB6B56EF-8284-40FB-B48C-D62CC294E15B}.Release|x86.ActiveCfg = Release|Any CPU
-		{4574C2D5-A93A-40C4-8EDB-EAA1C453933E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4574C2D5-A93A-40C4-8EDB-EAA1C453933E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4574C2D5-A93A-40C4-8EDB-EAA1C453933E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{4574C2D5-A93A-40C4-8EDB-EAA1C453933E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4574C2D5-A93A-40C4-8EDB-EAA1C453933E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4574C2D5-A93A-40C4-8EDB-EAA1C453933E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4574C2D5-A93A-40C4-8EDB-EAA1C453933E} = {5CC8FEC7-3F2D-4EA1-8F63-76B8440F74DE}
 	EndGlobalSection
 EndGlobal
