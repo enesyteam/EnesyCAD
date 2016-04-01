@@ -5,11 +5,13 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using Enesy.Controls;
 
 namespace Enesy.Forms
 {
     public partial class SearchBox : UserControl
     {
+        
 
         #region Properties & Field
         /// <summary>
@@ -51,10 +53,7 @@ namespace Enesy.Forms
                         mnusColumn.Items.Clear();
                         foreach (DataColumn dc in dcc)
                         {
-                            if (dc.ColumnMapping != MappingType.Hidden)
-                            {
-                                mnusColumn.Items.Add(dc.ColumnName);
-                            }
+                            mnusColumn.Items.Add(dc.ColumnName);
                         }
                     }
                 }
@@ -73,26 +72,15 @@ namespace Enesy.Forms
             set
             {
                 this.txtFilter.DisplayMember = value;
-                if (m_isInit)
-                    this.txtFilter.Text = "Search " + this.txtFilter.DisplayMember;
+                //if (m_isInit)
+                //    this.txtFilter.Text = "Search " + this.txtFilter.DisplayMember;
             }
         }
 
-        /// <summary>
-        /// Text of textBox
-        /// </summary>
-        public override string Text
-        {
-            get
-            {
-                return this.txtFilter.Text;
-            }
-            set
-            {
-                this.txtFilter.Text = value;
-            }
-        }
         #endregion
+
+
+        private ButtonNoBorder filterButton = new ButtonNoBorder();
 
         /// <summary>
         /// Constructor
@@ -100,12 +88,37 @@ namespace Enesy.Forms
         public SearchBox()
         {
             InitializeComponent();
+            // add custom controls
+            filterButton.BackColor = Color.White;
+            filterButton.FlatStyle = FlatStyle.Flat;
+            filterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            filterButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            filterButton.Cursor = Cursors.Hand;
+            filterButton.FlatAppearance.BorderSize = 0;
+            filterButton.Size = new Size(33, this.Height);
+            //filterButton.Text = "Columns";
+            filterButton.Image = Enesy.Properties.Resources.Filter;
+            filterButton.ImageAlign = ContentAlignment.MiddleLeft;
+            //filterButton.Location = new Point(0, preferredSize.Height / 2 - filterButton.Height/2);
+            filterButton.Click += filterButton_Click;
+            this.Controls.Add(filterButton);
+            filterButton.Dock = DockStyle.Left;
+            //
             this.m_isInit = true;
-            this.txtFilter.Text = "Search...";
+           // txtFilter.Text = SearchWaterMark;
             this.ContextMenuStrip = this.mnusColumn;
             this.mnusColumn.ItemClicked += 
                 new ToolStripItemClickedEventHandler(mnusColumn_ItemClicked);
         }
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            //mnusColumn.Show(Cursor.Position);
+            Control ctr = sender as Control;
+            Point p = ctr.Location;
+            mnusColumn.Show(ctr.PointToScreen(new Point(p.X, p.Y + ctr.Height)));
+        }
+
 
         /// <summary>
         /// DataSource Filter
@@ -119,13 +132,13 @@ namespace Enesy.Forms
         }
 
         // Events -----------------------------------------------------------------------------
-        private void butColumn_Click(object sender, EventArgs e)
-        {
-            //mnusColumn.Show(Cursor.Position);
-            Control ctr = sender as Control;
-            Point p = ctr.Location;
-            mnusColumn.Show(ctr.PointToScreen(new Point(p.X, p.Y + ctr.Height)));
-        }
+        //private void butColumn_Click(object sender, EventArgs e)
+        //{
+        //    //mnusColumn.Show(Cursor.Position);
+        //    Control ctr = sender as Control;
+        //    Point p = ctr.Location;
+        //    mnusColumn.Show(ctr.PointToScreen(new Point(p.X, p.Y + ctr.Height)));
+        //}
         
         void mnusColumn_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -139,7 +152,8 @@ namespace Enesy.Forms
 
         private void txtFilter_Click(object sender, EventArgs e)
         {
-            this.txtFilter.SelectAll();
+
         }
+
     }
 }
