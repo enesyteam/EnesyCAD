@@ -4,3 +4,6 @@ obj
 Properties
 docs
 *~*
+*.sln*
+*.suo*
+*.dll*
