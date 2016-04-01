@@ -10,35 +10,6 @@ namespace Enesy.Forms
 {
     public partial class TextBoxFilter : System.Windows.Forms.TextBox
     {
-        private string searchWaterMark = "";
-        public string SearchWaterMark
-        {
-            get { return searchWaterMark; }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    searchWaterMark = "Search in:" + value;
-                    // Call OnPropertyChanged whenever the property is updated
-                    OnPropertyChanged("SearchWaterMark");
-                    //MessageBox.Show(SearchWaterMark);
-                    this.Text = SearchWaterMark;
-                }
-            }
-        }
-        // Declare the event 
-        public event PropertyChangedEventHandler PropertyChanged;
-        // Create the OnPropertyChanged method to raise the event 
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-
         #region Properties & Field
         /// <summary>
         /// Store previous text
@@ -92,7 +63,6 @@ namespace Enesy.Forms
                 if (displayMember != value)
                 {
                     this.displayMember = value;
-                    SearchWaterMark = displayMember;
                 }
             }
         }
@@ -104,50 +74,8 @@ namespace Enesy.Forms
         public TextBoxFilter()
         {
             InitializeComponent();
-            base.AutoSize = false;
-            base.BorderStyle = System.Windows.Forms.BorderStyle.None;
-
             m_textBeforeTheChange = this.Text;
-           // this.KeyDown += TextBoxFilter_KeyDown;
-            this.Enter += TextBoxFilter_Enter;
-            this.Leave +=TextBoxFilter_Leave;
-            this.Click +=TextBoxFilter_Click;
-        }
-
-
-        private void TextBoxFilter_Click(object sender, EventArgs e)
-        {
-            if (this.Text == SearchWaterMark)
-            {
-                this.Text = "";
-            }
-            else
-            {
-                SelectAll();
-                this.ForeColor = Color.Gray;
-            }
-        }
-
-        private void TextBoxFilter_Leave(object sender, EventArgs e)
-        {
-            if (this.Text.Trim() == "")
-            {
-                this.Text = SearchWaterMark;
-                this.ForeColor = Color.Gray;
-            }
-        }
-
-        private void TextBoxFilter_Enter(object sender, EventArgs e)
-        {
-            if (this.Text == SearchWaterMark)
-            {
-                this.Text = "";
-            }
-            else
-            {
-                SelectAll();
-                this.ForeColor = Color.Gray;
-            }
+            this.KeyDown += TextBoxFilter_KeyDown;
         }
 
         void TextBoxFilter_KeyDown(object sender, KeyEventArgs e)
@@ -157,8 +85,6 @@ namespace Enesy.Forms
                 m_textBeforeTheChange = this.Text;
                 m_ctrlPressed = true;
             }
-            else if (e.KeyCode == Keys.Escape)
-                this.Text = "";
             //throw new NotImplementedException();            
         }
 
@@ -173,18 +99,22 @@ namespace Enesy.Forms
         #region Event
         void TextboxFilter_TextChanged(object sender, EventArgs e)
         {
-            if (this.Text != SearchWaterMark)
+            try
             {
                 if (m_ctrlPressed)
                 {
                     this.Text = m_textBeforeTheChange;
                     return;
                 }
-                if ((this.dataSource != null) &&
+                if ((this.dataSource != null) && 
                     (ColumnExist(this.displayMember, this.dataSource)))
                 {
                     Filter();
                 }
+            }
+            catch
+            {
+                // Do nothing
             }
         }
         #endregion

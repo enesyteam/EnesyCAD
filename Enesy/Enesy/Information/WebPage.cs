@@ -8,7 +8,7 @@ namespace Enesy
         public const string HomePage = "http://enesy.vn";
 
         // Enesy CAD page
-        public const string CadPage = "http://cad.enesy.vn";
+        public const string CadPage = "http://enesy.vn";
 
         // Fan page
         public const string FanPage = "https://www.facebook.com/hkscd/";

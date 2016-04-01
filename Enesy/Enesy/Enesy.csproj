@@ -50,15 +50,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ButtonNoborder.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Forms\DragHelper.cs" />
     <Compile Include="Forms\LinkLabelData.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\LinkLabelData.Designer.cs">
       <DependentUpon>LinkLabelData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListViewFilePath.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\ListViewFilePath.Designer.cs">
+      <DependentUpon>ListViewFilePath.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RichTextBoxData.cs">
       <SubType>Component</SubType>
@@ -108,6 +111,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Security\Cryptography.cs" />
     <Compile Include="Structure.cs">
     </Compile>
     <Compile Include="Utilities\Utilities.cs">

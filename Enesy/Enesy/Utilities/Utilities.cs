@@ -76,5 +76,44 @@ namespace Enesy
 
             return expression;
         }
+
+        /// <summary>
+        /// Check if specified column contains checkedItem
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="column"></param>
+        /// <param name="checkedItem"></param>
+        /// <returns></returns>
+        public static bool Contains(System.Data.DataTable source,
+                                        string column, string checkedItem)
+        {
+            bool flag = false;
+            try
+            {
+                string srchExp = column + " ='" + checkedItem + "'";
+                DataRow[] found = source.Select(srchExp);
+                flag = (found.Length > 0 ? true : false);
+            }
+            catch
+            {
+            }
+            return flag;
+        }
+
+        /// <summary>
+        /// Check if string array strs contains string s
+        /// </summary>
+        /// <param name="strs"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool Contains(string[] strs, string s)
+        {
+            bool flag = false;
+            foreach (string str in strs)
+            {
+                if (str == s) flag = true;
+            }
+            return flag;
+        }
     }
 }

@@ -39,7 +39,6 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Comm
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Plot.PaletteControl.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Properties.Resources.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.CoordinatePickerDialog.resources
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.Coordinate.ExportOptionDialog.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.Text.TextAligmentDialog.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.Text.TextParagraphDialog.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.Xref.Absolute2Relative.ConvertAbsoluteRelativeDialog.resources
@@ -47,3 +46,4 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csproj.Gen
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.pdb
 F:\Quan_A2Z\GitHub\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.UCSuite.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.UCSuite.resources
