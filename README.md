@@ -25,6 +25,7 @@ Example:
 
 ## Demos
 See: [EnesyCAD's Youtube Chanel](https://www.youtube.com/enesycadteam)
+Notes: Some functions maybe not updated in Youtube chanel at present (we're prepairing)
 ## Download
 [https://github.com/enesyteam/EnesyCAD/archive/master.zip] (https://github.com/enesyteam/EnesyCAD/archive/master.zip)
 
@@ -35,3 +36,4 @@ See: [EnesyCAD's Youtube Chanel](https://www.youtube.com/enesycadteam)
 
 ## Documentation
 For API document and Help please visit: [http://cad.enesy.vn/](http://cad.enesy.vn/)
+Notes: Some documents maybe not updated in website at present (we're prepairing)
