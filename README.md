@@ -1,13 +1,27 @@
 # AutoCAD Commands Manager
-Công cụ quản lý các Lisp mở rộng trong AutoCAD dành cho Kỹ sư
+.NET tool for management AutoCAD native commands, extend AutoCAD commands by C#, AutoLisp language. It's very usefull for Engineers, it optimize your work performance. Let's try it! you'll love it!
 
-Các tính năng
-=======
-Các tính năng chính:
-* Quản lý các lệnh mặc định của AutoCAD
-* Quản lý các Lisp, các lệnh của Lisp
-* Tạo các danh sách lệnh yêu thích
-* Tra cứu nhanh đến các lệnh
+## Features
+* Manage AutoCAD Native Commands (ANC), you can learn to use AutoCAD native command by instruction videos here.
+* Manage all Lisp functions, you can add some information to Lisp functions.
+* Create List of your favourite commands
+
+## For Developers
+Are you an Engineer? Have you been developed some AutoCAD plugins before? If you're intersted in our project, you can joy our team.
+
+## **Making money** with EnesyCAD
+You can write your own commands, then making instruction videos about your commands and upload it to Your Chanel, put  video link in command attribute.
+Example:
+```
+        [EnesyCAD.Runtime.EnesyCADCommandMethod("ANU",
+        "Text",
+        "Đánh số (chữ) tự động trong AutoCAD",
+        "EnesyCAD",
+        "cad@enesy.vn",
+        "https://www.youtube.com/watch?v=ma6t7cuxvNw",
+        CommandFlags.UsePickSet
+        )]
+```
 
 ## Demos
 
