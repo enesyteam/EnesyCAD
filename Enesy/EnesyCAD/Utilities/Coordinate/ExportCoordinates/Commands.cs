@@ -12,9 +12,9 @@ namespace Enesy.EnesyCAD.Utilities
             "EID",
             "Coordinate",
             "Get and export coordinate of vertex pline",
-            "enesy.vn",
+            CommandsHelp.EnesyAuthor,
             "quandt@enesy.vn",
-            Enesy.Page.CadYoutube
+            CommandsHelp.CoordinatePicker
             )]
         public void ExportCoordinates()
         {

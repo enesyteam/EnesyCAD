@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,21 +50,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandManager\CmdInfo.cs" />
-    <Compile Include="CommandManager\CommandInfoCollection.cs" />
-    <Compile Include="CommandManager\DatabaseCreator.cs" />
-    <Compile Include="CommandManager\ManagerBoard.cs" />
+    <Compile Include="CommandManager\LII.cs" />
+    <Compile Include="CommandManager\UCSuite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommandManager\UCSuite.Designer.cs">
+      <DependentUpon>UCSuite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseServices\CmdTableRecord.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DatabaseServices\ECMLoader.cs" />
+    <Compile Include="DatabaseServices\CmdRecord.cs" />
     <Compile Include="CommandsHelp.cs" />
+    <Compile Include="ApplicationServices\ECRegistry.cs" />
+    <Compile Include="DatabaseServices\ULFLoader.cs" />
+    <Compile Include="DatabaseServices\Database.cs" />
     <Compile Include="EntityProperties.cs" />
     <Compile Include="Forms\Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Geometry\RectangleEx.cs" />
-    <Compile Include="Helper\Point2d.cs" />
-    <Compile Include="Helper\Point3d.cs" />
-    <Compile Include="Helper\TextBound.cs" />
-    <Compile Include="IO\LispFunction.cs" />
-    <Compile Include="IO\LispReader.cs" />
+    <Compile Include="DatabaseServices\LispFunction.cs" />
+    <Compile Include="IO\LspImporter.cs" />
+    <Compile Include="IO\LspReader.cs" />
     <Compile Include="CommandManager\Command.cs" />
     <Compile Include="CommandManager\CommandsManager.cs">
       <SubType>Form</SubType>
@@ -77,38 +86,33 @@
     <Compile Include="CommandManager\ImportLispDialog.Designer.cs">
       <DependentUpon>ImportLispDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Plot\BaseFrame.cs" />
-    <Compile Include="Plot\Command.cs" />
-    <Compile Include="Plot\Functions.cs" />
-    <Compile Include="Plot\PaletteControl.cs">
+    <Compile Include="ApplicationServices\Reg.cs" />
+    <Compile Include="PlotServices\BaseFrame.cs" />
+    <Compile Include="PlotServices\Command.cs" />
+    <Compile Include="PlotServices\Functions.cs" />
+    <Compile Include="PlotServices\PaletteControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Plot\PaletteControl.Designer.cs">
+    <Compile Include="PlotServices\PaletteControl.Designer.cs">
       <DependentUpon>PaletteControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Plot\PlotArea.cs" />
-    <Compile Include="Plot\QPlotConfig.cs" />
-    <Compile Include="Plot\RefreshEngine.cs" />
+    <Compile Include="PlotServices\PlotArea.cs" />
+    <Compile Include="PlotServices\QPlotConfig.cs" />
+    <Compile Include="PlotServices\RefreshEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="CommandManager\CommandInfo.cs" />
     <Compile Include="Runtime\CommandMethod.cs" />
+    <Compile Include="ApplicationServices\EneApplication.cs" />
     <Compile Include="Utilities\Coordinate\ExportCoordinates\Commands.cs" />
     <Compile Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.Designer.cs">
       <DependentUpon>CoordinatePicker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utilities\Coordinate\ExportCoordinates\ExportOptionDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Utilities\Coordinate\ExportCoordinates\ExportOptionDialog.Designer.cs">
-      <DependentUpon>ExportOptionDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Text\Aligment\AligmentPoint.cs" />
     <Compile Include="Utilities\Text\Aligment\Commands.cs" />
@@ -118,7 +122,6 @@
     <Compile Include="Utilities\Text\Aligment\TextAligment.Designer.cs">
       <DependentUpon>TextAligment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\Text\AutoNumber\AutoNumber.cs" />
     <Compile Include="Utilities\Text\Paragraph\Commands.cs" />
     <Compile Include="Utilities\Text\Paragraph\Paragraph.cs">
       <SubType>Form</SubType>
@@ -146,7 +149,10 @@
     <EmbeddedResource Include="CommandManager\ImportLispDialog.resx">
       <DependentUpon>ImportLispDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Plot\PaletteControl.resx">
+    <EmbeddedResource Include="CommandManager\UCSuite.resx">
+      <DependentUpon>UCSuite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlotServices\PaletteControl.resx">
       <DependentUpon>PaletteControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -155,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\Coordinate\ExportCoordinates\CoordinatePicker.resx">
       <DependentUpon>CoordinatePicker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Utilities\Coordinate\ExportCoordinates\ExportOptionDialog.resx">
-      <DependentUpon>ExportOptionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\Text\Aligment\TextAligment.resx">
       <DependentUpon>TextAligment.cs</DependentUpon>
@@ -173,14 +176,7 @@
     <None Include="bin\Debug\Autodesk.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="mobile_64x64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\enesy_newcolor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApplicationServices\" />
-    <Folder Include="DatabaseServices\" />
+    <Content Include="ApplicationServices\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

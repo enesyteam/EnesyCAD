@@ -45,6 +45,7 @@
             this.prgImportFiles = new System.Windows.Forms.ProgressBar();
             this.butError = new System.Windows.Forms.Button();
             this.butFunction = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabFunction.SuspendLayout();
@@ -64,20 +65,21 @@
             this.searchBox.Dock = System.Windows.Forms.DockStyle.Right;
             this.searchBox.Location = new System.Drawing.Point(363, 3);
             this.searchBox.Margin = new System.Windows.Forms.Padding(0);
-            this.searchBox.MinimumSize = new System.Drawing.Size(130, 23);
+            this.searchBox.MinimumSize = new System.Drawing.Size(130, 21);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(252, 23);
             this.searchBox.TabIndex = 3;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.butOpen);
             this.panel1.Controls.Add(this.searchBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.panel1.Size = new System.Drawing.Size(618, 29);
+            this.panel1.Size = new System.Drawing.Size(618, 27);
             this.panel1.TabIndex = 5;
             // 
             // butOpen
@@ -89,7 +91,7 @@
             this.butOpen.Location = new System.Drawing.Point(12, 3);
             this.butOpen.Name = "butOpen";
             this.butOpen.Padding = new System.Windows.Forms.Padding(3);
-            this.butOpen.Size = new System.Drawing.Size(23, 23);
+            this.butOpen.Size = new System.Drawing.Size(23, 21);
             this.butOpen.TabIndex = 4;
             this.butOpen.UseVisualStyleBackColor = true;
             this.butOpen.Click += new System.EventHandler(this.butOpen_Click);
@@ -100,10 +102,10 @@
             this.tabMain.Controls.Add(this.tabFunction);
             this.tabMain.Controls.Add(this.tabError);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMain.Location = new System.Drawing.Point(0, 29);
+            this.tabMain.Location = new System.Drawing.Point(0, 27);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(618, 245);
+            this.tabMain.Size = new System.Drawing.Size(618, 227);
             this.tabMain.TabIndex = 7;
             this.tabMain.TabsVisible = false;
             // 
@@ -113,7 +115,7 @@
             this.tabFunction.Location = new System.Drawing.Point(4, 4);
             this.tabFunction.Name = "tabFunction";
             this.tabFunction.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFunction.Size = new System.Drawing.Size(610, 218);
+            this.tabFunction.Size = new System.Drawing.Size(610, 201);
             this.tabFunction.TabIndex = 0;
             this.tabFunction.Text = "Function";
             this.tabFunction.UseVisualStyleBackColor = true;
@@ -121,11 +123,12 @@
             // dgrvFunction
             // 
             this.dgrvFunction.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgrvFunction.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgrvFunction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvFunction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrvFunction.Location = new System.Drawing.Point(3, 3);
             this.dgrvFunction.Name = "dgrvFunction";
-            this.dgrvFunction.Size = new System.Drawing.Size(604, 212);
+            this.dgrvFunction.Size = new System.Drawing.Size(604, 195);
             this.dgrvFunction.TabIndex = 0;
             // 
             // tabError
@@ -134,7 +137,7 @@
             this.tabError.Location = new System.Drawing.Point(4, 4);
             this.tabError.Name = "tabError";
             this.tabError.Padding = new System.Windows.Forms.Padding(3);
-            this.tabError.Size = new System.Drawing.Size(610, 218);
+            this.tabError.Size = new System.Drawing.Size(610, 201);
             this.tabError.TabIndex = 1;
             this.tabError.Text = "Error(s)";
             this.tabError.UseVisualStyleBackColor = true;
@@ -142,11 +145,12 @@
             // dgrvError
             // 
             this.dgrvError.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgrvError.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgrvError.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrvError.Location = new System.Drawing.Point(3, 3);
             this.dgrvError.Name = "dgrvError";
-            this.dgrvError.Size = new System.Drawing.Size(604, 212);
+            this.dgrvError.Size = new System.Drawing.Size(604, 195);
             this.dgrvError.TabIndex = 0;
             // 
             // panel2
@@ -156,9 +160,9 @@
             this.panel2.Controls.Add(this.butError);
             this.panel2.Controls.Add(this.butFunction);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 274);
+            this.panel2.Location = new System.Drawing.Point(0, 254);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(618, 29);
+            this.panel2.Size = new System.Drawing.Size(618, 27);
             this.panel2.TabIndex = 8;
             // 
             // panel3
@@ -167,17 +171,17 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(150, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(0, 7, 3, 8);
-            this.panel3.Size = new System.Drawing.Size(213, 29);
+            this.panel3.Padding = new System.Windows.Forms.Padding(0, 6, 3, 7);
+            this.panel3.Size = new System.Drawing.Size(213, 27);
             this.panel3.TabIndex = 3;
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblStatus.Location = new System.Drawing.Point(-51, 7);
+            this.lblStatus.Location = new System.Drawing.Point(-43, 6);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(261, 14);
+            this.lblStatus.Size = new System.Drawing.Size(253, 13);
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Click Open button or press Ctrl + O to import .lsp files";
             // 
@@ -187,15 +191,15 @@
             this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlProgress.Location = new System.Drawing.Point(363, 0);
             this.pnlProgress.Name = "pnlProgress";
-            this.pnlProgress.Padding = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            this.pnlProgress.Size = new System.Drawing.Size(255, 29);
+            this.pnlProgress.Padding = new System.Windows.Forms.Padding(3, 6, 3, 6);
+            this.pnlProgress.Size = new System.Drawing.Size(255, 27);
             this.pnlProgress.TabIndex = 2;
             this.pnlProgress.Visible = false;
             // 
             // prgImportFiles
             // 
             this.prgImportFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.prgImportFiles.Location = new System.Drawing.Point(3, 7);
+            this.prgImportFiles.Location = new System.Drawing.Point(3, 6);
             this.prgImportFiles.Name = "prgImportFiles";
             this.prgImportFiles.Size = new System.Drawing.Size(249, 15);
             this.prgImportFiles.TabIndex = 0;
@@ -207,7 +211,7 @@
             this.butError.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butError.Location = new System.Drawing.Point(75, 0);
             this.butError.Name = "butError";
-            this.butError.Size = new System.Drawing.Size(75, 29);
+            this.butError.Size = new System.Drawing.Size(75, 27);
             this.butError.TabIndex = 1;
             this.butError.Text = "Error(s)";
             this.butError.UseVisualStyleBackColor = true;
@@ -220,17 +224,27 @@
             this.butFunction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butFunction.Location = new System.Drawing.Point(0, 0);
             this.butFunction.Name = "butFunction";
-            this.butFunction.Size = new System.Drawing.Size(75, 29);
+            this.butFunction.Size = new System.Drawing.Size(75, 27);
             this.butFunction.TabIndex = 0;
             this.butFunction.Text = "Function";
             this.butFunction.UseVisualStyleBackColor = true;
             this.butFunction.Click += new System.EventHandler(this.butFunction_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(110, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ImportLispDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 303);
+            this.ClientSize = new System.Drawing.Size(618, 281);
             this.Controls.Add(this.tabMain);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -268,5 +282,6 @@
         private System.Windows.Forms.DataGridView dgrvFunction;
         private System.Windows.Forms.DataGridView dgrvError;
         private System.Windows.Forms.Button butOpen;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -1,6 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Geometry;
+using System.Collections.Generic;
+using System;
+using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
+using System.Text;
+using Microsoft.Win32;
 
 namespace Enesy.EnesyCAD
 {
@@ -98,6 +105,35 @@ namespace Enesy.EnesyCAD
                 tr.Commit();
             }
             return coords;
+        }
+
+        /// <summary>
+        /// Get the AutoCAD current version registry key
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAcadCurVerKey()
+        {
+            StringBuilder sb = new StringBuilder(@"Software\Autodesk\AutoCAD\");
+            using (RegistryKey acad = Registry.CurrentUser.OpenSubKey(sb.ToString()))
+            {
+                sb.Append(acad.GetValue("CurVer")).Append(@"\");
+                using (RegistryKey curVer = Registry.CurrentUser.OpenSubKey(sb.ToString()))
+                {
+                    return sb.Append(curVer.GetValue("CurVer")).ToString();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get the acad.exe location for the AutoCAD current version
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAcadLocation()
+        {
+            using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(GetAcadCurVerKey()))
+            {
+                return (string)rk.GetValue("AcadLocation");
+            }
         }
     }
 }

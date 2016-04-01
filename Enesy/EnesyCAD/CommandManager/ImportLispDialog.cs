@@ -7,22 +7,22 @@ using System.Text;
 using System.Windows.Forms;
 
 using Enesy.EnesyCAD.IO;
+using Enesy.EnesyCAD.DatabaseServices;
 
 namespace Enesy.EnesyCAD.CommandManager
 {
     public partial class ImportLispDialog : System.Windows.Forms.Form
     {
         /// <summary>
+        /// Control board
+        /// </summary>
+        private LspImporter LImporter = new LspImporter();
+
+        /// <summary>
         /// Link for help
         /// </summary>
         [DefaultValue(Enesy.Page.CadYoutube)]
         private string Help { get; set; }
-
-        /// <summary>
-        /// Store information of lisp function and errors
-        /// </summary>
-        DataTable m_function = new DataTable();
-        DataTable m_error = new DataTable();
 
         /// <summary>
         /// Storing displayMember of dataSource for restore searchBox in switch tab action
@@ -32,13 +32,23 @@ namespace Enesy.EnesyCAD.CommandManager
         string m_funcStr = "";
         string m_errStr = "";
 
-
         /// <summary>
         /// DataSource of Command Manager, store all valid command
         /// For avoid command duplicated
         /// </summary>
-        public DataTable DataSource { get; set; }
+        private DataTable m_dataSource = new DataTable();
+        public DataTable DataSource 
+        {
+            get { return m_dataSource; }
+            set
+            {
+                m_dataSource = value;
+            }
+        }
 
+        /// <summary>
+        /// Constructor for UI
+        /// </summary>
         public ImportLispDialog()
         {
             InitializeComponent();
@@ -47,30 +57,63 @@ namespace Enesy.EnesyCAD.CommandManager
             // Init tabControl
             this.tabMain.TabsVisible = false;
 
-            // Init dataSource
-            m_function.Columns.Add("Commands");
-            m_function.Columns.Add("Tab");
-            m_function.Columns.Add("Description");
-            m_function.Columns.Add("Author");
-            m_function.Columns.Add("Email");
-            m_function.Columns.Add("Help");
-            m_function.Columns.Add("File");     // Invisible column
-            m_function.Columns.Add("Line");     // Invisible column
-            
-            m_error.Columns.Add("Commands");
-            m_error.Columns.Add("Error");
-            m_error.Columns.Add("File");
-            m_error.Columns.Add("Line");
-
             // Init dataGridView
-            dgrvFunction.DataSource = m_function;
-            dgrvError.DataSource = m_error;
-            dgrvFunction.Columns["File"].Visible = false;
-            dgrvFunction.Columns["Line"].Visible = false;
+            dgrvFunction.DataSource = LImporter.ValidFunction;
+            dgrvFunction.AllowUserToAddRows = false;
+            dgrvFunction.CellValueChanged += dgrvFunction_CellValueChanged;
+
+            dgrvError.DataSource = LImporter.ErrorFunction;
+            dgrvError.AllowUserToAddRows = false;
+            dgrvError.CellValueChanged += dgrvError_CellValueChanged;
 
             // Init searchBox
-            searchBox.DataSource = m_function;
+            searchBox.DataSource = LImporter.ValidFunction;
             m_funcDisplayMember = searchBox.DisplayMember;
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            this.LImporter.ExportToDatabase();
+            base.OnClosing(e);
+            //if (dgrvFunction.Rows.Count == 0)
+            //{
+            //    base.OnClosing(e);
+            //}
+            //else
+            //{
+            //    DialogResult diaRes = MessageBox.Show(
+            //        "Are you want to save user function to database?",
+            //        "Question",
+            //        MessageBoxButtons.YesNoCancel
+            //        );
+            //    if (diaRes == DialogResult.OK)
+            //    {
+            //        this.LImporter.ExportToDatabase();
+            //        base.OnClosing(e);
+            //    }
+            //    else if (diaRes == DialogResult.No)
+            //    {
+            //        base.OnClosing(e);
+            //    }
+            //    else
+            //    {
+            //        // Do nothing
+            //    }
+            //}
+        }
+
+        void dgrvFunction_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //throw new NotImplementedException();
+            dgrvFunction.DataSource = null;
+            dgrvFunction.DataSource = LImporter.ValidFunction;
+        }
+
+        void dgrvError_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //throw new NotImplementedException();
+            dgrvError.DataSource = null;
+            dgrvError.DataSource = LImporter.ErrorFunction;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -79,78 +122,11 @@ namespace Enesy.EnesyCAD.CommandManager
             {
                 butOpen.PerformClick();
             }
+            else if(keyData == (Keys.F1))
+            {
+                System.Diagnostics.Process.Start(Help);
+            }
             return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        /// <summary>
-        /// Engine of this class
-        /// Import lisp files and send valid & invalid lisp function to source
-        /// </summary>
-        /// <param name="fileNames"></param>
-        private void ImportLispFiles(string[] fileNames)
-        {
-            if (DataSource == null)
-            {
-                MessageBox.Show("Error: Checking lisp function\nDataSource is null!");
-                return;
-            }
-            foreach (string file in fileNames)
-            {
-                LispReader rd = new LispReader(file);
-                List<LispFunction> lspFunc = rd.ListMainFunction();
-                foreach (LispFunction func in lspFunc)
-                {
-                    if (!CheckExist(func, DataSource))
-                    {
-                        if (!CheckExist(func, m_function))
-                        {
-                            // If this function is not exist, add it to valid function
-                            DataRow r = m_function.NewRow();
-                            r[0] = func.GlobalName;
-                            m_function.Rows.Add(r);
-                        }
-                        else
-                        {
-                            DataRow r = m_error.NewRow();
-                            r[0] = func.GlobalName;
-                            r[1] = "Duplicated to command in current lisp files";
-                            r[2] = func.FileName;
-                            r[3] = func.Line;
-                            m_error.Rows.Add(r);
-                        }
-                    }
-                    else
-                    {
-                        DataRow r = m_error.NewRow();
-                        r[0] = func.GlobalName;
-                        r[1] = "Duplicated to command in manager";
-                        r[2] = func.FileName;
-                        r[3] = func.Line;
-                        m_error.Rows.Add(r);
-                    }
-                    prgImportFiles.PerformStep();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Check whether specified lisp function is exist in source or not
-        /// </summary>
-        /// <param name="lFunc"></param>
-        /// <param name="source"></param>
-        private bool CheckExist(LispFunction lFunc, DataTable source)
-        {
-            bool flag = false;
-            try
-            {
-                DataRow[] found = source.Select("Commands ='" + lFunc.GlobalName + "'");
-                flag = (found.Length > 0 ? true : false);
-            }
-            catch
-            {
-                // Do nothing
-            }
-            return flag;
         }
 
         private void butFunction_Click(object sender, EventArgs e)
@@ -158,10 +134,6 @@ namespace Enesy.EnesyCAD.CommandManager
             this.tabMain.SelectedIndex = 0;
             this.butFunction.BackColor = Color.White;
             this.butError.BackColor = SystemColors.Control;
-            this.m_errDisplayMember = searchBox.DisplayMember;
-            this.m_errStr = searchBox.Text;
-            searchBox.DisplayMember = m_funcDisplayMember;
-            searchBox.Regen();
         }
 
         private void butError_Click(object sender, EventArgs e)
@@ -169,10 +141,6 @@ namespace Enesy.EnesyCAD.CommandManager
             this.tabMain.SelectedIndex = 1;
             this.butError.BackColor = Color.White;
             this.butFunction.BackColor = SystemColors.Control;
-            this.m_funcDisplayMember = searchBox.DisplayMember;
-            this.m_funcStr = searchBox.Text;
-            searchBox.DisplayMember = m_errDisplayMember;
-            searchBox.Regen();
         }
 
         private void butOpen_Click(object sender, EventArgs e)
@@ -193,11 +161,12 @@ namespace Enesy.EnesyCAD.CommandManager
                     lblStatus.Text = "Importing ...";
 
                     // Importing lisp function
-                    this.ImportLispFiles(files);
+                    LImporter.AddFiles(ofd.FileNames);
 
                     // Invisible progress bar
                     pnlProgress.Visible = false;
-                    lblStatus.Text = "Found " + files.Length.ToString() + " function & "
+                    lblStatus.Text = "Found " + 
+                        dgrvFunction.Rows.Count.ToString() + " function & "
                         + dgrvError.Rows.Count.ToString() + " error(s)";
 
                     // Press Function / Error button
@@ -205,6 +174,13 @@ namespace Enesy.EnesyCAD.CommandManager
                     else butFunction.PerformClick();
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                EnesyCAD.ApplicationServices.EneApplication.EneDatabase.CmdTableRecord.
+                Contains("LENH").ToString());
         }
     }
 }

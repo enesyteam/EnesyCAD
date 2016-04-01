@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+
 using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
@@ -19,9 +20,9 @@ namespace Enesy.EnesyCAD.Utilities
         [EnesyCAD.Runtime.EnesyCADCommandMethod("TA",
             "Text",
             "Aligment for text",
-            "EnesyCAD",
+            CommandsHelp.EnesyAuthor,
             "quandt@enesy.vn",
-            Enesy.Page.CadYoutube,
+            CommandsHelp.TextAligment,
             CommandFlags.UsePickSet
             )]
         public void PerformTextAligment()
@@ -69,18 +70,25 @@ namespace Enesy.EnesyCAD.Utilities
             };
             ObjectIdCollection objIdColl = Utils.SelectionFilter(oTp, ed);
 
-            // Get base point
-            Point3d bPoint = new Point3d();
-            PromptPointResult pPtRes;
-            PromptPointOptions pPtOpts = new PromptPointOptions("");
-            pPtOpts.Message = "\nSpecify aligment point: ";
-            pPtRes = ed.GetPoint(pPtOpts);
-
-            // Perform aligment
-            if (pPtRes.Status == PromptStatus.OK)
+            if (objIdColl != null)
             {
-                bPoint = pPtRes.Value;
-                Utils.AligmentText(db, objIdColl, alig, bPoint);
+                // Get base point
+                Point3d bPoint = new Point3d();
+                PromptPointResult pPtRes;
+                PromptPointOptions pPtOpts = new PromptPointOptions("");
+                pPtOpts.Message = "\nSpecify aligment point: ";
+                pPtRes = ed.GetPoint(pPtOpts);
+
+                // Perform aligment
+                if (pPtRes.Status == PromptStatus.OK)
+                {
+                    bPoint = pPtRes.Value;
+                    Utils.AligmentText(db, objIdColl, alig, bPoint);
+                }
+            }
+            else
+            {
+                ed.WriteMessage("\nNot found any text!\n");
             }
         }
     }

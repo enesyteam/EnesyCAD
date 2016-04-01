@@ -1,30 +1,25 @@
-﻿using Autodesk.AutoCAD.Runtime;
-
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.EditorInput;
 using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
+using Enesy.EnesyCAD.ApplicationServices;
 
 namespace Enesy.EnesyCAD.CommandManager
 {
     public class Command
     {
-        private CommandsManagerDialog cmdMngDia = null;
-
         [EnesyCAD.Runtime.EnesyCADCommandMethod("CE",
             "Manager",
             "Management all Enesy commands",
-            "enesy.vn",
+            CommandsHelp.EnesyAuthor,
             "quandt@enesy.vn",
-            Enesy.Page.CadYoutube
+            EnesyCAD.CommandsHelp.CommandsManager
             )]
         public void ListUserCommandDialog()
         {
-            if (cmdMngDia == null)
-            {
-                this.cmdMngDia = new CommandsManagerDialog();
-            }
-            Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(cmdMngDia);
+            Autodesk.AutoCAD.ApplicationServices.Application.ShowModalDialog(
+                EneApplication.CmdManager);
         }
     }
 }

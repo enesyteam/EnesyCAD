@@ -10,7 +10,8 @@ namespace Enesy.EnesyCAD.Utilities
         /// AutoCAD command method
         /// </summary>
         [EnesyCADCommandMethod(globalName: "TTP", tag: "Text", description: "Text space",
-            author: CommandsHelp.EnesyAuthor, email: "quandt@enesy.vn", webLink: Enesy.Page.CadYoutube)]
+            author: CommandsHelp.EnesyAuthor, email: "quandt@enesy.vn",
+            webLink: CommandsHelp.TextParagraph)]
         public void TextParagraph()
         {
             TextParagraphDialog tpd = new TextParagraphDialog();
