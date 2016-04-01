@@ -14,4 +14,9 @@ Các tính năng chính:
 ## Download
 [https://github.com/enesyteam/EnesyCAD/archive/master.zip] (https://github.com/enesyteam/EnesyCAD/archive/master.zip)
 
+## How to build
+1. Download Source code
+2. Open Enesy.sln solution file in Visual Studio (2012 version and newer)
+3. Build Solution
+
 
