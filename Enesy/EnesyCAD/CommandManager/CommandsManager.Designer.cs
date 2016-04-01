@@ -92,7 +92,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.dgrvCommands.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrvCommands.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgrvCommands.Location = new System.Drawing.Point(0, 4);
-            this.dgrvCommands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgrvCommands.Margin = new System.Windows.Forms.Padding(4);
             this.dgrvCommands.Name = "dgrvCommands";
             this.dgrvCommands.ReadOnly = true;
             this.dgrvCommands.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -145,7 +145,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlViewer.Controls.Add(this.pnlStatus);
             this.pnlViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlViewer.Location = new System.Drawing.Point(0, 0);
-            this.pnlViewer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlViewer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlViewer.Name = "pnlViewer";
             this.pnlViewer.Size = new System.Drawing.Size(747, 335);
             this.pnlViewer.TabIndex = 4;
@@ -155,7 +155,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlData.Controls.Add(this.dgrvCommands);
             this.pnlData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlData.Location = new System.Drawing.Point(0, 0);
-            this.pnlData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlData.Margin = new System.Windows.Forms.Padding(4);
             this.pnlData.Name = "pnlData";
             this.pnlData.Padding = new System.Windows.Forms.Padding(0, 4, 4, 4);
             this.pnlData.Size = new System.Drawing.Size(747, 210);
@@ -167,7 +167,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlDescription.Controls.Add(this.txtDescription);
             this.pnlDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlDescription.Location = new System.Drawing.Point(0, 210);
-            this.pnlDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlDescription.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDescription.Name = "pnlDescription";
             this.pnlDescription.Padding = new System.Windows.Forms.Padding(4, 7, 4, 4);
             this.pnlDescription.Size = new System.Drawing.Size(747, 102);
@@ -181,7 +181,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.txtDescription.DisplayMember = "";
             this.txtDescription.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtDescription.Location = new System.Drawing.Point(4, 27);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
             this.txtDescription.Size = new System.Drawing.Size(739, 71);
@@ -195,9 +195,9 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlStatus.Controls.Add(this.lblWebLink);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlStatus.Location = new System.Drawing.Point(0, 312);
-            this.pnlStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlStatus.Margin = new System.Windows.Forms.Padding(4);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlStatus.Padding = new System.Windows.Forms.Padding(4);
             this.pnlStatus.Size = new System.Drawing.Size(747, 23);
             this.pnlStatus.TabIndex = 0;
             // 
@@ -221,9 +221,9 @@ namespace Enesy.EnesyCAD.CommandManager
             this.panel1.Controls.Add(this.searchBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Padding = new System.Windows.Forms.Padding(4);
             this.panel1.Size = new System.Drawing.Size(925, 33);
             this.panel1.TabIndex = 7;
             // 
@@ -352,7 +352,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.pnlLinkButton.Controls.Add(this.butYoutube);
             this.pnlLinkButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlLinkButton.Location = new System.Drawing.Point(455, 4);
-            this.pnlLinkButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLinkButton.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLinkButton.Name = "pnlLinkButton";
             this.pnlLinkButton.Size = new System.Drawing.Size(131, 25);
             this.pnlLinkButton.TabIndex = 4;
@@ -365,9 +365,9 @@ namespace Enesy.EnesyCAD.CommandManager
             this.butFanPage.FlatAppearance.BorderSize = 0;
             this.butFanPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butFanPage.Location = new System.Drawing.Point(7, 0);
-            this.butFanPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butFanPage.Margin = new System.Windows.Forms.Padding(4);
             this.butFanPage.Name = "butFanPage";
-            this.butFanPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butFanPage.Padding = new System.Windows.Forms.Padding(4);
             this.butFanPage.Size = new System.Drawing.Size(31, 26);
             this.butFanPage.TabIndex = 6;
             this.butFanPage.UseVisualStyleBackColor = true;
@@ -381,9 +381,9 @@ namespace Enesy.EnesyCAD.CommandManager
             this.butHomePage.FlatAppearance.BorderSize = 0;
             this.butHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butHomePage.Location = new System.Drawing.Point(45, 0);
-            this.butHomePage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butHomePage.Margin = new System.Windows.Forms.Padding(4);
             this.butHomePage.Name = "butHomePage";
-            this.butHomePage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butHomePage.Padding = new System.Windows.Forms.Padding(4);
             this.butHomePage.Size = new System.Drawing.Size(31, 26);
             this.butHomePage.TabIndex = 5;
             this.butHomePage.UseVisualStyleBackColor = true;
@@ -397,7 +397,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.butYoutube.FlatAppearance.BorderSize = 0;
             this.butYoutube.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.butYoutube.Location = new System.Drawing.Point(84, 0);
-            this.butYoutube.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.butYoutube.Margin = new System.Windows.Forms.Padding(4);
             this.butYoutube.Name = "butYoutube";
             this.butYoutube.Size = new System.Drawing.Size(31, 26);
             this.butYoutube.TabIndex = 4;
@@ -424,7 +424,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 33);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -444,7 +444,7 @@ namespace Enesy.EnesyCAD.CommandManager
             // 
             this.trvSubCommands.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trvSubCommands.Location = new System.Drawing.Point(4, 4);
-            this.trvSubCommands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trvSubCommands.Margin = new System.Windows.Forms.Padding(4);
             this.trvSubCommands.Name = "trvSubCommands";
             treeNode1.Name = "ndoEnesy";
             treeNode1.Text = "Enesy.vn";
@@ -485,7 +485,7 @@ namespace Enesy.EnesyCAD.CommandManager
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.HelpButton = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(887, 237);
             this.Name = "CommandsManagerDialog";
