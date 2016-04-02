@@ -49,4 +49,6 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Comm
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.ClipboardManager.ClipboardPalette.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.CivilWorks.RebarArrangment.Dialogs.GetDimensions.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\acmgdinternal.dll
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csprojResolveAssemblyReference.cache
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Autodesk.AutoCAD.Samples.DockingPalette.TestControl.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Autodesk.AutoCAD.CustomizationEx.MainForm.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Forms.Testing.MainForm1.resources

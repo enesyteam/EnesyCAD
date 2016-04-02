@@ -93,15 +93,22 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DatabaseServices\LispFunction.cs" />
+    <Compile Include="Forms\Testing\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Testing\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Testing\LocalResources.cs" />
     <Compile Include="Forms\Testing\GlobalResources.cs" />
     <Compile Include="Forms\Testing\DefaultGroupEditor.cs" />
-    <Compile Include="Forms\Testing\MainForm.cs">
+    <Compile Include="Forms\Testing\MainForm1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Testing\Palette.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Forms\Testing\TestCommands.cs" />
     <Compile Include="Forms\Testing\Toolbar.cs" />
     <Compile Include="Geometry\RectangleEx.cs" />
     <Compile Include="Helper\Point2d.cs" />
@@ -207,6 +214,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CommandManager\UCSuite.resx">
       <DependentUpon>UCSuite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Testing\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Testing\MainForm1.resx">
+      <DependentUpon>MainForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Testing\Palette.resx">
       <DependentUpon>Palette.cs</DependentUpon>

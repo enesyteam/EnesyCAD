@@ -11,10 +11,11 @@ using System.Drawing;
 using System.IO;
 using System.Resources;
 using System.Windows.Forms;
+using Autodesk.AutoCAD.Customization;
 
-namespace Autodesk.AutoCAD.Customization
+namespace Autodesk.AutoCAD.CustomizationEx
 {
-    internal class MainForm : Form
+    public partial class MainForm : Form
     {
         private MainMenu mainMenu;
 
@@ -40,7 +41,6 @@ namespace Autodesk.AutoCAD.Customization
 
         private TransferTreeView rightTransferTreeView;
 
-        private IContainer components;
 
         private float mImpPageSplitterRatio;
 
@@ -400,8 +400,8 @@ namespace Autodesk.AutoCAD.Customization
             {
                 base.ShowInTaskbar = true;
             }
-            this.quickStartLink.SetNewFeatureWorkshopTopic("CUI");
-            this.tabImgList.ImageStream = (ImageListStreamer)GlobalResources.GetObject("tabImgList.ImageStream");
+            //this.quickStartLink.SetNewFeatureWorkshopTopic("CUI");
+            //this.tabImgList.ImageStream = (ImageListStreamer)GlobalResources.GetObject("tabImgList.ImageStream");
         }
 
         public static void AddMRUFile(ArrayList mruList, string fname, int max)
@@ -524,7 +524,7 @@ namespace Autodesk.AutoCAD.Customization
             return flag;
         }
 
-        public bool CloseCustomizeDocument(Document doc)
+        public bool CloseCustomizeDocument(Autodesk.AutoCAD.Customization.Document doc)
         {
             if (doc == null)
             {
@@ -539,7 +539,7 @@ namespace Autodesk.AutoCAD.Customization
             return true;
         }
 
-        public bool CloseTransferDocument(Document doc, bool prompt)
+        public bool CloseTransferDocument(Autodesk.AutoCAD.Customization.Document doc, bool prompt)
         {
             if (doc == null)
             {
@@ -598,7 +598,7 @@ namespace Autodesk.AutoCAD.Customization
         private void CUIFile_Modified(object sender, EventArgs e)
         {
             CustomizationSection customizationSection = sender as CustomizationSection;
-            if (!customizationSection.ReadOnly && (customizationSection == Document.MainCuiFile || customizationSection == Document.EnterpriseCUIFile || customizationSection.ParentCUI != null))
+            if (!customizationSection.ReadOnly && (customizationSection == Autodesk.AutoCAD.Customization.Document.MainCuiFile || customizationSection == Autodesk.AutoCAD.Customization.Document.EnterpriseCUIFile || customizationSection.ParentCUI != null))
             {
                 this.applyButton.Enabled = true;
                 this.mNeedToRepopulate = true;
@@ -837,26 +837,10 @@ namespace Autodesk.AutoCAD.Customization
             return string.Concat(string.Concat(lower, "|"), imageName);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            MainForm.mainTab = null;
-            if (disposing)
-            {
-                if (this.components != null)
-                {
-                    this.components.Dispose();
-                }
-                if (this.mDlgMode == MainForm.DlgMode.TransferOnly && this.customizePage != null)
-                {
-                    this.customizePage.Dispose();
-                }
-            }
-            base.Dispose(disposing);
-        }
 
         private void Document_DocumentOpened(object sender, EventArgs e)
         {
-            Document document = sender as Document;
+            Autodesk.AutoCAD.Customization.Document document = sender as Autodesk.AutoCAD.Customization.Document;
             if (document != null && document.CUIFile != null)
             {
                 document.CUIFile.Modified += new EventHandler(this.CUIFile_Modified);
@@ -1023,7 +1007,7 @@ namespace Autodesk.AutoCAD.Customization
                         }
                         else if (string.Compare(str, this.CustomizeMainCUIFile.CUIFileName, true) != 0)
                         {
-                            Document partialDocument = Document.GetPartialDocument(str);
+                            Autodesk.AutoCAD.Customization.Document partialDocument = Autodesk.AutoCAD.Customization.Document.GetPartialDocument(str);
                             if (partialDocument != null)
                             {
                                 customizeMainCUIFile = partialDocument.CUIFile;
@@ -1384,835 +1368,6 @@ namespace Autodesk.AutoCAD.Customization
             this._bitmapCacheIntialized = true;
         }
 
-        private void InitializeComponent()
-        {
-            this.components = new Container();
-            ResourceManager resourceManager = new ResourceManager(typeof(MainForm));
-            this.mainMenu = new MainMenu();
-            this.tabControl = new TabControl();
-            this.customizePage = new TabPage();
-            this.custPageRightPanel = new Panel();
-            this.custPageRightBottomPropPanel = new Panel();
-            this.custPagePropertyPanel = new CollapsiblePanel();
-            this.custPagePropertyControl = new PropertyControl();
-            this.custPageRightPanelPropSplitter = new Splitter();
-            this.custPageMiscControlPanel = new CollapsiblePanel();
-            this.buttonControl = new ButtonControl();
-            this.toolbarPreview = new ToolbarPreview();
-            this.shortcutsGroup = new ShortcutsGroup();
-            this.custPageRightSplitter = new Splitter();
-            this.custPageRightTopPanel = new CollapsiblePanel();
-            this.workspaceTreeView = new WorkspaceTreeView();
-            this.custPageSplitter = new Splitter();
-            this.custPageLeftPanel = new Panel();
-            this.custPageLeftBottomPanel = new CollapsiblePanel();
-            this.custPageCmdListCtrl = new CommandListControl();
-            this.custPageLeftSplitter = new Splitter();
-            this.custPageLeftTopPanel = new CollapsiblePanel();
-            this.customizeTreeView = new CustomizeTreeView();
-            this.transferPage = new TabPage();
-            this.transferPageRightPanel = new Panel();
-            this.transferPageRightTopPanel = new CollapsiblePanel();
-            this.rightTransferTreeView = new TransferTreeView();
-            this.transferPageSplitter = new Splitter();
-            this.transferPageLeftPanel = new Panel();
-            this.transferPageLeftTopPanel = new CollapsiblePanel();
-            this.leftTransferTreeView = new TransferTreeView();
-            this.tabImgList = new ImageList(this.components);
-            this.okButton = new Button();
-            this.applyButton = new Button();
-            this.cancelButton = new Button();
-            this.helpButton = new Button();
-            this.colorDialog1 = new ColorDialog();
-            this.quickStartLink = new QuickStartLink();
-            this.tabControl.SuspendLayout();
-            this.customizePage.SuspendLayout();
-            this.custPageRightPanel.SuspendLayout();
-            this.custPageRightBottomPropPanel.SuspendLayout();
-            this.custPagePropertyPanel.SuspendLayout();
-            this.custPageMiscControlPanel.SuspendLayout();
-            this.custPageRightTopPanel.SuspendLayout();
-            this.custPageLeftPanel.SuspendLayout();
-            this.custPageLeftBottomPanel.SuspendLayout();
-            this.custPageLeftTopPanel.SuspendLayout();
-            this.transferPage.SuspendLayout();
-            this.transferPageRightPanel.SuspendLayout();
-            this.transferPageRightTopPanel.SuspendLayout();
-            this.transferPageLeftPanel.SuspendLayout();
-            this.transferPageLeftTopPanel.SuspendLayout();
-            base.SuspendLayout();
-            this.mainMenu.RightToLeft = (RightToLeft)resourceManager.GetObject("mainMenu.RightToLeft");
-            this.tabControl.AccessibleDescription = resourceManager.GetString("tabControl.AccessibleDescription");
-            this.tabControl.AccessibleName = resourceManager.GetString("tabControl.AccessibleName");
-            this.tabControl.Alignment = (TabAlignment)resourceManager.GetObject("tabControl.Alignment");
-            this.tabControl.Anchor = (AnchorStyles)resourceManager.GetObject("tabControl.Anchor");
-            this.tabControl.Appearance = (TabAppearance)resourceManager.GetObject("tabControl.Appearance");
-            this.tabControl.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("tabControl.BackgroundImage");
-            this.tabControl.Controls.Add(this.customizePage);
-            this.tabControl.Controls.Add(this.transferPage);
-            this.tabControl.Dock = (DockStyle)resourceManager.GetObject("tabControl.Dock");
-            this.tabControl.Enabled = (bool)resourceManager.GetObject("tabControl.Enabled");
-            this.tabControl.Font = (Font)resourceManager.GetObject("tabControl.Font");
-            this.tabControl.ImageList = this.tabImgList;
-            this.tabControl.ImeMode = (ImeMode)resourceManager.GetObject("tabControl.ImeMode");
-            this.tabControl.ItemSize = (Size)resourceManager.GetObject("tabControl.ItemSize");
-            this.tabControl.Location = (Point)resourceManager.GetObject("tabControl.Location");
-            this.tabControl.Name = "tabControl";
-            this.tabControl.Padding = (Point)resourceManager.GetObject("tabControl.Padding");
-            this.tabControl.RightToLeft = (RightToLeft)resourceManager.GetObject("tabControl.RightToLeft");
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.ShowToolTips = (bool)resourceManager.GetObject("tabControl.ShowToolTips");
-            this.tabControl.Size = (Size)resourceManager.GetObject("tabControl.Size");
-            this.tabControl.TabIndex = (int)resourceManager.GetObject("tabControl.TabIndex");
-            this.tabControl.Text = resourceManager.GetString("tabControl.Text");
-            this.tabControl.Visible = (bool)resourceManager.GetObject("tabControl.Visible");
-            this.tabControl.SelectedIndexChanged += new EventHandler(this.tabControl_SelectedIndexChanged);
-            this.customizePage.AccessibleDescription = resourceManager.GetString("customizePage.AccessibleDescription");
-            this.customizePage.AccessibleName = resourceManager.GetString("customizePage.AccessibleName");
-            this.customizePage.Anchor = (AnchorStyles)resourceManager.GetObject("customizePage.Anchor");
-            this.customizePage.AutoScroll = (bool)resourceManager.GetObject("customizePage.AutoScroll");
-            this.customizePage.AutoScrollMargin = (Size)resourceManager.GetObject("customizePage.AutoScrollMargin");
-            this.customizePage.AutoScrollMinSize = (Size)resourceManager.GetObject("customizePage.AutoScrollMinSize");
-            this.customizePage.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("customizePage.BackgroundImage");
-            this.customizePage.Controls.Add(this.custPageRightPanel);
-            this.customizePage.Controls.Add(this.custPageSplitter);
-            this.customizePage.Controls.Add(this.custPageLeftPanel);
-            this.customizePage.Dock = (DockStyle)resourceManager.GetObject("customizePage.Dock");
-            this.customizePage.Enabled = (bool)resourceManager.GetObject("customizePage.Enabled");
-            this.customizePage.Font = (Font)resourceManager.GetObject("customizePage.Font");
-            this.customizePage.ImageIndex = (int)resourceManager.GetObject("customizePage.ImageIndex");
-            this.customizePage.ImeMode = (ImeMode)resourceManager.GetObject("customizePage.ImeMode");
-            this.customizePage.Location = (Point)resourceManager.GetObject("customizePage.Location");
-            this.customizePage.Name = "customizePage";
-            this.customizePage.RightToLeft = (RightToLeft)resourceManager.GetObject("customizePage.RightToLeft");
-            this.customizePage.Size = (Size)resourceManager.GetObject("customizePage.Size");
-            this.customizePage.TabIndex = (int)resourceManager.GetObject("customizePage.TabIndex");
-            this.customizePage.Text = resourceManager.GetString("customizePage.Text");
-            this.customizePage.ToolTipText = resourceManager.GetString("customizePage.ToolTipText");
-            this.customizePage.Visible = (bool)resourceManager.GetObject("customizePage.Visible");
-            this.custPageRightPanel.AccessibleDescription = resourceManager.GetString("custPageRightPanel.AccessibleDescription");
-            this.custPageRightPanel.AccessibleName = resourceManager.GetString("custPageRightPanel.AccessibleName");
-            this.custPageRightPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPageRightPanel.Anchor");
-            this.custPageRightPanel.AutoScroll = (bool)resourceManager.GetObject("custPageRightPanel.AutoScroll");
-            this.custPageRightPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPageRightPanel.AutoScrollMargin");
-            this.custPageRightPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageRightPanel.AutoScrollMinSize");
-            this.custPageRightPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageRightPanel.BackgroundImage");
-            this.custPageRightPanel.Controls.Add(this.custPageRightBottomPropPanel);
-            this.custPageRightPanel.Controls.Add(this.custPageRightSplitter);
-            this.custPageRightPanel.Controls.Add(this.custPageRightTopPanel);
-            this.custPageRightPanel.Dock = (DockStyle)resourceManager.GetObject("custPageRightPanel.Dock");
-            this.custPageRightPanel.Enabled = (bool)resourceManager.GetObject("custPageRightPanel.Enabled");
-            this.custPageRightPanel.Font = (Font)resourceManager.GetObject("custPageRightPanel.Font");
-            this.custPageRightPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPageRightPanel.ImeMode");
-            this.custPageRightPanel.Location = (Point)resourceManager.GetObject("custPageRightPanel.Location");
-            this.custPageRightPanel.Name = "custPageRightPanel";
-            this.custPageRightPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageRightPanel.RightToLeft");
-            this.custPageRightPanel.Size = (Size)resourceManager.GetObject("custPageRightPanel.Size");
-            this.custPageRightPanel.TabIndex = (int)resourceManager.GetObject("custPageRightPanel.TabIndex");
-            this.custPageRightPanel.Text = resourceManager.GetString("custPageRightPanel.Text");
-            this.custPageRightPanel.Visible = (bool)resourceManager.GetObject("custPageRightPanel.Visible");
-            this.custPageRightBottomPropPanel.AccessibleDescription = resourceManager.GetString("custPageRightBottomPropPanel.AccessibleDescription");
-            this.custPageRightBottomPropPanel.AccessibleName = resourceManager.GetString("custPageRightBottomPropPanel.AccessibleName");
-            this.custPageRightBottomPropPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPageRightBottomPropPanel.Anchor");
-            this.custPageRightBottomPropPanel.AutoScroll = (bool)resourceManager.GetObject("custPageRightBottomPropPanel.AutoScroll");
-            this.custPageRightBottomPropPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPageRightBottomPropPanel.AutoScrollMargin");
-            this.custPageRightBottomPropPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageRightBottomPropPanel.AutoScrollMinSize");
-            this.custPageRightBottomPropPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageRightBottomPropPanel.BackgroundImage");
-            this.custPageRightBottomPropPanel.Controls.Add(this.custPagePropertyPanel);
-            this.custPageRightBottomPropPanel.Controls.Add(this.custPageRightPanelPropSplitter);
-            this.custPageRightBottomPropPanel.Controls.Add(this.custPageMiscControlPanel);
-            this.custPageRightBottomPropPanel.Dock = (DockStyle)resourceManager.GetObject("custPageRightBottomPropPanel.Dock");
-            this.custPageRightBottomPropPanel.Enabled = (bool)resourceManager.GetObject("custPageRightBottomPropPanel.Enabled");
-            this.custPageRightBottomPropPanel.Font = (Font)resourceManager.GetObject("custPageRightBottomPropPanel.Font");
-            this.custPageRightBottomPropPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPageRightBottomPropPanel.ImeMode");
-            this.custPageRightBottomPropPanel.Location = (Point)resourceManager.GetObject("custPageRightBottomPropPanel.Location");
-            this.custPageRightBottomPropPanel.Name = "custPageRightBottomPropPanel";
-            this.custPageRightBottomPropPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageRightBottomPropPanel.RightToLeft");
-            this.custPageRightBottomPropPanel.Size = (Size)resourceManager.GetObject("custPageRightBottomPropPanel.Size");
-            this.custPageRightBottomPropPanel.TabIndex = (int)resourceManager.GetObject("custPageRightBottomPropPanel.TabIndex");
-            this.custPageRightBottomPropPanel.Text = resourceManager.GetString("custPageRightBottomPropPanel.Text");
-            this.custPageRightBottomPropPanel.Visible = (bool)resourceManager.GetObject("custPageRightBottomPropPanel.Visible");
-            this.custPagePropertyPanel.AccessibleDescription = resourceManager.GetString("custPagePropertyPanel.AccessibleDescription");
-            this.custPagePropertyPanel.AccessibleName = resourceManager.GetString("custPagePropertyPanel.AccessibleName");
-            this.custPagePropertyPanel.AllowDrop = true;
-            this.custPagePropertyPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPagePropertyPanel.Anchor");
-            this.custPagePropertyPanel.AutoScroll = (bool)resourceManager.GetObject("custPagePropertyPanel.AutoScroll");
-            this.custPagePropertyPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPagePropertyPanel.AutoScrollMargin");
-            this.custPagePropertyPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPagePropertyPanel.AutoScrollMinSize");
-            this.custPagePropertyPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPagePropertyPanel.BackgroundImage");
-            this.custPagePropertyPanel.Collapsible = true;
-            this.custPagePropertyPanel.Controls.Add(this.custPagePropertyControl);
-            this.custPagePropertyPanel.Dock = (DockStyle)resourceManager.GetObject("custPagePropertyPanel.Dock");
-            this.custPagePropertyPanel.DockPadding.Bottom = 4;
-            this.custPagePropertyPanel.DockPadding.Left = 4;
-            this.custPagePropertyPanel.DockPadding.Right = 4;
-            this.custPagePropertyPanel.DockPadding.Top = 44;
-            this.custPagePropertyPanel.Enabled = (bool)resourceManager.GetObject("custPagePropertyPanel.Enabled");
-            this.custPagePropertyPanel.EnableExpanded = true;
-            this.custPagePropertyPanel.Expanded = true;
-            this.custPagePropertyPanel.Font = (Font)resourceManager.GetObject("custPagePropertyPanel.Font");
-            this.custPagePropertyPanel.HeaderText = resourceManager.GetString("custPagePropertyPanel.HeaderText");
-            this.custPagePropertyPanel.Icon = (Icon)resourceManager.GetObject("custPagePropertyPanel.Icon");
-            this.custPagePropertyPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPagePropertyPanel.ImeMode");
-            this.custPagePropertyPanel.Location = (Point)resourceManager.GetObject("custPagePropertyPanel.Location");
-            this.custPagePropertyPanel.MinimumHeight = 0;
-            this.custPagePropertyPanel.Name = "custPagePropertyPanel";
-            this.custPagePropertyPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPagePropertyPanel.RightToLeft");
-            this.custPagePropertyPanel.Size = (Size)resourceManager.GetObject("custPagePropertyPanel.Size");
-            this.custPagePropertyPanel.TabIndex = (int)resourceManager.GetObject("custPagePropertyPanel.TabIndex");
-            this.custPagePropertyPanel.Visible = (bool)resourceManager.GetObject("custPagePropertyPanel.Visible");
-            this.custPagePropertyControl.AccessibleDescription = resourceManager.GetString("custPagePropertyControl.AccessibleDescription");
-            this.custPagePropertyControl.AccessibleName = resourceManager.GetString("custPagePropertyControl.AccessibleName");
-            this.custPagePropertyControl.Anchor = (AnchorStyles)resourceManager.GetObject("custPagePropertyControl.Anchor");
-            this.custPagePropertyControl.AutoScroll = (bool)resourceManager.GetObject("custPagePropertyControl.AutoScroll");
-            this.custPagePropertyControl.AutoScrollMargin = (Size)resourceManager.GetObject("custPagePropertyControl.AutoScrollMargin");
-            this.custPagePropertyControl.AutoScrollMinSize = (Size)resourceManager.GetObject("custPagePropertyControl.AutoScrollMinSize");
-            this.custPagePropertyControl.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPagePropertyControl.BackgroundImage");
-            this.custPagePropertyControl.Dock = (DockStyle)resourceManager.GetObject("custPagePropertyControl.Dock");
-            this.custPagePropertyControl.Enabled = (bool)resourceManager.GetObject("custPagePropertyControl.Enabled");
-            this.custPagePropertyControl.Font = (Font)resourceManager.GetObject("custPagePropertyControl.Font");
-            this.custPagePropertyControl.ImeMode = (ImeMode)resourceManager.GetObject("custPagePropertyControl.ImeMode");
-            this.custPagePropertyControl.Location = (Point)resourceManager.GetObject("custPagePropertyControl.Location");
-            this.custPagePropertyControl.Name = "custPagePropertyControl";
-            this.custPagePropertyControl.RightToLeft = (RightToLeft)resourceManager.GetObject("custPagePropertyControl.RightToLeft");
-            this.custPagePropertyControl.Size = (Size)resourceManager.GetObject("custPagePropertyControl.Size");
-            this.custPagePropertyControl.TabIndex = (int)resourceManager.GetObject("custPagePropertyControl.TabIndex");
-            this.custPagePropertyControl.Visible = (bool)resourceManager.GetObject("custPagePropertyControl.Visible");
-            this.custPagePropertyControl.EventHandler += new PropertyControl.EventDelegate(this.handlePropertyEvent);
-            this.custPageRightPanelPropSplitter.AccessibleDescription = resourceManager.GetString("custPageRightPanelPropSplitter.AccessibleDescription");
-            this.custPageRightPanelPropSplitter.AccessibleName = resourceManager.GetString("custPageRightPanelPropSplitter.AccessibleName");
-            this.custPageRightPanelPropSplitter.Anchor = (AnchorStyles)resourceManager.GetObject("custPageRightPanelPropSplitter.Anchor");
-            this.custPageRightPanelPropSplitter.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageRightPanelPropSplitter.BackgroundImage");
-            this.custPageRightPanelPropSplitter.Dock = (DockStyle)resourceManager.GetObject("custPageRightPanelPropSplitter.Dock");
-            this.custPageRightPanelPropSplitter.Enabled = (bool)resourceManager.GetObject("custPageRightPanelPropSplitter.Enabled");
-            this.custPageRightPanelPropSplitter.Font = (Font)resourceManager.GetObject("custPageRightPanelPropSplitter.Font");
-            this.custPageRightPanelPropSplitter.ImeMode = (ImeMode)resourceManager.GetObject("custPageRightPanelPropSplitter.ImeMode");
-            this.custPageRightPanelPropSplitter.Location = (Point)resourceManager.GetObject("custPageRightPanelPropSplitter.Location");
-            this.custPageRightPanelPropSplitter.MinExtra = (int)resourceManager.GetObject("custPageRightPanelPropSplitter.MinExtra");
-            this.custPageRightPanelPropSplitter.MinSize = (int)resourceManager.GetObject("custPageRightPanelPropSplitter.MinSize");
-            this.custPageRightPanelPropSplitter.Name = "custPageRightPanelPropSplitter";
-            this.custPageRightPanelPropSplitter.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageRightPanelPropSplitter.RightToLeft");
-            this.custPageRightPanelPropSplitter.Size = (Size)resourceManager.GetObject("custPageRightPanelPropSplitter.Size");
-            this.custPageRightPanelPropSplitter.TabIndex = (int)resourceManager.GetObject("custPageRightPanelPropSplitter.TabIndex");
-            this.custPageRightPanelPropSplitter.TabStop = false;
-            this.custPageRightPanelPropSplitter.Visible = (bool)resourceManager.GetObject("custPageRightPanelPropSplitter.Visible");
-            this.custPageRightPanelPropSplitter.Move += new EventHandler(this.custPageRightPanelPropSplitter_Move);
-            this.custPageMiscControlPanel.AccessibleDescription = resourceManager.GetString("custPageMiscControlPanel.AccessibleDescription");
-            this.custPageMiscControlPanel.AccessibleName = resourceManager.GetString("custPageMiscControlPanel.AccessibleName");
-            this.custPageMiscControlPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPageMiscControlPanel.Anchor");
-            this.custPageMiscControlPanel.AutoScroll = (bool)resourceManager.GetObject("custPageMiscControlPanel.AutoScroll");
-            this.custPageMiscControlPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPageMiscControlPanel.AutoScrollMargin");
-            this.custPageMiscControlPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageMiscControlPanel.AutoScrollMinSize");
-            this.custPageMiscControlPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageMiscControlPanel.BackgroundImage");
-            this.custPageMiscControlPanel.Collapsible = true;
-            this.custPageMiscControlPanel.Controls.Add(this.buttonControl);
-            this.custPageMiscControlPanel.Controls.Add(this.toolbarPreview);
-            this.custPageMiscControlPanel.Controls.Add(this.shortcutsGroup);
-            this.custPageMiscControlPanel.Dock = (DockStyle)resourceManager.GetObject("custPageMiscControlPanel.Dock");
-            this.custPageMiscControlPanel.DockPadding.Bottom = 4;
-            this.custPageMiscControlPanel.DockPadding.Left = 4;
-            this.custPageMiscControlPanel.DockPadding.Right = 4;
-            this.custPageMiscControlPanel.DockPadding.Top = 4;
-            this.custPageMiscControlPanel.Enabled = (bool)resourceManager.GetObject("custPageMiscControlPanel.Enabled");
-            this.custPageMiscControlPanel.EnableExpanded = true;
-            this.custPageMiscControlPanel.Expanded = true;
-            this.custPageMiscControlPanel.Font = (Font)resourceManager.GetObject("custPageMiscControlPanel.Font");
-            this.custPageMiscControlPanel.HeaderText = resourceManager.GetString("custPageMiscControlPanel.HeaderText");
-            this.custPageMiscControlPanel.Icon = (Icon)resourceManager.GetObject("custPageMiscControlPanel.Icon");
-            this.custPageMiscControlPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPageMiscControlPanel.ImeMode");
-            this.custPageMiscControlPanel.Location = (Point)resourceManager.GetObject("custPageMiscControlPanel.Location");
-            this.custPageMiscControlPanel.MinimumHeight = 0;
-            this.custPageMiscControlPanel.Name = "custPageMiscControlPanel";
-            this.custPageMiscControlPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageMiscControlPanel.RightToLeft");
-            this.custPageMiscControlPanel.Size = (Size)resourceManager.GetObject("custPageMiscControlPanel.Size");
-            this.custPageMiscControlPanel.TabIndex = (int)resourceManager.GetObject("custPageMiscControlPanel.TabIndex");
-            this.custPageMiscControlPanel.Visible = (bool)resourceManager.GetObject("custPageMiscControlPanel.Visible");
-            this.buttonControl.AccessibleDescription = resourceManager.GetString("buttonControl.AccessibleDescription");
-            this.buttonControl.AccessibleName = resourceManager.GetString("buttonControl.AccessibleName");
-            this.buttonControl.Anchor = (AnchorStyles)resourceManager.GetObject("buttonControl.Anchor");
-            this.buttonControl.AutoScroll = (bool)resourceManager.GetObject("buttonControl.AutoScroll");
-            this.buttonControl.AutoScrollMargin = (Size)resourceManager.GetObject("buttonControl.AutoScrollMargin");
-            this.buttonControl.AutoScrollMinSize = (Size)resourceManager.GetObject("buttonControl.AutoScrollMinSize");
-            this.buttonControl.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("buttonControl.BackgroundImage");
-            this.buttonControl.Dock = (DockStyle)resourceManager.GetObject("buttonControl.Dock");
-            this.buttonControl.Enabled = (bool)resourceManager.GetObject("buttonControl.Enabled");
-            this.buttonControl.Font = (Font)resourceManager.GetObject("buttonControl.Font");
-            this.buttonControl.ImeMode = (ImeMode)resourceManager.GetObject("buttonControl.ImeMode");
-            this.buttonControl.Location = (Point)resourceManager.GetObject("buttonControl.Location");
-            this.buttonControl.Name = "buttonControl";
-            this.buttonControl.RightToLeft = (RightToLeft)resourceManager.GetObject("buttonControl.RightToLeft");
-            this.buttonControl.Size = (Size)resourceManager.GetObject("buttonControl.Size");
-            this.buttonControl.TabIndex = (int)resourceManager.GetObject("buttonControl.TabIndex");
-            this.buttonControl.Visible = (bool)resourceManager.GetObject("buttonControl.Visible");
-            this.buttonControl.OnEvent += new ButtonControlEventHandler(this.buttonControlEventHandler);
-            this.toolbarPreview.AccessibleDescription = resourceManager.GetString("toolbarPreview.AccessibleDescription");
-            this.toolbarPreview.AccessibleName = resourceManager.GetString("toolbarPreview.AccessibleName");
-            this.toolbarPreview.Anchor = (AnchorStyles)resourceManager.GetObject("toolbarPreview.Anchor");
-            this.toolbarPreview.AutoScroll = (bool)resourceManager.GetObject("toolbarPreview.AutoScroll");
-            this.toolbarPreview.AutoScrollMargin = (Size)resourceManager.GetObject("toolbarPreview.AutoScrollMargin");
-            this.toolbarPreview.AutoScrollMinSize = (Size)resourceManager.GetObject("toolbarPreview.AutoScrollMinSize");
-            this.toolbarPreview.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("toolbarPreview.BackgroundImage");
-            this.toolbarPreview.Dock = (DockStyle)resourceManager.GetObject("toolbarPreview.Dock");
-            this.toolbarPreview.Enabled = (bool)resourceManager.GetObject("toolbarPreview.Enabled");
-            this.toolbarPreview.Font = (Font)resourceManager.GetObject("toolbarPreview.Font");
-            this.toolbarPreview.ImeMode = (ImeMode)resourceManager.GetObject("toolbarPreview.ImeMode");
-            this.toolbarPreview.Location = (Point)resourceManager.GetObject("toolbarPreview.Location");
-            this.toolbarPreview.Name = "toolbarPreview";
-            this.toolbarPreview.RightToLeft = (RightToLeft)resourceManager.GetObject("toolbarPreview.RightToLeft");
-            this.toolbarPreview.Size = (Size)resourceManager.GetObject("toolbarPreview.Size");
-            this.toolbarPreview.TabIndex = (int)resourceManager.GetObject("toolbarPreview.TabIndex");
-            this.toolbarPreview.Visible = (bool)resourceManager.GetObject("toolbarPreview.Visible");
-            this.shortcutsGroup.AccessibleDescription = resourceManager.GetString("shortcutsGroup.AccessibleDescription");
-            this.shortcutsGroup.AccessibleName = resourceManager.GetString("shortcutsGroup.AccessibleName");
-            this.shortcutsGroup.Anchor = (AnchorStyles)resourceManager.GetObject("shortcutsGroup.Anchor");
-            this.shortcutsGroup.AutoScroll = (bool)resourceManager.GetObject("shortcutsGroup.AutoScroll");
-            this.shortcutsGroup.AutoScrollMargin = (Size)resourceManager.GetObject("shortcutsGroup.AutoScrollMargin");
-            this.shortcutsGroup.AutoScrollMinSize = (Size)resourceManager.GetObject("shortcutsGroup.AutoScrollMinSize");
-            this.shortcutsGroup.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("shortcutsGroup.BackgroundImage");
-            this.shortcutsGroup.Dock = (DockStyle)resourceManager.GetObject("shortcutsGroup.Dock");
-            this.shortcutsGroup.Enabled = (bool)resourceManager.GetObject("shortcutsGroup.Enabled");
-            this.shortcutsGroup.Font = (Font)resourceManager.GetObject("shortcutsGroup.Font");
-            this.shortcutsGroup.ImeMode = (ImeMode)resourceManager.GetObject("shortcutsGroup.ImeMode");
-            this.shortcutsGroup.Location = (Point)resourceManager.GetObject("shortcutsGroup.Location");
-            this.shortcutsGroup.Name = "shortcutsGroup";
-            this.shortcutsGroup.RightToLeft = (RightToLeft)resourceManager.GetObject("shortcutsGroup.RightToLeft");
-            this.shortcutsGroup.Size = (Size)resourceManager.GetObject("shortcutsGroup.Size");
-            this.shortcutsGroup.TabIndex = (int)resourceManager.GetObject("shortcutsGroup.TabIndex");
-            this.shortcutsGroup.Visible = (bool)resourceManager.GetObject("shortcutsGroup.Visible");
-            this.shortcutsGroup.OnEvent += new ShortcutsGroupEventHandler(this.shortcutsGroupEventHandler);
-            this.custPageRightSplitter.AccessibleDescription = resourceManager.GetString("custPageRightSplitter.AccessibleDescription");
-            this.custPageRightSplitter.AccessibleName = resourceManager.GetString("custPageRightSplitter.AccessibleName");
-            this.custPageRightSplitter.Anchor = (AnchorStyles)resourceManager.GetObject("custPageRightSplitter.Anchor");
-            this.custPageRightSplitter.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageRightSplitter.BackgroundImage");
-            this.custPageRightSplitter.Dock = (DockStyle)resourceManager.GetObject("custPageRightSplitter.Dock");
-            this.custPageRightSplitter.Enabled = (bool)resourceManager.GetObject("custPageRightSplitter.Enabled");
-            this.custPageRightSplitter.Font = (Font)resourceManager.GetObject("custPageRightSplitter.Font");
-            this.custPageRightSplitter.ImeMode = (ImeMode)resourceManager.GetObject("custPageRightSplitter.ImeMode");
-            this.custPageRightSplitter.Location = (Point)resourceManager.GetObject("custPageRightSplitter.Location");
-            this.custPageRightSplitter.MinExtra = (int)resourceManager.GetObject("custPageRightSplitter.MinExtra");
-            this.custPageRightSplitter.MinSize = (int)resourceManager.GetObject("custPageRightSplitter.MinSize");
-            this.custPageRightSplitter.Name = "custPageRightSplitter";
-            this.custPageRightSplitter.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageRightSplitter.RightToLeft");
-            this.custPageRightSplitter.Size = (Size)resourceManager.GetObject("custPageRightSplitter.Size");
-            this.custPageRightSplitter.TabIndex = (int)resourceManager.GetObject("custPageRightSplitter.TabIndex");
-            this.custPageRightSplitter.TabStop = false;
-            this.custPageRightSplitter.Visible = (bool)resourceManager.GetObject("custPageRightSplitter.Visible");
-            this.custPageRightTopPanel.AccessibleDescription = resourceManager.GetString("custPageRightTopPanel.AccessibleDescription");
-            this.custPageRightTopPanel.AccessibleName = resourceManager.GetString("custPageRightTopPanel.AccessibleName");
-            this.custPageRightTopPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPageRightTopPanel.Anchor");
-            this.custPageRightTopPanel.AutoScroll = (bool)resourceManager.GetObject("custPageRightTopPanel.AutoScroll");
-            this.custPageRightTopPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPageRightTopPanel.AutoScrollMargin");
-            this.custPageRightTopPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageRightTopPanel.AutoScrollMinSize");
-            this.custPageRightTopPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageRightTopPanel.BackgroundImage");
-            this.custPageRightTopPanel.Collapsible = true;
-            this.custPageRightTopPanel.Controls.Add(this.workspaceTreeView);
-            this.custPageRightTopPanel.Dock = (DockStyle)resourceManager.GetObject("custPageRightTopPanel.Dock");
-            this.custPageRightTopPanel.DockPadding.Bottom = 4;
-            this.custPageRightTopPanel.DockPadding.Left = 4;
-            this.custPageRightTopPanel.DockPadding.Right = 4;
-            this.custPageRightTopPanel.DockPadding.Top = 44;
-            this.custPageRightTopPanel.Enabled = (bool)resourceManager.GetObject("custPageRightTopPanel.Enabled");
-            this.custPageRightTopPanel.EnableExpanded = true;
-            this.custPageRightTopPanel.Expanded = true;
-            this.custPageRightTopPanel.Font = (Font)resourceManager.GetObject("custPageRightTopPanel.Font");
-            this.custPageRightTopPanel.HeaderText = resourceManager.GetString("custPageRightTopPanel.HeaderText");
-            this.custPageRightTopPanel.Icon = (Icon)resourceManager.GetObject("custPageRightTopPanel.Icon");
-            this.custPageRightTopPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPageRightTopPanel.ImeMode");
-            this.custPageRightTopPanel.Location = (Point)resourceManager.GetObject("custPageRightTopPanel.Location");
-            this.custPageRightTopPanel.MinimumHeight = 0;
-            this.custPageRightTopPanel.Name = "custPageRightTopPanel";
-            this.custPageRightTopPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageRightTopPanel.RightToLeft");
-            this.custPageRightTopPanel.Size = (Size)resourceManager.GetObject("custPageRightTopPanel.Size");
-            this.custPageRightTopPanel.TabIndex = (int)resourceManager.GetObject("custPageRightTopPanel.TabIndex");
-            this.custPageRightTopPanel.Visible = (bool)resourceManager.GetObject("custPageRightTopPanel.Visible");
-            this.workspaceTreeView.AccessibleDescription = resourceManager.GetString("workspaceTreeView.AccessibleDescription");
-            this.workspaceTreeView.AccessibleName = resourceManager.GetString("workspaceTreeView.AccessibleName");
-            this.workspaceTreeView.Anchor = (AnchorStyles)resourceManager.GetObject("workspaceTreeView.Anchor");
-            this.workspaceTreeView.AutoScroll = (bool)resourceManager.GetObject("workspaceTreeView.AutoScroll");
-            this.workspaceTreeView.AutoScrollMargin = (Size)resourceManager.GetObject("workspaceTreeView.AutoScrollMargin");
-            this.workspaceTreeView.AutoScrollMinSize = (Size)resourceManager.GetObject("workspaceTreeView.AutoScrollMinSize");
-            this.workspaceTreeView.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("workspaceTreeView.BackgroundImage");
-            this.workspaceTreeView.Dock = (DockStyle)resourceManager.GetObject("workspaceTreeView.Dock");
-            this.workspaceTreeView.Enabled = (bool)resourceManager.GetObject("workspaceTreeView.Enabled");
-            this.workspaceTreeView.Font = (Font)resourceManager.GetObject("workspaceTreeView.Font");
-            this.workspaceTreeView.ImeMode = (ImeMode)resourceManager.GetObject("workspaceTreeView.ImeMode");
-            this.workspaceTreeView.Location = (Point)resourceManager.GetObject("workspaceTreeView.Location");
-            this.workspaceTreeView.Name = "workspaceTreeView";
-            this.workspaceTreeView.RightToLeft = (RightToLeft)resourceManager.GetObject("workspaceTreeView.RightToLeft");
-            this.workspaceTreeView.Size = (Size)resourceManager.GetObject("workspaceTreeView.Size");
-            this.workspaceTreeView.TabIndex = (int)resourceManager.GetObject("workspaceTreeView.TabIndex");
-            this.workspaceTreeView.Visible = (bool)resourceManager.GetObject("workspaceTreeView.Visible");
-            this.custPageSplitter.AccessibleDescription = resourceManager.GetString("custPageSplitter.AccessibleDescription");
-            this.custPageSplitter.AccessibleName = resourceManager.GetString("custPageSplitter.AccessibleName");
-            this.custPageSplitter.Anchor = (AnchorStyles)resourceManager.GetObject("custPageSplitter.Anchor");
-            this.custPageSplitter.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageSplitter.BackgroundImage");
-            this.custPageSplitter.Dock = (DockStyle)resourceManager.GetObject("custPageSplitter.Dock");
-            this.custPageSplitter.Enabled = (bool)resourceManager.GetObject("custPageSplitter.Enabled");
-            this.custPageSplitter.Font = (Font)resourceManager.GetObject("custPageSplitter.Font");
-            this.custPageSplitter.ImeMode = (ImeMode)resourceManager.GetObject("custPageSplitter.ImeMode");
-            this.custPageSplitter.Location = (Point)resourceManager.GetObject("custPageSplitter.Location");
-            this.custPageSplitter.MinExtra = (int)resourceManager.GetObject("custPageSplitter.MinExtra");
-            this.custPageSplitter.MinSize = (int)resourceManager.GetObject("custPageSplitter.MinSize");
-            this.custPageSplitter.Name = "custPageSplitter";
-            this.custPageSplitter.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageSplitter.RightToLeft");
-            this.custPageSplitter.Size = (Size)resourceManager.GetObject("custPageSplitter.Size");
-            this.custPageSplitter.TabIndex = (int)resourceManager.GetObject("custPageSplitter.TabIndex");
-            this.custPageSplitter.TabStop = false;
-            this.custPageSplitter.Visible = (bool)resourceManager.GetObject("custPageSplitter.Visible");
-            this.custPageSplitter.SplitterMoved += new SplitterEventHandler(this.custPageSplitter_SplitterMoved);
-            this.custPageLeftPanel.AccessibleDescription = resourceManager.GetString("custPageLeftPanel.AccessibleDescription");
-            this.custPageLeftPanel.AccessibleName = resourceManager.GetString("custPageLeftPanel.AccessibleName");
-            this.custPageLeftPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPageLeftPanel.Anchor");
-            this.custPageLeftPanel.AutoScroll = (bool)resourceManager.GetObject("custPageLeftPanel.AutoScroll");
-            this.custPageLeftPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPageLeftPanel.AutoScrollMargin");
-            this.custPageLeftPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageLeftPanel.AutoScrollMinSize");
-            this.custPageLeftPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageLeftPanel.BackgroundImage");
-            this.custPageLeftPanel.Controls.Add(this.custPageLeftBottomPanel);
-            this.custPageLeftPanel.Controls.Add(this.custPageLeftSplitter);
-            this.custPageLeftPanel.Controls.Add(this.custPageLeftTopPanel);
-            this.custPageLeftPanel.Dock = (DockStyle)resourceManager.GetObject("custPageLeftPanel.Dock");
-            this.custPageLeftPanel.Enabled = (bool)resourceManager.GetObject("custPageLeftPanel.Enabled");
-            this.custPageLeftPanel.Font = (Font)resourceManager.GetObject("custPageLeftPanel.Font");
-            this.custPageLeftPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPageLeftPanel.ImeMode");
-            this.custPageLeftPanel.Location = (Point)resourceManager.GetObject("custPageLeftPanel.Location");
-            this.custPageLeftPanel.Name = "custPageLeftPanel";
-            this.custPageLeftPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageLeftPanel.RightToLeft");
-            this.custPageLeftPanel.Size = (Size)resourceManager.GetObject("custPageLeftPanel.Size");
-            this.custPageLeftPanel.TabIndex = (int)resourceManager.GetObject("custPageLeftPanel.TabIndex");
-            this.custPageLeftPanel.Text = resourceManager.GetString("custPageLeftPanel.Text");
-            this.custPageLeftPanel.Visible = (bool)resourceManager.GetObject("custPageLeftPanel.Visible");
-            this.custPageLeftBottomPanel.AccessibleDescription = resourceManager.GetString("custPageLeftBottomPanel.AccessibleDescription");
-            this.custPageLeftBottomPanel.AccessibleName = resourceManager.GetString("custPageLeftBottomPanel.AccessibleName");
-            this.custPageLeftBottomPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPageLeftBottomPanel.Anchor");
-            this.custPageLeftBottomPanel.AutoScroll = (bool)resourceManager.GetObject("custPageLeftBottomPanel.AutoScroll");
-            this.custPageLeftBottomPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPageLeftBottomPanel.AutoScrollMargin");
-            this.custPageLeftBottomPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageLeftBottomPanel.AutoScrollMinSize");
-            this.custPageLeftBottomPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageLeftBottomPanel.BackgroundImage");
-            this.custPageLeftBottomPanel.Collapsible = true;
-            this.custPageLeftBottomPanel.Controls.Add(this.custPageCmdListCtrl);
-            this.custPageLeftBottomPanel.Dock = (DockStyle)resourceManager.GetObject("custPageLeftBottomPanel.Dock");
-            this.custPageLeftBottomPanel.DockPadding.Bottom = 4;
-            this.custPageLeftBottomPanel.DockPadding.Left = 4;
-            this.custPageLeftBottomPanel.DockPadding.Right = 4;
-            this.custPageLeftBottomPanel.DockPadding.Top = 26;
-            this.custPageLeftBottomPanel.Enabled = (bool)resourceManager.GetObject("custPageLeftBottomPanel.Enabled");
-            this.custPageLeftBottomPanel.EnableExpanded = true;
-            this.custPageLeftBottomPanel.Expanded = true;
-            this.custPageLeftBottomPanel.Font = (Font)resourceManager.GetObject("custPageLeftBottomPanel.Font");
-            this.custPageLeftBottomPanel.HeaderText = resourceManager.GetString("custPageLeftBottomPanel.HeaderText");
-            this.custPageLeftBottomPanel.Icon = (Icon)resourceManager.GetObject("custPageLeftBottomPanel.Icon");
-            this.custPageLeftBottomPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPageLeftBottomPanel.ImeMode");
-            this.custPageLeftBottomPanel.Location = (Point)resourceManager.GetObject("custPageLeftBottomPanel.Location");
-            this.custPageLeftBottomPanel.MinimumHeight = 0;
-            this.custPageLeftBottomPanel.Name = "custPageLeftBottomPanel";
-            this.custPageLeftBottomPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageLeftBottomPanel.RightToLeft");
-            this.custPageLeftBottomPanel.Size = (Size)resourceManager.GetObject("custPageLeftBottomPanel.Size");
-            this.custPageLeftBottomPanel.TabIndex = (int)resourceManager.GetObject("custPageLeftBottomPanel.TabIndex");
-            this.custPageLeftBottomPanel.Visible = (bool)resourceManager.GetObject("custPageLeftBottomPanel.Visible");
-            this.custPageCmdListCtrl.AccessibleDescription = resourceManager.GetString("custPageCmdListCtrl.AccessibleDescription");
-            this.custPageCmdListCtrl.AccessibleName = resourceManager.GetString("custPageCmdListCtrl.AccessibleName");
-            this.custPageCmdListCtrl.Anchor = (AnchorStyles)resourceManager.GetObject("custPageCmdListCtrl.Anchor");
-            this.custPageCmdListCtrl.AutoScroll = (bool)resourceManager.GetObject("custPageCmdListCtrl.AutoScroll");
-            this.custPageCmdListCtrl.AutoScrollMargin = (Size)resourceManager.GetObject("custPageCmdListCtrl.AutoScrollMargin");
-            this.custPageCmdListCtrl.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageCmdListCtrl.AutoScrollMinSize");
-            this.custPageCmdListCtrl.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageCmdListCtrl.BackgroundImage");
-            this.custPageCmdListCtrl.Dock = (DockStyle)resourceManager.GetObject("custPageCmdListCtrl.Dock");
-            this.custPageCmdListCtrl.Enabled = (bool)resourceManager.GetObject("custPageCmdListCtrl.Enabled");
-            this.custPageCmdListCtrl.Font = (Font)resourceManager.GetObject("custPageCmdListCtrl.Font");
-            this.custPageCmdListCtrl.ImeMode = (ImeMode)resourceManager.GetObject("custPageCmdListCtrl.ImeMode");
-            this.custPageCmdListCtrl.Location = (Point)resourceManager.GetObject("custPageCmdListCtrl.Location");
-            this.custPageCmdListCtrl.Name = "custPageCmdListCtrl";
-            this.custPageCmdListCtrl.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageCmdListCtrl.RightToLeft");
-            this.custPageCmdListCtrl.Size = (Size)resourceManager.GetObject("custPageCmdListCtrl.Size");
-            this.custPageCmdListCtrl.TabIndex = (int)resourceManager.GetObject("custPageCmdListCtrl.TabIndex");
-            this.custPageCmdListCtrl.Visible = (bool)resourceManager.GetObject("custPageCmdListCtrl.Visible");
-            this.custPageCmdListCtrl.EventHandler += new CommandListControl.EventDelegate(this.handleCommandListEvent);
-            this.custPageLeftSplitter.AccessibleDescription = resourceManager.GetString("custPageLeftSplitter.AccessibleDescription");
-            this.custPageLeftSplitter.AccessibleName = resourceManager.GetString("custPageLeftSplitter.AccessibleName");
-            this.custPageLeftSplitter.Anchor = (AnchorStyles)resourceManager.GetObject("custPageLeftSplitter.Anchor");
-            this.custPageLeftSplitter.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageLeftSplitter.BackgroundImage");
-            this.custPageLeftSplitter.Cursor = Cursors.HSplit;
-            this.custPageLeftSplitter.Dock = (DockStyle)resourceManager.GetObject("custPageLeftSplitter.Dock");
-            this.custPageLeftSplitter.Enabled = (bool)resourceManager.GetObject("custPageLeftSplitter.Enabled");
-            this.custPageLeftSplitter.Font = (Font)resourceManager.GetObject("custPageLeftSplitter.Font");
-            this.custPageLeftSplitter.ImeMode = (ImeMode)resourceManager.GetObject("custPageLeftSplitter.ImeMode");
-            this.custPageLeftSplitter.Location = (Point)resourceManager.GetObject("custPageLeftSplitter.Location");
-            this.custPageLeftSplitter.MinExtra = (int)resourceManager.GetObject("custPageLeftSplitter.MinExtra");
-            this.custPageLeftSplitter.MinSize = (int)resourceManager.GetObject("custPageLeftSplitter.MinSize");
-            this.custPageLeftSplitter.Name = "custPageLeftSplitter";
-            this.custPageLeftSplitter.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageLeftSplitter.RightToLeft");
-            this.custPageLeftSplitter.Size = (Size)resourceManager.GetObject("custPageLeftSplitter.Size");
-            this.custPageLeftSplitter.TabIndex = (int)resourceManager.GetObject("custPageLeftSplitter.TabIndex");
-            this.custPageLeftSplitter.TabStop = false;
-            this.custPageLeftSplitter.Visible = (bool)resourceManager.GetObject("custPageLeftSplitter.Visible");
-            this.custPageLeftTopPanel.AccessibleDescription = resourceManager.GetString("custPageLeftTopPanel.AccessibleDescription");
-            this.custPageLeftTopPanel.AccessibleName = resourceManager.GetString("custPageLeftTopPanel.AccessibleName");
-            this.custPageLeftTopPanel.Anchor = (AnchorStyles)resourceManager.GetObject("custPageLeftTopPanel.Anchor");
-            this.custPageLeftTopPanel.AutoScroll = (bool)resourceManager.GetObject("custPageLeftTopPanel.AutoScroll");
-            this.custPageLeftTopPanel.AutoScrollMargin = (Size)resourceManager.GetObject("custPageLeftTopPanel.AutoScrollMargin");
-            this.custPageLeftTopPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("custPageLeftTopPanel.AutoScrollMinSize");
-            this.custPageLeftTopPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("custPageLeftTopPanel.BackgroundImage");
-            this.custPageLeftTopPanel.Collapsible = true;
-            this.custPageLeftTopPanel.Controls.Add(this.customizeTreeView);
-            this.custPageLeftTopPanel.Dock = (DockStyle)resourceManager.GetObject("custPageLeftTopPanel.Dock");
-            this.custPageLeftTopPanel.DockPadding.Bottom = 4;
-            this.custPageLeftTopPanel.DockPadding.Left = 4;
-            this.custPageLeftTopPanel.DockPadding.Right = 4;
-            this.custPageLeftTopPanel.DockPadding.Top = 44;
-            this.custPageLeftTopPanel.Enabled = (bool)resourceManager.GetObject("custPageLeftTopPanel.Enabled");
-            this.custPageLeftTopPanel.EnableExpanded = true;
-            this.custPageLeftTopPanel.Expanded = true;
-            this.custPageLeftTopPanel.Font = (Font)resourceManager.GetObject("custPageLeftTopPanel.Font");
-            this.custPageLeftTopPanel.HeaderText = resourceManager.GetString("custPageLeftTopPanel.HeaderText");
-            this.custPageLeftTopPanel.Icon = (Icon)resourceManager.GetObject("custPageLeftTopPanel.Icon");
-            this.custPageLeftTopPanel.ImeMode = (ImeMode)resourceManager.GetObject("custPageLeftTopPanel.ImeMode");
-            this.custPageLeftTopPanel.Location = (Point)resourceManager.GetObject("custPageLeftTopPanel.Location");
-            this.custPageLeftTopPanel.MinimumHeight = 0;
-            this.custPageLeftTopPanel.Name = "custPageLeftTopPanel";
-            this.custPageLeftTopPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("custPageLeftTopPanel.RightToLeft");
-            this.custPageLeftTopPanel.Size = (Size)resourceManager.GetObject("custPageLeftTopPanel.Size");
-            this.custPageLeftTopPanel.TabIndex = (int)resourceManager.GetObject("custPageLeftTopPanel.TabIndex");
-            this.custPageLeftTopPanel.Visible = (bool)resourceManager.GetObject("custPageLeftTopPanel.Visible");
-            this.customizeTreeView.AccessibleDescription = resourceManager.GetString("customizeTreeView.AccessibleDescription");
-            this.customizeTreeView.AccessibleName = resourceManager.GetString("customizeTreeView.AccessibleName");
-            this.customizeTreeView.Anchor = (AnchorStyles)resourceManager.GetObject("customizeTreeView.Anchor");
-            this.customizeTreeView.AutoScroll = (bool)resourceManager.GetObject("customizeTreeView.AutoScroll");
-            this.customizeTreeView.AutoScrollMargin = (Size)resourceManager.GetObject("customizeTreeView.AutoScrollMargin");
-            this.customizeTreeView.AutoScrollMinSize = (Size)resourceManager.GetObject("customizeTreeView.AutoScrollMinSize");
-            this.customizeTreeView.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("customizeTreeView.BackgroundImage");
-            this.customizeTreeView.Dock = (DockStyle)resourceManager.GetObject("customizeTreeView.Dock");
-            this.customizeTreeView.Enabled = (bool)resourceManager.GetObject("customizeTreeView.Enabled");
-            this.customizeTreeView.Font = (Font)resourceManager.GetObject("customizeTreeView.Font");
-            this.customizeTreeView.ImeMode = (ImeMode)resourceManager.GetObject("customizeTreeView.ImeMode");
-            this.customizeTreeView.Location = (Point)resourceManager.GetObject("customizeTreeView.Location");
-            this.customizeTreeView.Name = "customizeTreeView";
-            this.customizeTreeView.RightToLeft = (RightToLeft)resourceManager.GetObject("customizeTreeView.RightToLeft");
-            this.customizeTreeView.Size = (Size)resourceManager.GetObject("customizeTreeView.Size");
-            this.customizeTreeView.TabIndex = (int)resourceManager.GetObject("customizeTreeView.TabIndex");
-            this.customizeTreeView.Visible = (bool)resourceManager.GetObject("customizeTreeView.Visible");
-            this.transferPage.AccessibleDescription = resourceManager.GetString("transferPage.AccessibleDescription");
-            this.transferPage.AccessibleName = resourceManager.GetString("transferPage.AccessibleName");
-            this.transferPage.Anchor = (AnchorStyles)resourceManager.GetObject("transferPage.Anchor");
-            this.transferPage.AutoScroll = (bool)resourceManager.GetObject("transferPage.AutoScroll");
-            this.transferPage.AutoScrollMargin = (Size)resourceManager.GetObject("transferPage.AutoScrollMargin");
-            this.transferPage.AutoScrollMinSize = (Size)resourceManager.GetObject("transferPage.AutoScrollMinSize");
-            this.transferPage.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("transferPage.BackgroundImage");
-            this.transferPage.Controls.Add(this.transferPageRightPanel);
-            this.transferPage.Controls.Add(this.transferPageSplitter);
-            this.transferPage.Controls.Add(this.transferPageLeftPanel);
-            this.transferPage.Dock = (DockStyle)resourceManager.GetObject("transferPage.Dock");
-            this.transferPage.Enabled = (bool)resourceManager.GetObject("transferPage.Enabled");
-            this.transferPage.Font = (Font)resourceManager.GetObject("transferPage.Font");
-            this.transferPage.ImageIndex = (int)resourceManager.GetObject("transferPage.ImageIndex");
-            this.transferPage.ImeMode = (ImeMode)resourceManager.GetObject("transferPage.ImeMode");
-            this.transferPage.Location = (Point)resourceManager.GetObject("transferPage.Location");
-            this.transferPage.Name = "transferPage";
-            this.transferPage.RightToLeft = (RightToLeft)resourceManager.GetObject("transferPage.RightToLeft");
-            this.transferPage.Size = (Size)resourceManager.GetObject("transferPage.Size");
-            this.transferPage.TabIndex = (int)resourceManager.GetObject("transferPage.TabIndex");
-            this.transferPage.Text = resourceManager.GetString("transferPage.Text");
-            this.transferPage.ToolTipText = resourceManager.GetString("transferPage.ToolTipText");
-            this.transferPage.Visible = (bool)resourceManager.GetObject("transferPage.Visible");
-            this.transferPageRightPanel.AccessibleDescription = resourceManager.GetString("transferPageRightPanel.AccessibleDescription");
-            this.transferPageRightPanel.AccessibleName = resourceManager.GetString("transferPageRightPanel.AccessibleName");
-            this.transferPageRightPanel.Anchor = (AnchorStyles)resourceManager.GetObject("transferPageRightPanel.Anchor");
-            this.transferPageRightPanel.AutoScroll = (bool)resourceManager.GetObject("transferPageRightPanel.AutoScroll");
-            this.transferPageRightPanel.AutoScrollMargin = (Size)resourceManager.GetObject("transferPageRightPanel.AutoScrollMargin");
-            this.transferPageRightPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("transferPageRightPanel.AutoScrollMinSize");
-            this.transferPageRightPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("transferPageRightPanel.BackgroundImage");
-            this.transferPageRightPanel.Controls.Add(this.transferPageRightTopPanel);
-            this.transferPageRightPanel.Dock = (DockStyle)resourceManager.GetObject("transferPageRightPanel.Dock");
-            this.transferPageRightPanel.Enabled = (bool)resourceManager.GetObject("transferPageRightPanel.Enabled");
-            this.transferPageRightPanel.Font = (Font)resourceManager.GetObject("transferPageRightPanel.Font");
-            this.transferPageRightPanel.ImeMode = (ImeMode)resourceManager.GetObject("transferPageRightPanel.ImeMode");
-            this.transferPageRightPanel.Location = (Point)resourceManager.GetObject("transferPageRightPanel.Location");
-            this.transferPageRightPanel.Name = "transferPageRightPanel";
-            this.transferPageRightPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("transferPageRightPanel.RightToLeft");
-            this.transferPageRightPanel.Size = (Size)resourceManager.GetObject("transferPageRightPanel.Size");
-            this.transferPageRightPanel.TabIndex = (int)resourceManager.GetObject("transferPageRightPanel.TabIndex");
-            this.transferPageRightPanel.Text = resourceManager.GetString("transferPageRightPanel.Text");
-            this.transferPageRightPanel.Visible = (bool)resourceManager.GetObject("transferPageRightPanel.Visible");
-            this.transferPageRightTopPanel.AccessibleDescription = resourceManager.GetString("transferPageRightTopPanel.AccessibleDescription");
-            this.transferPageRightTopPanel.AccessibleName = resourceManager.GetString("transferPageRightTopPanel.AccessibleName");
-            this.transferPageRightTopPanel.Anchor = (AnchorStyles)resourceManager.GetObject("transferPageRightTopPanel.Anchor");
-            this.transferPageRightTopPanel.AutoScroll = (bool)resourceManager.GetObject("transferPageRightTopPanel.AutoScroll");
-            this.transferPageRightTopPanel.AutoScrollMargin = (Size)resourceManager.GetObject("transferPageRightTopPanel.AutoScrollMargin");
-            this.transferPageRightTopPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("transferPageRightTopPanel.AutoScrollMinSize");
-            this.transferPageRightTopPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("transferPageRightTopPanel.BackgroundImage");
-            this.transferPageRightTopPanel.Collapsible = true;
-            this.transferPageRightTopPanel.Controls.Add(this.rightTransferTreeView);
-            this.transferPageRightTopPanel.Dock = (DockStyle)resourceManager.GetObject("transferPageRightTopPanel.Dock");
-            this.transferPageRightTopPanel.DockPadding.Bottom = 4;
-            this.transferPageRightTopPanel.DockPadding.Left = 4;
-            this.transferPageRightTopPanel.DockPadding.Right = 4;
-            this.transferPageRightTopPanel.DockPadding.Top = 4;
-            this.transferPageRightTopPanel.Enabled = (bool)resourceManager.GetObject("transferPageRightTopPanel.Enabled");
-            this.transferPageRightTopPanel.EnableExpanded = false;
-            this.transferPageRightTopPanel.Collapsible = false;
-            this.transferPageRightTopPanel.Expanded = true;
-            this.transferPageRightTopPanel.Font = (Font)resourceManager.GetObject("transferPageRightTopPanel.Font");
-            this.transferPageRightTopPanel.HeaderText = resourceManager.GetString("transferPageRightTopPanel.HeaderText");
-            this.transferPageRightTopPanel.Icon = (Icon)resourceManager.GetObject("transferPageRightTopPanel.Icon");
-            this.transferPageRightTopPanel.ImeMode = (ImeMode)resourceManager.GetObject("transferPageRightTopPanel.ImeMode");
-            this.transferPageRightTopPanel.Location = (Point)resourceManager.GetObject("transferPageRightTopPanel.Location");
-            this.transferPageRightTopPanel.MinimumHeight = 0;
-            this.transferPageRightTopPanel.Name = "transferPageRightTopPanel";
-            this.transferPageRightTopPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("transferPageRightTopPanel.RightToLeft");
-            this.transferPageRightTopPanel.Size = (Size)resourceManager.GetObject("transferPageRightTopPanel.Size");
-            this.transferPageRightTopPanel.TabIndex = (int)resourceManager.GetObject("transferPageRightTopPanel.TabIndex");
-            this.transferPageRightTopPanel.Visible = (bool)resourceManager.GetObject("transferPageRightTopPanel.Visible");
-            this.rightTransferTreeView.AccessibleDescription = resourceManager.GetString("rightTransferTreeView.AccessibleDescription");
-            this.rightTransferTreeView.AccessibleName = resourceManager.GetString("rightTransferTreeView.AccessibleName");
-            this.rightTransferTreeView.Anchor = (AnchorStyles)resourceManager.GetObject("rightTransferTreeView.Anchor");
-            this.rightTransferTreeView.AutoScroll = (bool)resourceManager.GetObject("rightTransferTreeView.AutoScroll");
-            this.rightTransferTreeView.AutoScrollMargin = (Size)resourceManager.GetObject("rightTransferTreeView.AutoScrollMargin");
-            this.rightTransferTreeView.AutoScrollMinSize = (Size)resourceManager.GetObject("rightTransferTreeView.AutoScrollMinSize");
-            this.rightTransferTreeView.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("rightTransferTreeView.BackgroundImage");
-            this.rightTransferTreeView.Dock = (DockStyle)resourceManager.GetObject("rightTransferTreeView.Dock");
-            this.rightTransferTreeView.Enabled = (bool)resourceManager.GetObject("rightTransferTreeView.Enabled");
-            this.rightTransferTreeView.Font = (Font)resourceManager.GetObject("rightTransferTreeView.Font");
-            this.rightTransferTreeView.ImeMode = (ImeMode)resourceManager.GetObject("rightTransferTreeView.ImeMode");
-            this.rightTransferTreeView.Location = (Point)resourceManager.GetObject("rightTransferTreeView.Location");
-            this.rightTransferTreeView.Name = "rightTransferTreeView";
-            this.rightTransferTreeView.RightToLeft = (RightToLeft)resourceManager.GetObject("rightTransferTreeView.RightToLeft");
-            this.rightTransferTreeView.Size = (Size)resourceManager.GetObject("rightTransferTreeView.Size");
-            this.rightTransferTreeView.TabIndex = (int)resourceManager.GetObject("rightTransferTreeView.TabIndex");
-            this.rightTransferTreeView.TransferLeftToRight = false;
-            this.rightTransferTreeView.Visible = (bool)resourceManager.GetObject("rightTransferTreeView.Visible");
-            this.transferPageSplitter.AccessibleDescription = resourceManager.GetString("transferPageSplitter.AccessibleDescription");
-            this.transferPageSplitter.AccessibleName = resourceManager.GetString("transferPageSplitter.AccessibleName");
-            this.transferPageSplitter.Anchor = (AnchorStyles)resourceManager.GetObject("transferPageSplitter.Anchor");
-            this.transferPageSplitter.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("transferPageSplitter.BackgroundImage");
-            this.transferPageSplitter.Dock = (DockStyle)resourceManager.GetObject("transferPageSplitter.Dock");
-            this.transferPageSplitter.Enabled = (bool)resourceManager.GetObject("transferPageSplitter.Enabled");
-            this.transferPageSplitter.Font = (Font)resourceManager.GetObject("transferPageSplitter.Font");
-            this.transferPageSplitter.ImeMode = (ImeMode)resourceManager.GetObject("transferPageSplitter.ImeMode");
-            this.transferPageSplitter.Location = (Point)resourceManager.GetObject("transferPageSplitter.Location");
-            this.transferPageSplitter.MinExtra = (int)resourceManager.GetObject("transferPageSplitter.MinExtra");
-            this.transferPageSplitter.MinSize = (int)resourceManager.GetObject("transferPageSplitter.MinSize");
-            this.transferPageSplitter.Name = "transferPageSplitter";
-            this.transferPageSplitter.RightToLeft = (RightToLeft)resourceManager.GetObject("transferPageSplitter.RightToLeft");
-            this.transferPageSplitter.Size = (Size)resourceManager.GetObject("transferPageSplitter.Size");
-            this.transferPageSplitter.TabIndex = (int)resourceManager.GetObject("transferPageSplitter.TabIndex");
-            this.transferPageSplitter.TabStop = false;
-            this.transferPageSplitter.Visible = (bool)resourceManager.GetObject("transferPageSplitter.Visible");
-            this.transferPageSplitter.SplitterMoved += new SplitterEventHandler(this.impPageSplitter_SplitterMoved);
-            this.transferPageLeftPanel.AccessibleDescription = resourceManager.GetString("transferPageLeftPanel.AccessibleDescription");
-            this.transferPageLeftPanel.AccessibleName = resourceManager.GetString("transferPageLeftPanel.AccessibleName");
-            this.transferPageLeftPanel.Anchor = (AnchorStyles)resourceManager.GetObject("transferPageLeftPanel.Anchor");
-            this.transferPageLeftPanel.AutoScroll = (bool)resourceManager.GetObject("transferPageLeftPanel.AutoScroll");
-            this.transferPageLeftPanel.AutoScrollMargin = (Size)resourceManager.GetObject("transferPageLeftPanel.AutoScrollMargin");
-            this.transferPageLeftPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("transferPageLeftPanel.AutoScrollMinSize");
-            this.transferPageLeftPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("transferPageLeftPanel.BackgroundImage");
-            this.transferPageLeftPanel.Controls.Add(this.transferPageLeftTopPanel);
-            this.transferPageLeftPanel.Dock = (DockStyle)resourceManager.GetObject("transferPageLeftPanel.Dock");
-            this.transferPageLeftPanel.Enabled = (bool)resourceManager.GetObject("transferPageLeftPanel.Enabled");
-            this.transferPageLeftPanel.Font = (Font)resourceManager.GetObject("transferPageLeftPanel.Font");
-            this.transferPageLeftPanel.ImeMode = (ImeMode)resourceManager.GetObject("transferPageLeftPanel.ImeMode");
-            this.transferPageLeftPanel.Location = (Point)resourceManager.GetObject("transferPageLeftPanel.Location");
-            this.transferPageLeftPanel.Name = "transferPageLeftPanel";
-            this.transferPageLeftPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("transferPageLeftPanel.RightToLeft");
-            this.transferPageLeftPanel.Size = (Size)resourceManager.GetObject("transferPageLeftPanel.Size");
-            this.transferPageLeftPanel.TabIndex = (int)resourceManager.GetObject("transferPageLeftPanel.TabIndex");
-            this.transferPageLeftPanel.Text = resourceManager.GetString("transferPageLeftPanel.Text");
-            this.transferPageLeftPanel.Visible = (bool)resourceManager.GetObject("transferPageLeftPanel.Visible");
-            this.transferPageLeftTopPanel.AccessibleDescription = resourceManager.GetString("transferPageLeftTopPanel.AccessibleDescription");
-            this.transferPageLeftTopPanel.AccessibleName = resourceManager.GetString("transferPageLeftTopPanel.AccessibleName");
-            this.transferPageLeftTopPanel.Anchor = (AnchorStyles)resourceManager.GetObject("transferPageLeftTopPanel.Anchor");
-            this.transferPageLeftTopPanel.AutoScroll = (bool)resourceManager.GetObject("transferPageLeftTopPanel.AutoScroll");
-            this.transferPageLeftTopPanel.AutoScrollMargin = (Size)resourceManager.GetObject("transferPageLeftTopPanel.AutoScrollMargin");
-            this.transferPageLeftTopPanel.AutoScrollMinSize = (Size)resourceManager.GetObject("transferPageLeftTopPanel.AutoScrollMinSize");
-            this.transferPageLeftTopPanel.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("transferPageLeftTopPanel.BackgroundImage");
-            this.transferPageLeftTopPanel.Collapsible = true;
-            this.transferPageLeftTopPanel.Controls.Add(this.leftTransferTreeView);
-            this.transferPageLeftTopPanel.Dock = (DockStyle)resourceManager.GetObject("transferPageLeftTopPanel.Dock");
-            this.transferPageLeftTopPanel.DockPadding.Bottom = 4;
-            this.transferPageLeftTopPanel.DockPadding.Left = 4;
-            this.transferPageLeftTopPanel.DockPadding.Right = 4;
-            this.transferPageLeftTopPanel.DockPadding.Top = 4;
-            this.transferPageLeftTopPanel.Enabled = (bool)resourceManager.GetObject("transferPageLeftTopPanel.Enabled");
-            this.transferPageLeftTopPanel.EnableExpanded = false;
-            this.transferPageLeftTopPanel.Collapsible = false;
-            this.transferPageLeftTopPanel.Expanded = true;
-            this.transferPageLeftTopPanel.Font = (Font)resourceManager.GetObject("transferPageLeftTopPanel.Font");
-            this.transferPageLeftTopPanel.HeaderText = resourceManager.GetString("transferPageLeftTopPanel.HeaderText");
-            this.transferPageLeftTopPanel.Icon = (Icon)resourceManager.GetObject("transferPageLeftTopPanel.Icon");
-            this.transferPageLeftTopPanel.ImeMode = (ImeMode)resourceManager.GetObject("transferPageLeftTopPanel.ImeMode");
-            this.transferPageLeftTopPanel.Location = (Point)resourceManager.GetObject("transferPageLeftTopPanel.Location");
-            this.transferPageLeftTopPanel.MinimumHeight = 0;
-            this.transferPageLeftTopPanel.Name = "transferPageLeftTopPanel";
-            this.transferPageLeftTopPanel.RightToLeft = (RightToLeft)resourceManager.GetObject("transferPageLeftTopPanel.RightToLeft");
-            this.transferPageLeftTopPanel.Size = (Size)resourceManager.GetObject("transferPageLeftTopPanel.Size");
-            this.transferPageLeftTopPanel.TabIndex = (int)resourceManager.GetObject("transferPageLeftTopPanel.TabIndex");
-            this.transferPageLeftTopPanel.Visible = (bool)resourceManager.GetObject("transferPageLeftTopPanel.Visible");
-            this.leftTransferTreeView.AccessibleDescription = resourceManager.GetString("leftTransferTreeView.AccessibleDescription");
-            this.leftTransferTreeView.AccessibleName = resourceManager.GetString("leftTransferTreeView.AccessibleName");
-            this.leftTransferTreeView.Anchor = (AnchorStyles)resourceManager.GetObject("leftTransferTreeView.Anchor");
-            this.leftTransferTreeView.AutoScroll = (bool)resourceManager.GetObject("leftTransferTreeView.AutoScroll");
-            this.leftTransferTreeView.AutoScrollMargin = (Size)resourceManager.GetObject("leftTransferTreeView.AutoScrollMargin");
-            this.leftTransferTreeView.AutoScrollMinSize = (Size)resourceManager.GetObject("leftTransferTreeView.AutoScrollMinSize");
-            this.leftTransferTreeView.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("leftTransferTreeView.BackgroundImage");
-            this.leftTransferTreeView.Dock = (DockStyle)resourceManager.GetObject("leftTransferTreeView.Dock");
-            this.leftTransferTreeView.Enabled = (bool)resourceManager.GetObject("leftTransferTreeView.Enabled");
-            this.leftTransferTreeView.Font = (Font)resourceManager.GetObject("leftTransferTreeView.Font");
-            this.leftTransferTreeView.ImeMode = (ImeMode)resourceManager.GetObject("leftTransferTreeView.ImeMode");
-            this.leftTransferTreeView.Location = (Point)resourceManager.GetObject("leftTransferTreeView.Location");
-            this.leftTransferTreeView.Name = "leftTransferTreeView";
-            this.leftTransferTreeView.RightToLeft = (RightToLeft)resourceManager.GetObject("leftTransferTreeView.RightToLeft");
-            this.leftTransferTreeView.Size = (Size)resourceManager.GetObject("leftTransferTreeView.Size");
-            this.leftTransferTreeView.TabIndex = (int)resourceManager.GetObject("leftTransferTreeView.TabIndex");
-            this.leftTransferTreeView.Visible = (bool)resourceManager.GetObject("leftTransferTreeView.Visible");
-            this.tabImgList.ImageSize = (Size)resourceManager.GetObject("tabImgList.ImageSize");
-            this.tabImgList.TransparentColor = Color.Transparent;
-            this.okButton.AccessibleDescription = resourceManager.GetString("okButton.AccessibleDescription");
-            this.okButton.AccessibleName = resourceManager.GetString("okButton.AccessibleName");
-            this.okButton.Anchor = (AnchorStyles)resourceManager.GetObject("okButton.Anchor");
-            this.okButton.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("okButton.BackgroundImage");
-            this.okButton.DialogResult = DialogResult.OK;
-            this.okButton.Dock = (DockStyle)resourceManager.GetObject("okButton.Dock");
-            this.okButton.Enabled = (bool)resourceManager.GetObject("okButton.Enabled");
-            this.okButton.FlatStyle = (FlatStyle)resourceManager.GetObject("okButton.FlatStyle");
-            this.okButton.Font = (Font)resourceManager.GetObject("okButton.Font");
-            this.okButton.Image = (System.Drawing.Image)resourceManager.GetObject("okButton.Image");
-            this.okButton.ImageAlign = (ContentAlignment)resourceManager.GetObject("okButton.ImageAlign");
-            this.okButton.ImageIndex = (int)resourceManager.GetObject("okButton.ImageIndex");
-            this.okButton.ImeMode = (ImeMode)resourceManager.GetObject("okButton.ImeMode");
-            this.okButton.Location = (Point)resourceManager.GetObject("okButton.Location");
-            this.okButton.Name = "okButton";
-            this.okButton.RightToLeft = (RightToLeft)resourceManager.GetObject("okButton.RightToLeft");
-            this.okButton.Size = (Size)resourceManager.GetObject("okButton.Size");
-            this.okButton.TabIndex = (int)resourceManager.GetObject("okButton.TabIndex");
-            this.okButton.Text = resourceManager.GetString("okButton.Text");
-            this.okButton.TextAlign = (ContentAlignment)resourceManager.GetObject("okButton.TextAlign");
-            this.okButton.Visible = (bool)resourceManager.GetObject("okButton.Visible");
-            this.okButton.Click += new EventHandler(this.okButton_Click);
-            this.applyButton.AccessibleDescription = resourceManager.GetString("applyButton.AccessibleDescription");
-            this.applyButton.AccessibleName = resourceManager.GetString("applyButton.AccessibleName");
-            this.applyButton.Anchor = (AnchorStyles)resourceManager.GetObject("applyButton.Anchor");
-            this.applyButton.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("applyButton.BackgroundImage");
-            this.applyButton.Dock = (DockStyle)resourceManager.GetObject("applyButton.Dock");
-            this.applyButton.Enabled = (bool)resourceManager.GetObject("applyButton.Enabled");
-            this.applyButton.FlatStyle = (FlatStyle)resourceManager.GetObject("applyButton.FlatStyle");
-            this.applyButton.Font = (Font)resourceManager.GetObject("applyButton.Font");
-            this.applyButton.Image = (System.Drawing.Image)resourceManager.GetObject("applyButton.Image");
-            this.applyButton.ImageAlign = (ContentAlignment)resourceManager.GetObject("applyButton.ImageAlign");
-            this.applyButton.ImageIndex = (int)resourceManager.GetObject("applyButton.ImageIndex");
-            this.applyButton.ImeMode = (ImeMode)resourceManager.GetObject("applyButton.ImeMode");
-            this.applyButton.Location = (Point)resourceManager.GetObject("applyButton.Location");
-            this.applyButton.Name = "applyButton";
-            this.applyButton.RightToLeft = (RightToLeft)resourceManager.GetObject("applyButton.RightToLeft");
-            this.applyButton.Size = (Size)resourceManager.GetObject("applyButton.Size");
-            this.applyButton.TabIndex = (int)resourceManager.GetObject("applyButton.TabIndex");
-            this.applyButton.Text = resourceManager.GetString("applyButton.Text");
-            this.applyButton.TextAlign = (ContentAlignment)resourceManager.GetObject("applyButton.TextAlign");
-            this.applyButton.Visible = (bool)resourceManager.GetObject("applyButton.Visible");
-            this.applyButton.Click += new EventHandler(this.applyButton_Click);
-            this.cancelButton.AccessibleDescription = resourceManager.GetString("cancelButton.AccessibleDescription");
-            this.cancelButton.AccessibleName = resourceManager.GetString("cancelButton.AccessibleName");
-            this.cancelButton.Anchor = (AnchorStyles)resourceManager.GetObject("cancelButton.Anchor");
-            this.cancelButton.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("cancelButton.BackgroundImage");
-            this.cancelButton.DialogResult = DialogResult.Cancel;
-            this.cancelButton.Dock = (DockStyle)resourceManager.GetObject("cancelButton.Dock");
-            this.cancelButton.Enabled = (bool)resourceManager.GetObject("cancelButton.Enabled");
-            this.cancelButton.FlatStyle = (FlatStyle)resourceManager.GetObject("cancelButton.FlatStyle");
-            this.cancelButton.Font = (Font)resourceManager.GetObject("cancelButton.Font");
-            this.cancelButton.Image = (System.Drawing.Image)resourceManager.GetObject("cancelButton.Image");
-            this.cancelButton.ImageAlign = (ContentAlignment)resourceManager.GetObject("cancelButton.ImageAlign");
-            this.cancelButton.ImageIndex = (int)resourceManager.GetObject("cancelButton.ImageIndex");
-            this.cancelButton.ImeMode = (ImeMode)resourceManager.GetObject("cancelButton.ImeMode");
-            this.cancelButton.Location = (Point)resourceManager.GetObject("cancelButton.Location");
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.RightToLeft = (RightToLeft)resourceManager.GetObject("cancelButton.RightToLeft");
-            this.cancelButton.Size = (Size)resourceManager.GetObject("cancelButton.Size");
-            this.cancelButton.TabIndex = (int)resourceManager.GetObject("cancelButton.TabIndex");
-            this.cancelButton.Text = resourceManager.GetString("cancelButton.Text");
-            this.cancelButton.TextAlign = (ContentAlignment)resourceManager.GetObject("cancelButton.TextAlign");
-            this.cancelButton.Visible = (bool)resourceManager.GetObject("cancelButton.Visible");
-            this.cancelButton.Click += new EventHandler(this.cancelButton_Click);
-            this.helpButton.AccessibleDescription = resourceManager.GetString("helpButton.AccessibleDescription");
-            this.helpButton.AccessibleName = resourceManager.GetString("helpButton.AccessibleName");
-            this.helpButton.Anchor = (AnchorStyles)resourceManager.GetObject("helpButton.Anchor");
-            this.helpButton.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("helpButton.BackgroundImage");
-            this.helpButton.Dock = (DockStyle)resourceManager.GetObject("helpButton.Dock");
-            this.helpButton.Enabled = (bool)resourceManager.GetObject("helpButton.Enabled");
-            this.helpButton.FlatStyle = (FlatStyle)resourceManager.GetObject("helpButton.FlatStyle");
-            this.helpButton.Font = (Font)resourceManager.GetObject("helpButton.Font");
-            this.helpButton.Image = (System.Drawing.Image)resourceManager.GetObject("helpButton.Image");
-            this.helpButton.ImageAlign = (ContentAlignment)resourceManager.GetObject("helpButton.ImageAlign");
-            this.helpButton.ImageIndex = (int)resourceManager.GetObject("helpButton.ImageIndex");
-            this.helpButton.ImeMode = (ImeMode)resourceManager.GetObject("helpButton.ImeMode");
-            this.helpButton.Location = (Point)resourceManager.GetObject("helpButton.Location");
-            this.helpButton.Name = "helpButton";
-            this.helpButton.RightToLeft = (RightToLeft)resourceManager.GetObject("helpButton.RightToLeft");
-            this.helpButton.Size = (Size)resourceManager.GetObject("helpButton.Size");
-            this.helpButton.TabIndex = (int)resourceManager.GetObject("helpButton.TabIndex");
-            this.helpButton.Text = resourceManager.GetString("helpButton.Text");
-            this.helpButton.TextAlign = (ContentAlignment)resourceManager.GetObject("helpButton.TextAlign");
-            this.helpButton.Visible = (bool)resourceManager.GetObject("helpButton.Visible");
-            this.helpButton.Click += new EventHandler(this.helpButton_Click);
-            this.quickStartLink.AccessibleDescription = resourceManager.GetString("quickStartLink.AccessibleDescription");
-            this.quickStartLink.AccessibleName = resourceManager.GetString("quickStartLink.AccessibleName");
-            this.quickStartLink.Anchor = (AnchorStyles)resourceManager.GetObject("quickStartLink.Anchor");
-            this.quickStartLink.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("quickStartLink.BackgroundImage");
-            this.quickStartLink.Dock = (DockStyle)resourceManager.GetObject("quickStartLink.Dock");
-            this.quickStartLink.Enabled = (bool)resourceManager.GetObject("quickStartLink.Enabled");
-            this.quickStartLink.Font = (Font)resourceManager.GetObject("quickStartLink.Font");
-            this.quickStartLink.ImeMode = (ImeMode)resourceManager.GetObject("quickStartLink.ImeMode");
-            this.quickStartLink.Location = (Point)resourceManager.GetObject("quickStartLink.Location");
-            this.quickStartLink.Name = "quickStartLink";
-            this.quickStartLink.RightToLeft = (RightToLeft)resourceManager.GetObject("quickStartLink.RightToLeft");
-            this.quickStartLink.Size = (Size)resourceManager.GetObject("quickStartLink.Size");
-            this.quickStartLink.TabIndex = (int)resourceManager.GetObject("quickStartLink.TabIndex");
-            this.quickStartLink.Text = resourceManager.GetString("quickStartLink.Text");
-            this.quickStartLink.Visible = (bool)resourceManager.GetObject("quickStartLink.Visible");
-            base.AccessibleDescription = resourceManager.GetString("$this.AccessibleDescription");
-            base.AccessibleName = resourceManager.GetString("$this.AccessibleName");
-            this.AutoScaleBaseSize = (Size)resourceManager.GetObject("$this.AutoScaleBaseSize");
-            this.AutoScroll = (bool)resourceManager.GetObject("$this.AutoScroll");
-            base.AutoScrollMargin = (Size)resourceManager.GetObject("$this.AutoScrollMargin");
-            base.AutoScrollMinSize = (Size)resourceManager.GetObject("$this.AutoScrollMinSize");
-            this.BackgroundImage = (System.Drawing.Image)resourceManager.GetObject("$this.BackgroundImage");
-            base.ClientSize = (Size)resourceManager.GetObject("$this.ClientSize");
-            base.Controls.Add(this.quickStartLink);
-            base.Controls.Add(this.tabControl);
-            base.Controls.Add(this.helpButton);
-            base.Controls.Add(this.cancelButton);
-            base.Controls.Add(this.okButton);
-            base.Controls.Add(this.applyButton);
-            base.Enabled = (bool)resourceManager.GetObject("$this.Enabled");
-            this.Font = (Font)resourceManager.GetObject("$this.Font");
-            base.Icon = (Icon)resourceManager.GetObject("$this.Icon");
-            base.ImeMode = (ImeMode)resourceManager.GetObject("$this.ImeMode");
-            base.Location = (Point)resourceManager.GetObject("$this.Location");
-            this.MaximumSize = (Size)resourceManager.GetObject("$this.MaximumSize");
-            base.Menu = this.mainMenu;
-            base.MinimizeBox = false;
-            this.MinimumSize = (Size)resourceManager.GetObject("$this.MinimumSize");
-            base.Name = "MainForm";
-            this.RightToLeft = (RightToLeft)resourceManager.GetObject("$this.RightToLeft");
-            base.ShowInTaskbar = false;
-            base.SizeGripStyle = SizeGripStyle.Hide;
-            base.StartPosition = (FormStartPosition)resourceManager.GetObject("$this.StartPosition");
-            this.Text = resourceManager.GetString("$this.Text");
-            base.Resize += new EventHandler(this.MainForm_Resize);
-            this.tabControl.ResumeLayout(false);
-            this.customizePage.ResumeLayout(false);
-            this.custPageRightPanel.ResumeLayout(false);
-            this.custPageRightBottomPropPanel.ResumeLayout(false);
-            this.custPagePropertyPanel.ResumeLayout(false);
-            this.custPageMiscControlPanel.ResumeLayout(false);
-            this.custPageRightTopPanel.ResumeLayout(false);
-            this.custPageLeftPanel.ResumeLayout(false);
-            this.custPageLeftBottomPanel.ResumeLayout(false);
-            this.custPageLeftTopPanel.ResumeLayout(false);
-            this.transferPage.ResumeLayout(false);
-            this.transferPageRightPanel.ResumeLayout(false);
-            this.transferPageRightTopPanel.ResumeLayout(false);
-            this.transferPageLeftPanel.ResumeLayout(false);
-            this.transferPageLeftTopPanel.ResumeLayout(false);
-            base.ResumeLayout(false);
-        }
-
         public static void InitMRUDropDownList(SeparatorComboBox combo, bool showNewCmd, bool showSaveAsCmd, ArrayList mrulist, bool allMenus, bool newFile)
         {
             System.Data.DataTable dataTable = new System.Data.DataTable();
@@ -2307,24 +1462,24 @@ namespace Autodesk.AutoCAD.Customization
                 }
                 Workspace item = null;
                 int num = -1;
-                if (Document.EnterpriseCUIFile != null)
+                if (Autodesk.AutoCAD.Customization.Document.EnterpriseCUIFile != null)
                 {
-                    num = Document.EnterpriseCUIFile.Workspaces.IndexOfWorkspaceName(systemVariable);
+                    num = Autodesk.AutoCAD.Customization.Document.EnterpriseCUIFile.Workspaces.IndexOfWorkspaceName(systemVariable);
                 }
                 if (num <= -1)
                 {
-                    if (Document.MainCuiFile != null)
+                    if (Autodesk.AutoCAD.Customization.Document.MainCuiFile != null)
                     {
-                        num = Document.MainCuiFile.Workspaces.IndexOfWorkspaceName(systemVariable);
+                        num = Autodesk.AutoCAD.Customization.Document.MainCuiFile.Workspaces.IndexOfWorkspaceName(systemVariable);
                     }
                     if (num > -1)
                     {
-                        item = Document.MainCuiFile.Workspaces[num];
+                        item = Autodesk.AutoCAD.Customization.Document.MainCuiFile.Workspaces[num];
                     }
                 }
                 else
                 {
-                    item = Document.EnterpriseCUIFile.Workspaces[num];
+                    item = Autodesk.AutoCAD.Customization.Document.EnterpriseCUIFile.Workspaces[num];
                 }
                 if (item == null)
                 {
@@ -2351,17 +1506,17 @@ namespace Autodesk.AutoCAD.Customization
             this.ResizeHandler();
         }
 
-        public Document NewTransferDocument(bool leftPanel)
+        public Autodesk.AutoCAD.Customization.Document NewTransferDocument(bool leftPanel)
         {
             if (!leftPanel)
             {
-                Document document = this.rightTransferTreeView.Document;
+                Autodesk.AutoCAD.Customization.Document document = this.rightTransferTreeView.Document;
             }
             else
             {
-                Document document1 = this.leftTransferTreeView.Document;
+                Autodesk.AutoCAD.Customization.Document document1 = this.leftTransferTreeView.Document;
             }
-            Document document2 = new Document();
+            Autodesk.AutoCAD.Customization.Document document2 = new Autodesk.AutoCAD.Customization.Document();
             document2.CUIFile.EnsureDefaultDrawing();
             if (!leftPanel)
             {
@@ -2377,7 +1532,7 @@ namespace Autodesk.AutoCAD.Customization
         private void okButton_Click(object sender, EventArgs e)
         {
             bool flag = false;
-            foreach (Document document in Document.Documents)
+            foreach (Autodesk.AutoCAD.Customization.Document document in Autodesk.AutoCAD.Customization.Document.Documents)
             {
                 if (!document.IsModified)
                 {
@@ -2385,7 +1540,7 @@ namespace Autodesk.AutoCAD.Customization
                 }
                 if (!document.CUIFile.ReadOnly)
                 {
-                    if (document == Document.MainCuiDoc || document == Document.EnterpriseCUIDoc || Document.IsPartialDoc(document))
+                    if (document == Autodesk.AutoCAD.Customization.Document.MainCuiDoc || document == Autodesk.AutoCAD.Customization.Document.EnterpriseCUIDoc || Autodesk.AutoCAD.Customization.Document.IsPartialDoc(document))
                     {
                         flag = true;
                     }
@@ -2440,14 +1595,14 @@ namespace Autodesk.AutoCAD.Customization
                     }
                 }
             }
-            Document.CloseAll();
-            Document.DocumentOpened -= new EventHandler(this.Document_DocumentOpened);
+            Autodesk.AutoCAD.Customization.Document.CloseAll();
+            Autodesk.AutoCAD.Customization.Document.DocumentOpened -= new EventHandler(this.Document_DocumentOpened);
             TransferTreeView.StoreMRUToRegistry();
-            this.custPageCmdListCtrl.StoreToRegistry();
-            this.shortcutsGroup.StoreToRegistry();
-            this.UninitializeButtonControlImages();
-            MainForm.mPaletteConfig = false;
-            Utils.EnableToolPaletteDragDrop(false);
+            //this.custPageCmdListCtrl.StoreToRegistry();
+            //this.shortcutsGroup.StoreToRegistry();
+            //this.UninitializeButtonControlImages();
+            //MainForm.mPaletteConfig = false;
+            //Utils.EnableToolPaletteDragDrop(false);
             base.OnClosing(e);
         }
 
@@ -2462,57 +1617,57 @@ namespace Autodesk.AutoCAD.Customization
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
-            Document.CloseAll();
-            MainForm.resetWSCURRENT();
-            Document.DocumentOpened += new EventHandler(this.Document_DocumentOpened);
-            this.tabControl.SelectedIndex = -1;
-            if (this.mDlgMode == MainForm.DlgMode.CUI || this.mDlgMode == MainForm.DlgMode.TransferOnly)
-            {
-                this.tabControl.SelectedIndex = 0;
-            }
-            else
-            {
-                this.tabControl.SelectedIndex = 1;
-            }
-            if (this.custPageCmdListCtrl.Entries == null || this.custPageCmdListCtrl.Entries.Count == 0)
-            {
-                this.custPageCmdListCtrl.EnterEmptyMode();
-            }
-            this.custPageMiscControlPanel.Hide();
-            this.custPageRightSplitter.Hide();
-            this.custPageRightPanelPropSplitter.Hide();
-            this.mImpPageSplitterRatio = (float)this.transferPageSplitter.SplitPosition / (float)base.Width;
-            this.mCustPageSplitterRatio = (float)this.custPageSplitter.SplitPosition / (float)base.Width;
-            this.mCustPageLeftVerSplitterRatio = (float)this.custPageLeftSplitter.SplitPosition / (float)this.custPageLeftPanel.Height;
-            this.mCustPageRightVerSplitterRatio = (float)this.custPageRightSplitter.SplitPosition / (float)this.custPageRightPanel.Height;
-            this.custPagePropertyControl.EventHandler += new PropertyControl.EventDelegate(this.CustPagePropertyControl_EventHandler);
-            this.custPageRightTopPanel.Hide();
-            TransferTreeView.LoadMRUFromRegistry();
-            if (MainForm.mInitialToolbarMenuGroup != null && MainForm.mInitialToolbarUID != null)
-            {
-                //this.customizeTreeView.SelectInitialToolbarNode(MainForm.mInitialToolbarMenuGroup, MainForm.mInitialToolbarUID);
-            }
-            this.custPageLeftTopPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageLeftTopPanel_Collapsed);
-            this.custPageLeftBottomPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageLeftBottomPanel_Collapsed);
-            if (MainForm.mPaletteConfig)
-            {
-                this.custPageLeftTopPanel.Collapse();
-            }
-            this.custPageRightTopPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageRightTopPanel_Collapsed);
-            this.custPageMiscControlPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageMiscControlPanel_Collapsed);
-            this.custPagePropertyPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPagePropertyPanel_Collapsed);
-            this.customizeTreeView.TreeViewControl.ItemSelected += new TreeViewControl.TVCItemSelectedArgsEventHandler(this.CustPage_TreeViewControl_ItemSelected);
-            Utils.EnableToolPaletteDragDrop(true);
+            //base.OnLoad(e);
+            //Autodesk.AutoCAD.Customization.Document.CloseAll();
+            //MainForm.resetWSCURRENT();
+            //Autodesk.AutoCAD.Customization.Document.DocumentOpened += new EventHandler(this.Document_DocumentOpened);
+            ////this.tabControl.SelectedIndex = -1;
+            //if (this.mDlgMode == MainForm.DlgMode.CUI || this.mDlgMode == MainForm.DlgMode.TransferOnly)
+            //{
+            //    this.tabControl.SelectedIndex = 0;
+            //}
+            //else
+            //{
+            //    this.tabControl.SelectedIndex = 1;
+            //}
+            //if (this.custPageCmdListCtrl.Entries == null || this.custPageCmdListCtrl.Entries.Count == 0)
+            //{
+            //    this.custPageCmdListCtrl.EnterEmptyMode();
+            //}
+            //this.custPageMiscControlPanel.Hide();
+            //this.custPageRightSplitter.Hide();
+            //this.custPageRightPanelPropSplitter.Hide();
+            //this.mImpPageSplitterRatio = (float)this.transferPageSplitter.SplitPosition / (float)base.Width;
+            //this.mCustPageSplitterRatio = (float)this.custPageSplitter.SplitPosition / (float)base.Width;
+            //this.mCustPageLeftVerSplitterRatio = (float)this.custPageLeftSplitter.SplitPosition / (float)this.custPageLeftPanel.Height;
+            //this.mCustPageRightVerSplitterRatio = (float)this.custPageRightSplitter.SplitPosition / (float)this.custPageRightPanel.Height;
+            //this.custPagePropertyControl.EventHandler += new PropertyControl.EventDelegate(this.CustPagePropertyControl_EventHandler);
+            //this.custPageRightTopPanel.Hide();
+            //TransferTreeView.LoadMRUFromRegistry();
+            //if (MainForm.mInitialToolbarMenuGroup != null && MainForm.mInitialToolbarUID != null)
+            //{
+            //    //this.customizeTreeView.SelectInitialToolbarNode(MainForm.mInitialToolbarMenuGroup, MainForm.mInitialToolbarUID);
+            //}
+            //this.custPageLeftTopPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageLeftTopPanel_Collapsed);
+            //this.custPageLeftBottomPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageLeftBottomPanel_Collapsed);
+            //if (MainForm.mPaletteConfig)
+            //{
+            //    this.custPageLeftTopPanel.Collapse();
+            //}
+            //this.custPageRightTopPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageRightTopPanel_Collapsed);
+            //this.custPageMiscControlPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPageMiscControlPanel_Collapsed);
+            //this.custPagePropertyPanel.Collapsed += new CollapsiblePanel.ExpandedEventHandler(this.custPagePropertyPanel_Collapsed);
+            //this.customizeTreeView.TreeViewControl.ItemSelected += new TreeViewControl.TVCItemSelectedArgsEventHandler(this.CustPage_TreeViewControl_ItemSelected);
+            //Utils.EnableToolPaletteDragDrop(true);
         }
 
         protected override void OnMove(EventArgs e)
         {
             base.OnMove(e);
-            this.toolbarPreview.displayToolbar(false);
+            //this.toolbarPreview.displayToolbar(false);
         }
 
-        public void PopulateCustomizeTabCommandList(Document doc)
+        public void PopulateCustomizeTabCommandList(Autodesk.AutoCAD.Customization.Document doc)
         {
             CommandListInterface.PopulateFromCUI(this.custPageCmdListCtrl, doc.CUIFile);
         }
@@ -2565,12 +1720,12 @@ namespace Autodesk.AutoCAD.Customization
             }
         }
 
-        public void PopulateTransferLeftPanelFromCUI(Document doc)
+        public void PopulateTransferLeftPanelFromCUI(Autodesk.AutoCAD.Customization.Document doc)
         {
             this.leftTransferTreeView.TreeViewControl.PopulateAsStandAloneCUIFile(doc.CUIFile);
         }
 
-        public void PopulateTransferRightPanelFromCUI(Document doc)
+        public void PopulateTransferRightPanelFromCUI(Autodesk.AutoCAD.Customization.Document doc)
         {
             this.rightTransferTreeView.TreeViewControl.PopulateAsStandAloneCUIFile(doc.CUIFile);
         }
@@ -2693,7 +1848,7 @@ namespace Autodesk.AutoCAD.Customization
 
         private void requestImagesFromAllFlyouts(bool useSmallImage)
         {
-            CustomizationSection[] mainCuiFile = new CustomizationSection[] { Document.MainCuiFile, Document.EnterpriseCUIFile };
+            CustomizationSection[] mainCuiFile = new CustomizationSection[] { Autodesk.AutoCAD.Customization.Document.MainCuiFile, Autodesk.AutoCAD.Customization.Document.EnterpriseCUIFile };
             for (int i = 0; i < (int)mainCuiFile.Length; i++)
             {
                 CustomizationSection customizationSection = mainCuiFile[i];
@@ -2710,7 +1865,7 @@ namespace Autodesk.AutoCAD.Customization
 
         private void requestImagesFromAllMacros(bool useSmallImage)
         {
-            CustomizationSection[] mainCuiFile = new CustomizationSection[] { Document.MainCuiFile, Document.EnterpriseCUIFile };
+            CustomizationSection[] mainCuiFile = new CustomizationSection[] { Autodesk.AutoCAD.Customization.Document.MainCuiFile, Autodesk.AutoCAD.Customization.Document.EnterpriseCUIFile };
             for (int i = 0; i < (int)mainCuiFile.Length; i++)
             {
                 CustomizationSection customizationSection = mainCuiFile[i];
@@ -2815,7 +1970,7 @@ namespace Autodesk.AutoCAD.Customization
             }
         }
 
-        public static bool SaveDocument(Document doc, bool confirm)
+        public static bool SaveDocument(Autodesk.AutoCAD.Customization.Document doc, bool confirm)
         {
             if (doc == null)
             {
@@ -2847,7 +2002,7 @@ namespace Autodesk.AutoCAD.Customization
                 {
                     return MainForm.SaveDocumentAs(doc);
                 }
-                if (doc.Save() && (doc == Document.MainCuiDoc || doc == Document.EnterpriseCUIDoc || Document.IsPartialDoc(doc)))
+                if (doc.Save() && (doc == Autodesk.AutoCAD.Customization.Document.MainCuiDoc || doc == Autodesk.AutoCAD.Customization.Document.EnterpriseCUIDoc || Autodesk.AutoCAD.Customization.Document.IsPartialDoc(doc)))
                 {
                     MainForm.mainTab.forceMenuReload();
                 }
@@ -2855,7 +2010,7 @@ namespace Autodesk.AutoCAD.Customization
             return true;
         }
 
-        public static bool SaveDocumentAs(Document doc)
+        public static bool SaveDocumentAs(Autodesk.AutoCAD.Customization.Document doc)
         {
             bool flag;
             string str = LocalResources.GetString("SaveFileDialog.FilterString");
@@ -2936,11 +2091,11 @@ namespace Autodesk.AutoCAD.Customization
                         CustomizationSection currentCUIFile = customizeTreeView.TreeViewControl.CurrentCUIFile;
                         if (currentCUIFile != null)
                         {
-                            if (currentCUIFile == Document.MainCuiFile)
+                            if (currentCUIFile == Autodesk.AutoCAD.Customization.Document.MainCuiFile)
                             {
                                 str1 = LocalResources.GetString("DLG_Main_CUI");
                             }
-                            else if (currentCUIFile == Document.EnterpriseCUIFile)
+                            else if (currentCUIFile == Autodesk.AutoCAD.Customization.Document.EnterpriseCUIFile)
                             {
                                 str1 = LocalResources.GetString("DLG_Enterprise_CUI");
                             }
@@ -2949,14 +2104,14 @@ namespace Autodesk.AutoCAD.Customization
                 }
                 else
                 {
-                    Document document = parent.Document;
+                    Autodesk.AutoCAD.Customization.Document document = parent.Document;
                     if (document != null)
                     {
-                        if (document == Document.MainCuiDoc)
+                        if (document == Autodesk.AutoCAD.Customization.Document.MainCuiDoc)
                         {
                             str1 = LocalResources.GetString("DLG_Main_CUI");
                         }
-                        else if (document == Document.EnterpriseCUIDoc)
+                        else if (document == Autodesk.AutoCAD.Customization.Document.EnterpriseCUIDoc)
                         {
                             str1 = LocalResources.GetString("DLG_Enterprise_CUI");
                         }
@@ -3000,7 +2155,7 @@ namespace Autodesk.AutoCAD.Customization
                 else if (ShortcutsGroupAction.New == ea.Action)
                 {
                     CustomizationSection cui = ea.Cui;
-                   // CUIKeyboardCommonNode.CreateTemporaryOverride(cui, this.customizeTreeView.TreeViewControl.FindTemporaryOverrideKeysNode());
+                    // CUIKeyboardCommonNode.CreateTemporaryOverride(cui, this.customizeTreeView.TreeViewControl.FindTemporaryOverrideKeysNode());
                 }
             }
             else
@@ -3036,13 +2191,13 @@ namespace Autodesk.AutoCAD.Customization
             return this.shouldRepopulateTransferTab(this.rightTransferTreeView.Document);
         }
 
-        private bool shouldRepopulateTransferTab(Document doc)
+        private bool shouldRepopulateTransferTab(Autodesk.AutoCAD.Customization.Document doc)
         {
             if (doc == null || doc.CUIFile == null || doc.CUIFile.MenuGroupName == null)
             {
                 return false;
             }
-            CustomizationSection custTabCUIFileFor = Document.GetCustTabCUIFileFor(doc.CUIFile.MenuGroupName);
+            CustomizationSection custTabCUIFileFor = Autodesk.AutoCAD.Customization.Document.GetCustTabCUIFileFor(doc.CUIFile.MenuGroupName);
             if (custTabCUIFileFor != doc.CUIFile)
             {
                 return false;
@@ -3149,12 +2304,12 @@ namespace Autodesk.AutoCAD.Customization
         private static bool somethingIsDirty()
         {
             bool flag;
-            IEnumerator enumerator = Document.Documents.GetEnumerator();
+            IEnumerator enumerator = Autodesk.AutoCAD.Customization.Document.Documents.GetEnumerator();
             try
             {
                 while (enumerator.MoveNext())
                 {
-                    if (!((Document)enumerator.Current).IsModified)
+                    if (!((Autodesk.AutoCAD.Customization.Document)enumerator.Current).IsModified)
                     {
                         continue;
                     }
@@ -3235,7 +2390,7 @@ namespace Autodesk.AutoCAD.Customization
                     }
                     else if (this.mNeedToRepopulate)
                     {
-                       // this.rightTransferTreeView.OnRepopulate();
+                        // this.rightTransferTreeView.OnRepopulate();
                     }
                 }
                 else
@@ -3362,6 +2517,17 @@ namespace Autodesk.AutoCAD.Customization
         {
             CustomizeTab,
             TransferTab
+        }
+
+        private void collapsiblePanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("Collap");
+        }
+
+        private void collapsiblePanel1_Collapsed(object sender, EventArgs args)
+        {
+            this.handleSplitter(this.custPageLeftSplitter, this.collapsiblePanel1.Expanded);
+            this.toggleBottomPanelState(this.custPageLeftTopPanel, this.collapsiblePanel1);
         }
     }
 }
