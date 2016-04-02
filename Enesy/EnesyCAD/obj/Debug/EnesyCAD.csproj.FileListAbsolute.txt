@@ -46,6 +46,7 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.pdb
 F:\Quan_A2Z\GitHub\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.UCSuite.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.UCSuite.resources
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\AcDbMgd.dll
-D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\AcMgd.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.ClipboardManager.ClipboardPalette.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.CivilWorks.RebarArrangment.Dialogs.GetDimensions.resources
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\acmgdinternal.dll
+D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csprojResolveAssemblyReference.cache

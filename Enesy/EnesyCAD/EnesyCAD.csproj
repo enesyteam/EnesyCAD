@@ -32,11 +32,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AcCui">
+      <HintPath>..\..\lib\2007\AcCui.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcCustomize">
+      <HintPath>..\..\lib\2007\AcCustomize.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="AcDbMgd">
       <HintPath>..\..\lib\2007\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="AcMgd">
       <HintPath>..\..\lib\2007\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgdinternal">
+      <HintPath>..\..\lib\2007\acmgdinternal.dll</HintPath>
+    </Reference>
+    <Reference Include="AcMgdShared">
+      <HintPath>..\..\lib\2007\AcMgdShared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMNUParser">
+      <HintPath>..\..\lib\2007\AcMNUParser.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Enesy">
       <HintPath>..\Enesy\bin\Debug\Enesy.dll</HintPath>
@@ -62,6 +83,9 @@
     <Compile Include="DatabaseServices\CmdRecord.cs" />
     <Compile Include="CommandsHelp.cs" />
     <Compile Include="ApplicationServices\ECRegistry.cs" />
+    <Compile Include="DatabaseServices\Figure\CompositeFigure.cs" />
+    <Compile Include="DatabaseServices\Figure\FigureBase.cs" />
+    <Compile Include="DatabaseServices\Figure\IFigure.cs" />
     <Compile Include="DatabaseServices\ULFLoader.cs" />
     <Compile Include="DatabaseServices\Database.cs" />
     <Compile Include="EntityProperties.cs" />
@@ -69,9 +93,20 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DatabaseServices\LispFunction.cs" />
+    <Compile Include="Forms\Testing\LocalResources.cs" />
+    <Compile Include="Forms\Testing\GlobalResources.cs" />
+    <Compile Include="Forms\Testing\DefaultGroupEditor.cs" />
+    <Compile Include="Forms\Testing\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Testing\Palette.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Testing\Toolbar.cs" />
     <Compile Include="Geometry\RectangleEx.cs" />
     <Compile Include="Helper\Point2d.cs" />
     <Compile Include="Helper\Point3d.cs" />
+    <Compile Include="Helper\PromptHelper.cs" />
     <Compile Include="Helper\TextBound.cs" />
     <Compile Include="IO\LspImporter.cs" />
     <Compile Include="IO\LspReader.cs" />
@@ -109,6 +144,16 @@
     </Compile>
     <Compile Include="Runtime\CommandMethod.cs" />
     <Compile Include="ApplicationServices\EneApplication.cs" />
+    <Compile Include="Utilities\CivilWorks\RebarArrangment\Commands.cs" />
+    <Compile Include="Utilities\CivilWorks\RebarArrangment\Dialogs\GetDimensions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\CivilWorks\RebarArrangment\Dialogs\GetDimensions.Designer.cs">
+      <DependentUpon>GetDimensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\CivilWorks\RebarArrangment\IRebarSection.cs" />
+    <Compile Include="Utilities\CivilWorks\RebarArrangment\RectRebarSection.cs" />
+    <Compile Include="Utilities\CivilWorks\RebarArrangment\Shapes.cs" />
     <Compile Include="Utilities\ClipboardManager\Clipboard.cs" />
     <Compile Include="Utilities\ClipboardManager\ClipboardPalette.cs">
       <SubType>UserControl</SubType>
@@ -163,12 +208,18 @@
     <EmbeddedResource Include="CommandManager\UCSuite.resx">
       <DependentUpon>UCSuite.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Testing\Palette.resx">
+      <DependentUpon>Palette.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PlotServices\PaletteControl.resx">
       <DependentUpon>PaletteControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\CivilWorks\RebarArrangment\Dialogs\GetDimensions.resx">
+      <DependentUpon>GetDimensions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\ClipboardManager\ClipboardPalette.resx">
       <DependentUpon>ClipboardPalette.cs</DependentUpon>
@@ -191,7 +242,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationServices\Readme.txt" />
+    <Content Include="Utilities\CivilWorks\RebarArrangment\README.txt" />
     <None Include="Resources\ClearClipBoard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\CivilWorks\RebarArrangment\Build\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

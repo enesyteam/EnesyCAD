@@ -64,6 +64,10 @@ namespace Enesy.EnesyCAD.Helper
                 }
             }
         }
+        public static Point3d Offset(Point3d point, double deltaX, double deltaY, double deltaZ)
+        {
+            return new Point3d(point.X + deltaX, point.Y + deltaY, point.Z + deltaZ);
+        }
         public static Point3d HigherPoint(Point3d p1, Point3d p2)
         {
             return p1.Y >= p2.Y ? p1 : p2;
