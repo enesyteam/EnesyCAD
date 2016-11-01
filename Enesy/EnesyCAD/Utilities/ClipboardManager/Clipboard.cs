@@ -37,7 +37,7 @@ public class ClipBoard : IExtensionApplication
             {
                 _ps = new PaletteSet("Clipboard", new System.Guid("ED8CDB2B-3281-4177-99BE-E1A46C3841AD"));
                 _ps.Text = "Clipboard";
-                _ps.DockEnabled = DockSides.Left;// +DockSides.Right + DockSides.None;
+                _ps.DockEnabled = DockSides.Left;
                 _ps.MinimumSize = new System.Drawing.Size(200, 300);
                 _ps.Size = new System.Drawing.Size(300, 500);
                 _ps.Add("Clipboard", ClipboardPalette);

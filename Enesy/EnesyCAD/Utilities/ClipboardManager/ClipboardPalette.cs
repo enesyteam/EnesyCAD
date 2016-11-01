@@ -8,6 +8,7 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Windows;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Enesy.Forms;
 
 namespace Enesy.EnesyCAD.Utilities.ClipboardManager
 {
@@ -36,63 +37,42 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
         public static extern long SendMessage(IntPtr HWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
         // Class constructor
-
+        public PictureBoxZoom ClipboardImage { get; set; }
         public ClipboardPalette()
         {
             InitializeComponent();
-
             // Register ourselves to handle clipboard modifications
-
             _nxtCbVwrHWnd = SetClipboardViewer(Handle);
+            ClipboardImage = new PictureBoxZoom(pictureBox);
+            ClipboardImage.OnZoomChange += UpdateZoomFactorLabel;
+            UpdateZoomFactorLabel();
+        }
+
+        private void UpdateZoomFactorLabel()
+        {
+            previewInfoText.Text = "Zoom: " + ClipboardImage.ZoomFactor;
         }
 
         private void AddDataToGrid()
         {
             DataObject currentClipboardData = Clipboard.GetDataObject() as DataObject;
-
             // If the clipboard contents are AutoCAD-related
-
-
             if (IsAutoCAD(currentClipboardData.GetFormats()))
             {
                 // Create a new row for our grid and add our clipboard
                 // data stored in the "tag"
-
-                DataGridViewRow newRow = new DataGridViewRow();
-                newRow.Tag = currentClipboardData;
-
-                // Increment our counter
-
-                _clipboardCounter += 1;
-
-                // Create and add a cell for the name, using our counter
-
-                DataGridViewTextBoxCell newNameCell = new DataGridViewTextBoxCell();
-                newNameCell.Value = "Clipboard " + _clipboardCounter;
-                newRow.Cells.Add(newNameCell);
-
-                // Get the current time and place that in another cell
-
-                DataGridViewTextBoxCell newTimeCell = new DataGridViewTextBoxCell();
-                newTimeCell.Value = DateTime.Now.ToLongTimeString();
-                newRow.Cells.Add(newTimeCell);
-
-                // Add our row to the data grid and select it
-
-                clipboardDataGridView.Rows.Add(newRow);
-                clipboardDataGridView.FirstDisplayedScrollingRowIndex = clipboardDataGridView.Rows.Count - 1;
-                newRow.Selected = true;
-
+                ListViewItem lvi = new ListViewItem("Clipboard " + _clipboardCounter); // { Tag = currentClipboardData };
+                lvi.Tag = currentClipboardData;
+                lvi.SubItems.Add(DateTime.Now.ToLongTimeString());
+                clbList.Items.Add(lvi);
+                clbList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                _clipboardCounter++;
             }
 
         }
-        // Move the selected item's data into the clipboard
-
         // Check whether the clipboard data was created by AutoCAD
-
         private bool IsAutoCAD(string[] Formats)
         {
-
             foreach (string item in Formats)
             {
                 if (item.Contains("AutoCAD") & !(item.Contains("MText") | item.Contains("DText")))
@@ -101,19 +81,15 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
                 }
             }
             return false;
-
         }
-
-
         private void PasteToClipboard()
         {
             // Use a variable to make sure we don't edit the
             // clipboard contents at the wrong time
-
             _internalHold = true;
             try
             {
-                Clipboard.SetDataObject(clipboardDataGridView.SelectedRows[0].Tag);
+                Clipboard.SetDataObject(clbList.SelectedItems[0].Tag);
             }
             catch
             {
@@ -121,7 +97,6 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
                 ed.WriteMessage("Unable to place entry onto the clipboard.");
             }
             _internalHold = false;
-
         }
 
         // Send a command to AutoCAD
@@ -130,101 +105,14 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
         private void SendAutoCADCommand(string cmd)
         {
             AcApp.DocumentManager.MdiActiveDocument.SendStringToExecute(cmd, true, false, true);
-
-        }
-
-        // Our context-menu command handlers
-
-
-        private void PasteToolStripButton_Click(object sender, EventArgs e)
-        {
-            // Swap the data from the selected item in the grid into the
-            // clipboard and use the internal AutoCAD command to paste it
-
-            if (clipboardDataGridView.SelectedRows.Count == 1)
-            {
-                PasteToClipboard();
-                SendAutoCADCommand("_pasteclip ");
-            }
-        }
-
-
-        private void PasteAsBlockToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Swap the data from the selected item in the grid into the
-            // clipboard and use the internal AutoCAD command to paste it
-            // as a block
-
-            if (clipboardDataGridView.SelectedRows.Count == 1)
-            {
-                PasteToClipboard();
-                SendAutoCADCommand("_pasteblock ");
-            }
-        }
-
-
-        private void PasteToOriginalCoordinatesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Swap the data from the selected item in the grid into the
-            // clipboard and use the internal AutoCAD command to paste it
-            // at the original location
-
-            if (clipboardDataGridView.SelectedRows.Count == 1)
-            {
-                PasteToClipboard();
-                SendAutoCADCommand("_pasteorig ");
-            }
-        }
-
-
-        private void RemoveAllToolStripButton_Click(object sender, EventArgs e)
-        {
-            // Remove all the items in the grid
-
-            clipboardDataGridView.Rows.Clear();
         }
 
 
         private void RenameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Rename the selected row by editing the name cell
-
-            if (clipboardDataGridView.SelectedRows.Count == 1)
+            if (clbList.SelectedItems.Count == 1)
             {
-                clipboardDataGridView.BeginEdit(true);
-            }
-        }
-
-
-        private void RemoveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Remove the selected grid item
-
-            if (clipboardDataGridView.SelectedRows.Count == 1)
-            {
-                clipboardDataGridView.Rows.Remove(clipboardDataGridView.SelectedRows[0]);
-            }
-        }
-
-        // Our grid view event handlers
-
-
-        private void ClipboardDataGridView_MouseDown(object sender, MouseEventArgs e)
-        {
-            // On right-click display the row as selected and show
-            // the context menu at the location of the cursor
-
-            if (e.Button == MouseButtons.Right)
-            {
-                DataGridView.HitTestInfo hti = clipboardDataGridView.HitTest(e.X, e.Y);
-
-                if (hti.Type == DataGridViewHitTestType.Cell)
-                {
-                    clipboardDataGridView.ClearSelection();
-                    clipboardDataGridView.Rows[hti.RowIndex].Selected = true;
-
-                    ContextMenuStrip.Show(clipboardDataGridView, e.Location);
-                }
+                clbList.SelectedItems[0].BeginEdit();
             }
         }
 
@@ -234,7 +122,6 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
         {
             switch (m.Msg)
             {
-
                 // The clipboard has changed
 
                 case  // ERROR: Case labels with binary operators are unsupported : Equality
@@ -265,37 +152,9 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
             base.WndProc(ref m);
         }
 
-        private void clipboardDataGridView_CellMouseDown_1(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                clipboardDataGridView.CurrentCell = clipboardDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            }
-        }
-
-        private void clipboardDataGridView_MouseDown_1(object sender, MouseEventArgs e)
-        {
-            // On right-click display the row as selected and show
-            // the context menu at the location of the cursor
-
-            if (e.Button == MouseButtons.Right)
-            {
-                DataGridView.HitTestInfo hti = clipboardDataGridView.HitTest(e.X, e.Y);
-
-                if (hti.Type == DataGridViewHitTestType.Cell)
-                {
-                    clipboardDataGridView.ClearSelection();
-                    clipboardDataGridView.Rows[hti.RowIndex].Selected = true;
-
-                    rightClickMenu.Show(clipboardDataGridView, e.Location);
-
-                }
-            }
-        }
-
         private void PasteAsBlockToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (clipboardDataGridView.SelectedRows.Count == 1)
+            if (clbList.SelectedItems.Count == 1)
             {
                 PasteToClipboard();
                 SendAutoCADCommand("_pasteblock ");
@@ -307,7 +166,7 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
             // Swap the data from the selected item in the grid into the
             // clipboard and use the internal AutoCAD command to paste it
 
-            if (clipboardDataGridView.SelectedRows.Count == 1)
+            if (clbList.SelectedItems.Count == 1)
             {
                 PasteToClipboard();
                 SendAutoCADCommand("_pasteclip ");
@@ -320,7 +179,7 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
             // clipboard and use the internal AutoCAD command to paste it
             // at the original location
 
-            if (clipboardDataGridView.SelectedRows.Count == 1)
+            if (clbList.SelectedItems.Count == 1)
             {
                 PasteToClipboard();
                 SendAutoCADCommand("_pasteorig ");
@@ -329,41 +188,54 @@ namespace Enesy.EnesyCAD.Utilities.ClipboardManager
 
         private void RenameToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // Rename the selected row by editing the name cell
-
-            if (clipboardDataGridView.SelectedRows.Count == 1)
+            if (clbList.SelectedItems.Count == 1)
             {
-                clipboardDataGridView.BeginEdit(true);
+                clbList.SelectedItems[0].BeginEdit();
             }
         }
 
         private void RemoveToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            clipboardDataGridView.Rows.Clear();
+            //clipboardDataGridView.Rows.Clear();
+            clbList.Items.Clear();
         }
 
-        private void clipboardDataGridView_SelectionChanged_1(object sender, EventArgs e)
+
+        private void RemoveAllToolStripButton_Click_1(object sender, EventArgs e)
         {
-            if (clipboardDataGridView.SelectedRows.Count > 0)
+            clbList.Items.Clear();
+        }
+
+        private void clbList_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+            if (e.Button == MouseButtons.Right)
             {
-                DataGridView selected = sender as DataGridView;
-                DataObject obj = selected.SelectedRows[0].Tag as DataObject;
+                if (clbList.FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    rightClickMenu.Show(Cursor.Position);
+                }
+            } 
+        }
+
+        private void clbList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView selected = sender as ListView;
+            if (selected.SelectedItems.Count == 1)
+            {
+                DataObject obj = selected.SelectedItems[0].Tag as DataObject;
                 if (obj.GetDataPresent("Bitmap"))
                 {
                     System.Drawing.Bitmap b = obj.GetData("Bitmap") as System.Drawing.Bitmap;
                     double ratio = b.Height / b.Width;
                     //Img.Height = _img.Width * ratio
-                    Split.SplitterDistance = (int)(Split.Height - (Img.Width * ratio));
-                    Img.Image = b;
+                    //Split.SplitterDistance = (int)(Split.Height - (Img.Width * ratio));
+                    pictureBox.Image = b;
+                    //previewInfoText.Text = "Preview " + selected.SelectedItems[0].Text +  " (Use MouseWheel to Zoom in and Zoom out.)";
+                    previewInfoText.Text = "Zoom: " + ClipboardImage.ZoomFactor;
                 }
             }
         }
-
-        private void RemoveAllToolStripButton_Click_1(object sender, EventArgs e)
-        {
-            clipboardDataGridView.Rows.Clear();
-        }
-
     }
 
     

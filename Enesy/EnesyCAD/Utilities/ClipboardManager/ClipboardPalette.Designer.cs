@@ -29,27 +29,60 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Panel scrollPanel;
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.RemoveAllToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.Split = new System.Windows.Forms.SplitContainer();
-            this.clipboardDataGridView = new System.Windows.Forms.DataGridView();
-            this.CbName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Img = new System.Windows.Forms.PictureBox();
+            this.clbList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.previewInfoText = new System.Windows.Forms.ToolStripLabel();
+            this.btnResetZoom = new System.Windows.Forms.ToolStripButton();
             this.rightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.PasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PasteAsBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PasteToOriginalCoordinatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RenameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            scrollPanel = new System.Windows.Forms.Panel();
+            scrollPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.Split.Panel1.SuspendLayout();
             this.Split.Panel2.SuspendLayout();
             this.Split.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clipboardDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Img)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.rightClickMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // scrollPanel
+            // 
+            scrollPanel.AutoScroll = true;
+            scrollPanel.BackColor = System.Drawing.SystemColors.Control;
+            scrollPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            scrollPanel.Controls.Add(this.pictureBox);
+            scrollPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            scrollPanel.Location = new System.Drawing.Point(0, 0);
+            scrollPanel.Margin = new System.Windows.Forms.Padding(4);
+            scrollPanel.Name = "scrollPanel";
+            scrollPanel.Size = new System.Drawing.Size(388, 253);
+            scrollPanel.TabIndex = 4;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(250, 150);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
             // 
             // toolStrip1
             // 
@@ -66,8 +99,8 @@
             this.RemoveAllToolStripButton.Image = global::Enesy.EnesyCAD.Properties.Resources.ClearClipBoard;
             this.RemoveAllToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RemoveAllToolStripButton.Name = "RemoveAllToolStripButton";
-            this.RemoveAllToolStripButton.Size = new System.Drawing.Size(105, 24);
-            this.RemoveAllToolStripButton.Text = "Remove All";
+            this.RemoveAllToolStripButton.Size = new System.Drawing.Size(63, 24);
+            this.RemoveAllToolStripButton.Text = "Clear";
             this.RemoveAllToolStripButton.Click += new System.EventHandler(this.RemoveAllToolStripButton_Click_1);
             // 
             // Split
@@ -80,52 +113,82 @@
             // 
             // Split.Panel1
             // 
-            this.Split.Panel1.Controls.Add(this.clipboardDataGridView);
+            this.Split.Panel1.Controls.Add(this.clbList);
             // 
             // Split.Panel2
             // 
-            this.Split.Panel2.Controls.Add(this.Img);
+            this.Split.Panel2.Controls.Add(this.splitContainer1);
             this.Split.Panel2MinSize = 100;
             this.Split.Size = new System.Drawing.Size(388, 536);
-            this.Split.SplitterDistance = 326;
+            this.Split.SplitterDistance = 250;
             this.Split.TabIndex = 3;
             // 
-            // clipboardDataGridView
+            // clbList
             // 
-            this.clipboardDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.clipboardDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.clipboardDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CbName,
-            this.Time});
-            this.clipboardDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clipboardDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.clipboardDataGridView.Name = "clipboardDataGridView";
-            this.clipboardDataGridView.RowTemplate.Height = 24;
-            this.clipboardDataGridView.Size = new System.Drawing.Size(388, 326);
-            this.clipboardDataGridView.TabIndex = 2;
-            this.clipboardDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clipboardDataGridView_CellMouseDown_1);
-            this.clipboardDataGridView.SelectionChanged += new System.EventHandler(this.clipboardDataGridView_SelectionChanged_1);
-            this.clipboardDataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.clipboardDataGridView_MouseDown_1);
+            this.clbList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.clbList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clbList.FullRowSelect = true;
+            this.clbList.LabelEdit = true;
+            this.clbList.Location = new System.Drawing.Point(0, 0);
+            this.clbList.Name = "clbList";
+            this.clbList.Size = new System.Drawing.Size(388, 250);
+            this.clbList.TabIndex = 3;
+            this.clbList.UseCompatibleStateImageBehavior = false;
+            this.clbList.View = System.Windows.Forms.View.Details;
+            this.clbList.SelectedIndexChanged += new System.EventHandler(this.clbList_SelectedIndexChanged);
+            this.clbList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.clbList_MouseDown);
             // 
-            // CbName
+            // columnHeader1
             // 
-            this.CbName.HeaderText = "Name";
-            this.CbName.Name = "CbName";
+            this.columnHeader1.Text = "Name";
             // 
-            // Time
+            // columnHeader2
             // 
-            this.Time.HeaderText = "Time";
-            this.Time.Name = "Time";
+            this.columnHeader2.Text = "Time";
             // 
-            // Img
+            // splitContainer1
             // 
-            this.Img.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Img.Location = new System.Drawing.Point(0, 0);
-            this.Img.Name = "Img";
-            this.Img.Size = new System.Drawing.Size(388, 206);
-            this.Img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Img.TabIndex = 3;
-            this.Img.TabStop = false;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.toolStrip2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(scrollPanel);
+            this.splitContainer1.Size = new System.Drawing.Size(388, 282);
+            this.splitContainer1.SplitterDistance = 25;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.previewInfoText,
+            this.btnResetZoom});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(388, 25);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // previewInfoText
+            // 
+            this.previewInfoText.Name = "previewInfoText";
+            this.previewInfoText.Size = new System.Drawing.Size(49, 22);
+            this.previewInfoText.Text = "Zoom";
+            // 
+            // btnResetZoom
+            // 
+            this.btnResetZoom.Name = "btnResetZoom";
+            this.btnResetZoom.Size = new System.Drawing.Size(23, 22);
             // 
             // rightClickMenu
             // 
@@ -181,13 +244,20 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "ClipboardPalette";
             this.Size = new System.Drawing.Size(388, 563);
+            scrollPanel.ResumeLayout(false);
+            scrollPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.Split.Panel1.ResumeLayout(false);
             this.Split.Panel2.ResumeLayout(false);
             this.Split.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.clipboardDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Img)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.ResumeLayout(false);
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.rightClickMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,15 +269,19 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton RemoveAllToolStripButton;
         private System.Windows.Forms.SplitContainer Split;
-        private System.Windows.Forms.DataGridView clipboardDataGridView;
-        private System.Windows.Forms.PictureBox Img;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CbName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.ContextMenuStrip rightClickMenu;
         private System.Windows.Forms.ToolStripMenuItem PasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PasteAsBlockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PasteToOriginalCoordinatesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RenameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RemoveToolStripMenuItem;
+        private System.Windows.Forms.ListView clbList;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripLabel previewInfoText;
+        private System.Windows.Forms.ToolStripButton btnResetZoom;
     }
 }
