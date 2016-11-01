@@ -102,9 +102,7 @@
     <Compile Include="Forms\Testing\LocalResources.cs" />
     <Compile Include="Forms\Testing\GlobalResources.cs" />
     <Compile Include="Forms\Testing\DefaultGroupEditor.cs" />
-    <Compile Include="Forms\Testing\MainForm1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Testing\MainForm1.cs" />
     <Compile Include="Forms\Testing\Palette.cs">
       <SubType>UserControl</SubType>
     </Compile>

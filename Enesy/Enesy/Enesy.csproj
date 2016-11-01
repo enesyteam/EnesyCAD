@@ -66,6 +66,7 @@
     <Compile Include="Forms\ListViewFilePath.Designer.cs">
       <DependentUpon>ListViewFilePath.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PictureBoxZoom.cs" />
     <Compile Include="Forms\RichTextBoxData.cs">
       <SubType>Component</SubType>
     </Compile>

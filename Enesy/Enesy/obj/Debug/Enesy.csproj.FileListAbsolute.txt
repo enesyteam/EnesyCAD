@@ -44,3 +44,11 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Properties.Resou
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.pdb
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.dll
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.pdb
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Drawing.Icons.resources
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Forms.SearchBox.resources
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Properties.Resources.resources
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.dll
+C:\Users\CongNV\Documents\GitHub\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.pdb
