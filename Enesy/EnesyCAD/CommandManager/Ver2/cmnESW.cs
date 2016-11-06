@@ -4,6 +4,7 @@ using Autodesk.AutoCAD.Windows;
 using System.Windows.Forms;
 using Autodesk.AutoCAD.Runtime;
 using System.Drawing;
+using System.Linq;
 
 namespace Enesy.EnesyCAD.CommandManager.Ver2
 {
@@ -150,6 +151,10 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         public void commandWillStart(object sender, CommandEventArgs e)
         {
             this.mCmnControl.UpdateToolBar(false);
+            if (e.GlobalCommandName == "YYY")
+            {
+                MessageBox.Show("Will Check if Palette is Exist!");
+            }
         }
         public void commandEnded(object sender, CommandEventArgs e)
         {

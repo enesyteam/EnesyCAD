@@ -16,7 +16,7 @@ namespace Enesy.EnesyCAD.CoreTeamCommands.Test
         {
             MyControl = new UserControl();
             MyPaletteHeader = "Test1";
-            MyControl.Controls.Add(new Button() { Text = "My button"});
+            MyControl.Controls.Add(new TextBox() { Text = "Some Text"});
 
             base.DoCommand();
             CMNApplication.ESWCmn.ESW.Activate(CMNApplication.ESWCmn.ESW.Count - 1);

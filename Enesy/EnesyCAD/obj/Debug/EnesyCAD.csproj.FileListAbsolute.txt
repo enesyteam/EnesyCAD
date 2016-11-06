@@ -57,7 +57,6 @@ C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\EnesyCAD.pdb
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\acmgdinternal.dll
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\Enesy.dll
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\Enesy.pdb
-C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csprojResolveAssemblyReference.cache
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.CommandsManagerDialog.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.ImportLispDialog.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.UCSuite.resources

@@ -3,7 +3,9 @@ using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.Windows;
 using System;
 using System.Collections;
+using System.Diagnostics;
 using System.Globalization;
+using System.Reflection;
 using System.Resources;
 using System.Threading;
 
@@ -14,6 +16,16 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
     /// </summary>
     public class CMNApplication : IExtensionApplication
     {
+        public static string CurrentVersion
+        {
+            get {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+                Version currentVersion = new Version(fvi.ProductVersion);
+                return currentVersion.ToString();
+            }
+        }
+
         public static Hashtable mDocDataCollection;
         private static cmnTheme theme_;
         public static cmnTheme Theme

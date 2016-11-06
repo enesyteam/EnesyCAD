@@ -98,7 +98,6 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                 this.mStatusRegion = new Label();
             this.mStatusRegion.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             this.mStatusRegion.Location = new Point(16, 12);
-            //this.mStatusRegion.Size = new Size(200, 20);
             this.mStatusRegion.BackColor = this.BackColor;
             this.mStatusRegion.BorderStyle = BorderStyle.None;
             this.mBottomPanel.Controls.Add(this.mStatusRegion);
@@ -114,21 +113,17 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             this.mbtnExpand.MouseDown += new MouseEventHandler(this.ExpandBtn_MouseDown);
             this.mbtnExpand.ImageList = new ImageList();
             this.mbtnExpand.ImageList.ImageSize = new Size(20, 20);
-           this.mbtnExpand.ImageList.Images.Add((System.Drawing.Image) GlobalResource.calc_less, Color.Magenta);
-           this.mbtnExpand.ImageList.Images.Add((System.Drawing.Image) GlobalResource.calc_more, Color.Magenta);
+            this.mbtnExpand.ImageList.Images.Add((System.Drawing.Image)GlobalResource.calc_less, Color.Magenta);
+            this.mbtnExpand.ImageList.Images.Add((System.Drawing.Image)GlobalResource.calc_more, Color.Magenta);
             this.mbtnExpand.ImageIndex = 0;
             this.mbtnExpand.ToolTip = StringResources.ResourceManager.GetString("Less");
             this.mBottomPanel.Controls.Add(this.mbtnExpand);
-           this.mTopPanel.Width = this.mBottomPanel.Width;
-           this.mTopPanel.Height = 350;
-           this.mCommandList = new CommandListView();
-           //this.mHistoryList.BackColor = this.BackColor;
-
-           this.mCommandList.SelectedIndexChanged += mCommandList_SelectedIndexChange;
-           
+            this.mTopPanel.Width = this.mBottomPanel.Width;
+            this.mTopPanel.Height = 350;
+            this.mCommandList = new CommandListView();
+            this.mCommandList.SelectedIndexChanged += mCommandList_SelectedIndexChange;
             this.mTopPanel.Controls.Add(this.mCommandList);
             this.mCommandList.Initialize();
-
             this.Controls.AddRange(new Control[2]
               {
                 (Control) this.mTopPanel,
@@ -155,23 +150,27 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
 
             this.mGroupPane.Populate(CMNControl.UIData);
             this.mSplitter = new CalculatorSplitter(this.mTopPanel, this.mBottomPanel);
-           this.ActiveControl = this.mSearchTextBox;
+            this.ActiveControl = this.mSearchTextBox;
             this.mbCreated = true;
             this.mSearchTextBox.Location = new Point(16, 38);
             ListCommandTable = EneApplication.EneDatabase.CmdTableRecord;
             CommandListView = new DataView(ListCommandTable);
             PopulateListView(CommandListView);
             addInfoGroup();
-            ResizeControls();
             this.ResumeLayout(false);
-            this.Expand = false;
+            ResizeESWSize();
         }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)
             {
                 this.mSearchTextBox.InitializeText(string.Empty);
                 msg.Msg = 0;
+            }
+            if (keyData == Keys.F4)
+            {
+                CMNApplication.HideESWCalculator(false);
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -213,7 +212,10 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         private void mCommandList_SelectedIndexChange(object sender, EventArgs e)
         {
             if (mCommandList.SelectedItems.Count != 1)
+            {
+                this.CommandInfo.Text = StartupText;
                 return;
+            }
             if (mCommandList.SelectedItems[0].Selected)
             {
                 PopulateCommandInfo(mCommandList.SelectedItems[0].Tag as DataRow);
@@ -239,8 +241,25 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                 ReadOnly = true,
                 BorderStyle = System.Windows.Forms.BorderStyle.None
             };
+            CommandInfo.Text = StartupText;
             CommandInfo.LinkClicked += CommandInfo_LinkClicked;
             InfoGroup.Controls.Add(CommandInfo);
+        }
+
+        string StartupText
+        {
+            get {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+                Version currentVersion = new Version(fvi.ProductVersion);
+                StringBuilder startupText = new StringBuilder();
+                startupText.AppendLine("EnesyCAD version " + currentVersion);
+                startupText.AppendLine("---------------------------");
+                startupText.AppendLine("EnesyCAD is powerful library for AutoCAD, it's contains many modules to help you work on AutoCAD faster and better.");
+                startupText.AppendLine("For more information, visit our website: " + "https://enesyteam.github.io" + ".");
+                startupText.AppendLine("Enesy Team");
+                return startupText.ToString();
+            }
         }
 
         private void CommandInfo_LinkClicked(object sender, LinkClickedEventArgs e)
@@ -405,23 +424,26 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         void CheckForUpdate()
         {
             CheckForUpdate checkupdate = new CheckForUpdate("https://raw.githubusercontent.com/enesyteam/EnesyCAD/master/Enesy/EnesyCAD/VersionInfo.txt");
-
-            //get my own version to compare against latest.
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             Version myVersion = new Version(fvi.ProductVersion);
-
             Version latestVersion = new Version(checkupdate.version.ToString());
-
             string message = "";
-
             if (latestVersion > myVersion)
             {
                 message = "Please update new EnesyCAD version [" + latestVersion + "] " + " at: " + checkupdate.newdownloadlink;
+                DialogResult dlgres = MessageBox.Show(message, "Version Update Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dlgres == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(checkupdate.newdownloadlink);
+                }
             }
             else
-                message = "The newest version is installed!";
-            MessageBox.Show(message, "Version Update Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+                message = "The current version of EnesyCAD is the newest!";
+                DialogResult dlgres = MessageBox.Show(message, "You're up to date!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void ExpandBtn_MouseDown(object sender, MouseEventArgs e)
@@ -518,6 +540,17 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         private void Control_Resize(object sender, EventArgs e)
         {
             ResizeControls();
+        }
+        void ResizeESWSize()
+        {
+            bool visible = this.mGroupPane.Visible;
+            int num = (visible ? -(this.mBottomPanel.Height - this.mbtnExpand.Bottom) : this.mPaneHeight);
+            PaletteSet eSW = ((cmnESW)this.mHost).ESW;
+            int width = eSW.Size.Width;
+            System.Drawing.Size size = eSW.Size;
+            System.Drawing.Size size1 = new System.Drawing.Size(width, size.Height + num);
+            eSW.MinimumSize = new System.Drawing.Size(CMNControl.UIData.mESWMinSize.Width, (visible ? size1.Height : CMNControl.UIData.mESWMinSize.Height));
+            eSW.Size = size1;
         }
         void ResizeControls()
         {

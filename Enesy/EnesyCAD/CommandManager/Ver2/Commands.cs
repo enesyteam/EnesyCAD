@@ -86,7 +86,10 @@ namespace Enesy.EnesyCAD.CommandManager
                     Autodesk.AutoCAD.Internal.Utils.WriteToCommandLine("X1111111111");
                 }
                 else
+                {
+                    Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nEnesyCAD version " + CMNApplication.CurrentVersion);
                     CMNApplication.ShowESWCmn();
+                }
                     //Autodesk.AutoCAD.Internal.Utils.WriteToCommandLine("X222222");
             }
             catch

@@ -1,4 +1,5 @@
-﻿using Enesy.EnesyCAD.CommandManager.Ver2;
+﻿using Autodesk.AutoCAD.Windows;
+using Enesy.EnesyCAD.CommandManager.Ver2;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -39,7 +40,8 @@ namespace Enesy.EnesyCAD
             mToolbar.Buttons.Add(closeButton);
             mToolbar.ButtonClick += mToolbar_ButtonClick;
             masterPanel.Controls.Add(mToolbar);
-            MyControl.Dock = DockStyle.Fill;
+            //MyControl.Dock = DockStyle.Fill;
+            MyControl.Location = new Point(20, 36);
             //MyControl.BackColor = Color.Red;
             masterPanel.Controls.Add(MyControl);
 
@@ -62,6 +64,15 @@ namespace Enesy.EnesyCAD
         public HavePaletteCommandBase()
         {
             CMNApplication.ShowESWCmn();
+            CMNApplication.ESWCmn.ESW.PaletteActivated += ESW_PaletteActivated;
+        }
+
+        private void ESW_PaletteActivated(object sender, Autodesk.AutoCAD.Windows.PaletteActivatedEventArgs e)
+        {
+           if(e.Activated.Name.ToUpper() != "COMMAND MANAGER") 
+               e.Activated.Name = "Actived";
+           if (e.Deactivated.Name.ToUpper() != "COMMAND MANAGER")
+               e.Deactivated.Name = "Deactived";
         }
     }
 }

@@ -290,15 +290,19 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutDialog\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CommandManager\CommandsManager.resx">
       <DependentUpon>CommandsManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CommandManager\ImportLispDialog.resx">
       <DependentUpon>ImportLispDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CommandManager\UCSuite.resx">
       <DependentUpon>UCSuite.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CommandManager\Ver2\cmnResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
