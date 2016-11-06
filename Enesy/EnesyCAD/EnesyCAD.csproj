@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutDialog\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDialog\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommandManager\Ver2\CheckForUpdate\CheckForUpdate.cs" />
     <Compile Include="CommandBase\HavePaletteCommandBase.cs" />
     <Compile Include="CommandBase\IhavePaletteSet.cs" />
@@ -165,7 +171,7 @@
     <Compile Include="DatabaseServices\ULFLoader.cs" />
     <Compile Include="DatabaseServices\Database.cs" />
     <Compile Include="EntityProperties.cs" />
-    <Compile Include="Forms\Form.cs">
+    <Compile Include="Forms\EnesyCADForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DatabaseServices\LispFunction.cs" />
@@ -282,6 +288,9 @@
     <Compile Include="Utils\Selection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutDialog\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CommandManager\CommandsManager.resx">
       <DependentUpon>CommandsManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,9 +346,6 @@
     <EmbeddedResource Include="Utilities\Xref\Absolute2Relative\ConvertAbsoluteRelativeDialog.resx">
       <DependentUpon>ConvertAbsoluteRelativeDialog.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\Autodesk.xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationServices\Readme.txt" />

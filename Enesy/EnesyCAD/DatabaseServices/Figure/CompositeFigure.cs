@@ -30,7 +30,7 @@ namespace Enesy.EnesyCAD.DatabaseServices
         [Browsable(false)]
         public virtual Point2d InsertPoint { get; set; }
 
-        public override void Add(Document drawing)
+        public override void Append(Document drawing)
         {
             this.Drawing = drawing;
             Autodesk.AutoCAD.DatabaseServices.Database acDb = Drawing.Database;

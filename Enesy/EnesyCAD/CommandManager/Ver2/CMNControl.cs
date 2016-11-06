@@ -12,6 +12,8 @@ using Autodesk.AutoCAD.Windows;
 using System.Collections;
 using Enesy.EnesyCAD.DatabaseServices;
 using Enesy.EnesyCAD.ApplicationServices;
+using System.Diagnostics;
+using System.Text;
 
 namespace Enesy.EnesyCAD.CommandManager.Ver2
 {
@@ -40,7 +42,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         public bool mbShouldRestore;
         public bool mbHideByProlog;
         private bool bExpanded_;
-        private CommandListView CommandInfo = null;
+        private RichTextBox CommandInfo = null;
         public DataView CommandListView = null;
         private CmdTableRecord ListCommandTable = null;
         private GroupControl InfoGroup = null;
@@ -162,6 +164,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             addInfoGroup();
             ResizeControls();
             this.ResumeLayout(false);
+            this.Expand = false;
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -174,14 +177,16 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         }
         private void PopulateCommandInfo(DataRow r)
         {
+            StringBuilder sb = new StringBuilder();
             if (r == null) return;
-            CommandInfo.Items.Clear();
-            CommandInfo.Items.Add(new ListViewItem(new string[] { "Command: ", r[0].ToString()}));
-            CommandInfo.Items.Add(new ListViewItem(new string[] { "Tag: ", r[1].ToString() }));
-            CommandInfo.Items.Add(new ListViewItem(new string[] { "Description: ", r[2].ToString() }));
-            CommandInfo.Items.Add(new ListViewItem(new string[] { "Author: ", r[3].ToString() }));
-            CommandInfo.Items.Add(new ListViewItem(new string[] { "Email: ", r[4].ToString() }));
-            CommandInfo.Items.Add(new ListViewItem(new string[] { "Help Link: ", r[5].ToString() }));
+            CommandInfo.Clear();
+            sb.AppendLine("Command: " + r[0].ToString());
+            sb.AppendLine("Tag: " + r[1].ToString());
+            sb.AppendLine("Description: " + r[2].ToString());
+            sb.AppendLine("Author: " + r[3].ToString());
+            sb.AppendLine("Email: " + r[4].ToString());
+           sb.AppendLine("Help Link: " + r[5].ToString());
+           CommandInfo.Text = sb.ToString();
 
         }
         private void mSearchTextBox_TextChanged(object sender, EventArgs e)
@@ -226,31 +231,21 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             InfoGroup.Height = 350;// groupControl.RestoredHeight;
 
             this.mGroupPane.AddNewGroup(InfoGroup);
-            CommandInfo = new CommandListView()
+            CommandInfo = new RichTextBox()
             {
-                View = System.Windows.Forms.View.Details,
                 Location = new Point(16, 28),
                 //Width = this.Width - 20,
                 BackColor = this.BackColor,
-                GridLines = true,
-                HeaderStyle = ColumnHeaderStyle.None,
-                AllowColumnReorder = false,
-                FullRowSelect = true,
+                ReadOnly = true,
                 BorderStyle = System.Windows.Forms.BorderStyle.None
             };
-            ColumnHeader columnHeader = new ColumnHeader()
-            {
-                TextAlign = HorizontalAlignment.Left,
-                Text = "alias"
-            };
-            CommandInfo.Columns.Add(columnHeader);
-            ColumnHeader columnHeader1 = new ColumnHeader()
-            {
-                TextAlign = HorizontalAlignment.Left,
-                Text = "value"
-            };
-            CommandInfo.Columns.Add(columnHeader1);
+            CommandInfo.LinkClicked += CommandInfo_LinkClicked;
             InfoGroup.Controls.Add(CommandInfo);
+        }
+
+        private void CommandInfo_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
         }
 
         public PerDocData CurrentDocData
@@ -410,8 +405,23 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         void CheckForUpdate()
         {
             CheckForUpdate checkupdate = new CheckForUpdate("https://raw.githubusercontent.com/enesyteam/EnesyCAD/master/Enesy/EnesyCAD/VersionInfo.txt");
-            MessageBox.Show(checkupdate.appname + "\r\n" + checkupdate.version.ToString() + "\r\n" + checkupdate.newdownloadlink);
 
+            //get my own version to compare against latest.
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            Version myVersion = new Version(fvi.ProductVersion);
+
+            Version latestVersion = new Version(checkupdate.version.ToString());
+
+            string message = "";
+
+            if (latestVersion > myVersion)
+            {
+                message = "Please update new EnesyCAD version [" + latestVersion + "] " + " at: " + checkupdate.newdownloadlink;
+            }
+            else
+                message = "The newest version is installed!";
+            MessageBox.Show(message, "Version Update Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ExpandBtn_MouseDown(object sender, MouseEventArgs e)

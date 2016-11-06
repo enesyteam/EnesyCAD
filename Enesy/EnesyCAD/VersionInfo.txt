@@ -1,1 +1,1 @@
-﻿EnesyCAD;1.0;https://github.com/enesyteam/EnesyCAD/archive/master.zip
+﻿EnesyCAD;0.2;https://github.com/enesyteam/EnesyCAD/archive/master.zip

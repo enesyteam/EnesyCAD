@@ -14,7 +14,7 @@ using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Enesy.EnesyCAD.Utilities
 {
-    public partial class CoordinatePickerDialog : Enesy.EnesyCAD.Forms.Form
+    public partial class CoordinatePickerDialog : Enesy.EnesyCAD.Forms.EnesyCADForm
     {
         ObjectIdCollection m_objIdColl = new ObjectIdCollection();
 

@@ -3,7 +3,7 @@ namespace Enesy.EnesyCAD
 {
     public class CommandsHelp
     {
-        public const string EnesyAuthor = "enesy.vn";
+        public const string EnesyAuthor = "enesyteam.github.io";
         public const string CommandsManager = Enesy.Page.CadYoutube;
         public const string TextAligment = Enesy.Page.CadYoutube;
         public const string TextParagraph = Enesy.Page.CadYoutube;

@@ -30,7 +30,7 @@ namespace Enesy.EnesyCAD.Utilities.CivilWorks.RebarArrangment
 
                 RectRebarSection rect = new RectRebarSection(getdim.Width, getdim.Height);
                 rect.BuildSection(point);
-                rect.Add(Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument);
+                rect.Append(Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument);
             
             }
         

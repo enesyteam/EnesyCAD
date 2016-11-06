@@ -14,7 +14,7 @@ using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Enesy.EnesyCAD.Utilities.Text
 {
-    public partial class TextParagraphDialog : Enesy.EnesyCAD.Forms.Form
+    public partial class TextParagraphDialog : Enesy.EnesyCAD.Forms.EnesyCADForm
     {
         /// <summary>
         /// For store ObjID of text

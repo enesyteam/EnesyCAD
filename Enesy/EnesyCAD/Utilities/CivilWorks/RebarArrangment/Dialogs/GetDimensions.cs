@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Enesy.EnesyCAD.Utilities.CivilWorks.RebarArrangment.Dialogs
 {
-    public partial class GetDimensions : Enesy.EnesyCAD.Forms.Form
+    public partial class GetDimensions : Enesy.EnesyCAD.Forms.EnesyCADForm
     {
         public double Width { get; set; }
         public double Height { get; set; }

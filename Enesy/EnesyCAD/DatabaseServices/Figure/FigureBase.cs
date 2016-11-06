@@ -20,7 +20,7 @@ namespace Enesy.EnesyCAD.DatabaseServices
         public BlockTableRecord BlockTableRecord { get; set; }
 
         #region Methods
-        public virtual void Add(Document drawing)
+        public virtual void Append(Document drawing)
         {
 
         }

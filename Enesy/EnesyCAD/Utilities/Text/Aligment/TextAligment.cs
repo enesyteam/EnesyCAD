@@ -14,7 +14,7 @@ using acApp = Autodesk.AutoCAD.ApplicationServices.Application;
 
 namespace Enesy.EnesyCAD.Utilities.Text
 {
-    public partial class TextAligmentDialog : Enesy.EnesyCAD.Forms.Form
+    public partial class TextAligmentDialog : Enesy.EnesyCAD.Forms.EnesyCADForm
     {
         public TextAligmentDialog()
         {

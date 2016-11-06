@@ -8,7 +8,7 @@ namespace Enesy.EnesyCAD.DatabaseServices
     {
         Document Drawing { get; set; }
         Transaction Transaction { get; set; }
-        void Add(Document drawing);
+        void Append(Document drawing);
         void WriteXml(System.Xml.XmlWriter writer);
     }
 }

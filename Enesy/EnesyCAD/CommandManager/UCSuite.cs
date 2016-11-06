@@ -9,7 +9,7 @@ using eApp = Enesy.EnesyCAD.ApplicationServices.EneApplication;
 
 namespace Enesy.EnesyCAD.CommandManager
 {
-    public partial class UCSuite : EnesyCAD.Forms.Form
+    public partial class UCSuite : EnesyCAD.Forms.EnesyCADForm
     {
         public UCSuite()
         {

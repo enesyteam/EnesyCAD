@@ -406,7 +406,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             if (this.mWidthAfterResize != width)
             {
                 base.Columns[0].Width = Convert.ToInt32((double)width * 0.25);
-                base.Columns[1].Width = width - base.Columns[0].Width - 4;
+                base.Columns[1].Width = width - base.Columns[0].Width;
                 this.mWidthAfterResize = width;
             }
         }
