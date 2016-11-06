@@ -52,13 +52,20 @@ D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\bin\Debug\acmgdinternal.dll
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Autodesk.AutoCAD.Samples.DockingPalette.TestControl.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Autodesk.AutoCAD.CustomizationEx.MainForm.resources
 D:\Projects\enesy\EnesyCAD\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Forms.Testing.MainForm1.resources
-C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csprojResolveAssemblyReference.cache
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\EnesyCAD.dll
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\EnesyCAD.pdb
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\acmgdinternal.dll
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\Enesy.dll
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\bin\Debug\Enesy.pdb
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.CommandsManagerDialog.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.ImportLispDialog.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.UCSuite.resources
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.Ver2.cmnResource.resources
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.Ver2.StringResources.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Autodesk.AutoCAD.CustomizationEx.MainForm.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Forms.Testing.MainForm1.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Autodesk.AutoCAD.Samples.DockingPalette.TestControl.resources
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.CommandManager.Ver2.GlobalResource.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Plot.PaletteControl.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Properties.Resources.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.CivilWorks.RebarArrangment.Dialogs.GetDimensions.resources
@@ -68,3 +75,5 @@ C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Util
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.Text.TextParagraphDialog.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\Enesy.EnesyCAD.Utilities.Xref.Absolute2Relative.ConvertAbsoluteRelativeDialog.resources
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.csproj.GenerateResource.Cache
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.dll
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\EnesyCAD\obj\Debug\EnesyCAD.pdb

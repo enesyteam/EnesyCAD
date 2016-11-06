@@ -9,7 +9,7 @@ namespace Enesy.EnesyCAD.CommandManager
 {
     public class Command
     {
-        [EnesyCAD.Runtime.EnesyCADCommandMethod("CE",
+        [EnesyCAD.Runtime.EnesyCADCommandMethod("CEE",
             "Manager",
             "Management all Enesy commands",
             CommandsHelp.EnesyAuthor,

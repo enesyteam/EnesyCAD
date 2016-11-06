@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Enesy.EnesyCAD.Utilities.Xref.Absolute2Relative
 {
-    public partial class ConvertAbsoluteRelativeDialog : Form
+    public partial class ConvertAbsoluteRelativeDialog : System.Windows.Forms.Form
     {
         public ConvertAbsoluteRelativeDialog()
         {

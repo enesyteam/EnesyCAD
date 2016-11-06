@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Enesy.EnesyCAD</RootNamespace>
     <AssemblyName>EnesyCAD</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -69,6 +69,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckForUpdate\CheckForUpdate.cs" />
+    <Compile Include="CommandBase\HavePaletteCommandBase.cs" />
+    <Compile Include="CommandBase\IhavePaletteSet.cs" />
     <Compile Include="CommandManager\LII.cs" />
     <Compile Include="CommandManager\UCSuite.cs">
       <SubType>Form</SubType>
@@ -76,6 +79,79 @@
     <Compile Include="CommandManager\UCSuite.Designer.cs">
       <DependentUpon>UCSuite.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommandManager\Ver2\CalculatorSplitter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\StringResource.cs" />
+    <Compile Include="CommandManager\Ver2\CommandListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\SearchTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\GlobalResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\LayoutParser\XmlSerializationWriter1.cs" />
+    <Compile Include="CommandManager\Ver2\StringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\TextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\GlobalResources.cs" />
+    <Compile Include="CommandManager\Ver2\PerDocData.cs" />
+    <Compile Include="CommandManager\Ver2\cmnToolbarData.cs" />
+    <Compile Include="CommandManager\Ver2\GroupControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\GroupsPane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\AcCalcUnitGroupData.cs" />
+    <Compile Include="CommandManager\Ver2\AcCalcUnitType.cs" />
+    <Compile Include="CommandManager\Ver2\AcCalcUnitItem.cs" />
+    <Compile Include="CommandManager\Ver2\AcCalcVariableGroupData.cs" />
+    <Compile Include="CommandManager\Ver2\ButtonGroupCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\W32Util.cs" />
+    <Compile Include="CommandManager\Ver2\GroupButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\cmnToolbarButtonData.cs" />
+    <Compile Include="CommandManager\Ver2\CMNBtnGroupData.cs" />
+    <Compile Include="CommandManager\Ver2\AcCalcBtnData.cs" />
+    <Compile Include="CommandManager\Ver2\ExpressionType.cs" />
+    <Compile Include="CommandManager\Ver2\cmnGroupData.cs" />
+    <Compile Include="CommandManager\Ver2\CMNApplication.cs" />
+    <Compile Include="CommandManager\Ver2\CMNControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\CMNControl.Designer.cs">
+      <DependentUpon>CMNControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\cmnControlData.cs" />
+    <Compile Include="CommandManager\Ver2\cmnESW.cs" />
+    <Compile Include="CommandManager\Ver2\cmnResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cmnResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CommandManager\Ver2\cmnTheme.cs" />
+    <Compile Include="CommandManager\Ver2\LayoutParser.cs" />
+    <Compile Include="CommandManager\Ver2\LayoutParser\XmlSerializationReader1.cs" />
+    <Compile Include="CommandManager\Ver2\ResHandler.cs" />
+    <Compile Include="CommandManager\Ver2\Commands.cs" />
+    <Compile Include="CommandManager\Ver2\ResString.cs" />
+    <Compile Include="CommandManager\Ver2\ToolTipButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CoreTeamCommands\Test\Test.cs" />
     <Compile Include="DatabaseServices\CmdTableRecord.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -196,6 +272,8 @@
     <Compile Include="Utilities\Xref\Absolute2Relative\ConvertAbsoluteRelativeDialog.Designer.cs">
       <DependentUpon>ConvertAbsoluteRelativeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Xref\XrefRelativePath\Class1.cs" />
+    <Compile Include="Utilities\Xref\XrefRelativePath\XrefRelativePath.cs" />
     <Compile Include="Utils\Calculating.cs" />
     <Compile Include="Utils\ConvertAndTranslate.cs" />
     <Compile Include="Utils\GetInfo.cs" />
@@ -213,6 +291,14 @@
     <EmbeddedResource Include="CommandManager\UCSuite.resx">
       <DependentUpon>UCSuite.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CommandManager\Ver2\cmnResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>cmnResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandManager\Ver2\StringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Testing\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +307,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Testing\Palette.resx">
       <DependentUpon>Palette.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandManager\Ver2\GlobalResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PlotServices\PaletteControl.resx">
       <DependentUpon>PaletteControl.cs</DependentUpon>
@@ -253,6 +343,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationServices\Readme.txt" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_clear.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_clear_hist.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_less.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_more.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_point.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\del_var.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\edit_var.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\new_var.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\ret_var.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\VariableCat.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\VariableConst.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\VariableLeaf.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\VariableTop.bmp" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\angle.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_icon.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\dist.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\erase.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\help.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\intersect.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\paste.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\dialog_cancel.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\gtk_cancel.ico" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\close_16.ico" />
     <Content Include="Utilities\CivilWorks\RebarArrangment\README.txt" />
     <None Include="Resources\ClearClipBoard.png" />
   </ItemGroup>

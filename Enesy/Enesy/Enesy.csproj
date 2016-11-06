@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="acdbmgd">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\AutoCAD 2007\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\AutoCAD 2007\acmgd.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -53,6 +59,11 @@
     <Compile Include="Forms\ButtonNoborder.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Forms\ListViewEx\AcCalcGroupData.cs" />
+    <Compile Include="Forms\ListViewEx\SubItemEndEditingEventHandler.cs" />
+    <Compile Include="Forms\ListViewEx\ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\DragHelper.cs" />
     <Compile Include="Forms\LinkLabelData.cs">
       <SubType>Component</SubType>
@@ -60,6 +71,9 @@
     <Compile Include="Forms\LinkLabelData.Designer.cs">
       <DependentUpon>LinkLabelData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ListViewEx\SubItemEndEditingEventArgs.cs" />
+    <Compile Include="Forms\ListViewEx\SubItemEventArgs.cs" />
+    <Compile Include="Forms\ListViewEx\SubItemEventHandler.cs" />
     <Compile Include="Forms\ListViewFilePath.cs">
       <SubType>Component</SubType>
     </Compile>
