@@ -69,7 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckForUpdate\CheckForUpdate.cs" />
+    <Compile Include="CommandManager\Ver2\CheckForUpdate\CheckForUpdate.cs" />
     <Compile Include="CommandBase\HavePaletteCommandBase.cs" />
     <Compile Include="CommandBase\IhavePaletteSet.cs" />
     <Compile Include="CommandManager\LII.cs" />
@@ -343,6 +343,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationServices\Readme.txt" />
+    <Content Include="VersionInfo.txt" />
     <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_clear.bmp" />
     <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_clear_hist.bmp" />
     <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_less.bmp" />

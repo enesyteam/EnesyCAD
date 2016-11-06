@@ -362,9 +362,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                     //this.ClearHistory();
                     break;
                 case "help":
-                    //this.Help();
-                    if (!focused)
-                        break;
+                    CheckForUpdate();
                     this.SetFocusToInputArea();
                     break;
                 case "paste":
@@ -411,7 +409,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
 
         void CheckForUpdate()
         {
-            CheckForUpdate checkupdate = new CheckForUpdate("http://www.smart-arab.com/updates/myapp-pro.txt");
+            CheckForUpdate checkupdate = new CheckForUpdate("https://raw.githubusercontent.com/enesyteam/EnesyCAD/master/Enesy/EnesyCAD/VersionInfo.txt");
             MessageBox.Show(checkupdate.appname + "\r\n" + checkupdate.version.ToString() + "\r\n" + checkupdate.newdownloadlink);
 
         }
