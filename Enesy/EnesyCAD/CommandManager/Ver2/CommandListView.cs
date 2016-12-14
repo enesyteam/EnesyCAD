@@ -284,7 +284,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             base.TabIndex = 9;
             base.View = System.Windows.Forms.View.Details;
             base.GridLines = true;
-            //base.Scrollable = false;
+            base.Scrollable = false;
             this.ContextMenu = null;
             ColumnHeader columnHeader = new ColumnHeader()
             {
@@ -453,7 +453,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             }
             else if (base.Scrollable)
             {
-               // base.Scrollable = false;
+               base.Scrollable = false;
             }
         }
 

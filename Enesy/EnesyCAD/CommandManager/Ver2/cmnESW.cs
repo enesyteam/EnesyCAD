@@ -85,7 +85,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             this.mESW.MinimumSize = CMNControl.UIData.mESWMinSize;
             this.mCmnControl.BackColor = CMNApplication.Theme.ESWBackground;
             this.Add("Command Manager", this.mCmnControl);
-            this.mCmnControl.CurrentDocData = (PerDocData)CMNApplication.mDocDataCollection[(object)Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument];
+            //this.mCmnControl.CurrentDocData = (PerDocData)CMNApplication.mDocDataCollection[(object)Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument];
             //this.mCmnControl.RestoreFromCurrentData(false);
             Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.DocumentActivated += new DocumentCollectionEventHandler(this.documentActivated);
             Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.DocumentToBeDestroyed += new DocumentCollectionEventHandler(this.docToBeDestroyed);
@@ -118,13 +118,13 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             //    this.mCmnControl.Context.HostServices.SetQCState(true);
             //else if (e.NewState == StateEventIndex.Hide)
             //    this.mCmnControl.Context.HostServices.SetQCState(false);
-            /*else*/ if (e.NewState == StateEventIndex.ThemeChange)
-            {
-                if (CMNApplication.Theme != null)
-                    CMNApplication.Theme.Update();
-                this.mCmnControl.SyncTheme();
-            }
-            this.mCmnControl.RepairToolTips();
+            //else if (e.NewState == StateEventIndex.ThemeChange)
+            //{
+            //    if (CMNApplication.Theme != null)
+            //        CMNApplication.Theme.Update();
+            //    this.mCmnControl.SyncTheme();
+            //}
+            //this.mCmnControl.RepairToolTips();
         }
         public Palette Add(string name, Control control)
         {
@@ -151,10 +151,10 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         public void commandWillStart(object sender, CommandEventArgs e)
         {
             this.mCmnControl.UpdateToolBar(false);
-            if (e.GlobalCommandName == "YYY")
-            {
-                MessageBox.Show("Will Check if Palette is Exist!");
-            }
+            //if (e.GlobalCommandName == "YYY")
+            //{
+            //    MessageBox.Show("Will Check if Palette is Exist!");
+            //}
         }
         public void commandEnded(object sender, CommandEventArgs e)
         {

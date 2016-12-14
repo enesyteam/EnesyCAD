@@ -95,7 +95,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             {
                 if (CMNApplication.ESWCmn.ESW.Visible)
                 {
-                    CMNApplication.HideESWCalculator(true);
+                    CMNApplication.HideESWCmn(true);
                     CMNApplication.ESWCmn.CmnControl.mbShouldRestore = true;
                     return;
                 }
@@ -161,11 +161,13 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         {
             if (CMNApplication.ESWCmn == null)
             {
+                //GLOBAL.WriteMessage("sdfsdfsdf");
                 CMNApplication.ESWCmn = new cmnESW();
                 CMNApplication.ESWCmn.CmnControl.SetStatusRegionText("Command Information");
             }
             CMNApplication.ESWCmn.CmnControl.SyncTheme();
             CMNApplication.ESWCmn.ESW.Visible = true;
+            //CMNApplication.ESWCmn.CmnControl.ReloadUILanguage();
             if (!CMNApplication.ESWCmn.Configured)
             {
                 CMNApplication.ESWCmn.ESW.Dock = DockSides.None;
@@ -179,7 +181,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                 CMNApplication.ESWCmn.ESW.RolledUp = false;
            // CMNApplication.ESWCmn.CmnControl.Context.HostServices.SetQCState(true);
         }
-        public static void HideESWCalculator(bool isClose)
+        public static void HideESWCmn(bool isClose)
         {
             if (CMNApplication.ESWCmn == null)
                 return;

@@ -14,10 +14,12 @@ using Enesy.EnesyCAD.DatabaseServices;
 using Enesy.EnesyCAD.ApplicationServices;
 using System.Diagnostics;
 using System.Text;
+using System.Linq;
+using Enesy.EnesyCAD.StringResources;
 
 namespace Enesy.EnesyCAD.CommandManager.Ver2
 {
-    public partial class CMNControl : UserControl
+    public partial class CMNControl : UserControl, INotifyPropertyChanged
     {
         [XmlElement(ElementName = "ToolBar")]
         public cmnControlData mToolbarData;
@@ -82,7 +84,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             this.SuspendLayout();
             this.mBottomPanel = new Panel();
             this.mTopPanel = new Panel();
-            this.mBottomPanel.Location = new Point(20, 28);
+            this.mBottomPanel.Location = new Point(20, 48);
             this.mTopPanel.Location = new Point(20, 28);
             if (this.mSearchTextBox == null)
             {
@@ -142,7 +144,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             this.mGroupPane = new GroupsPane(this);
             this.mGroupPane.Top = this.mbtnExpand.Bottom + GroupsPane.GROUP_VERT_SPACE;
             this.mGroupPane.Left = this.mSearchTextBox.Left;
-            //this.mGroupPane.Width = this.mSearchTextBox.Width+20;
+            this.mGroupPane.Width = this.mSearchTextBox.Width;
 
             this.mGroupPane.Height = this.mBottomPanel.Height - this.mGroupPane.Top - GroupsPane.GROUP_VERT_SPACE;
             this.mBottomPanel.Controls.Add(this.mGroupPane);
@@ -170,7 +172,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             }
             if (keyData == Keys.F4)
             {
-                CMNApplication.HideESWCalculator(false);
+                CMNApplication.HideESWCmn(false);
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -184,28 +186,96 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             sb.AppendLine("Description: " + r[2].ToString());
             sb.AppendLine("Author: " + r[3].ToString());
             sb.AppendLine("Email: " + r[4].ToString());
-           sb.AppendLine("Help Link: " + r[5].ToString());
-           CommandInfo.Text = sb.ToString();
+            sb.AppendLine("Help Link: " + r[5].ToString());
+            if (!String.IsNullOrEmpty(r[6].ToString()))
+            {
+                sb.AppendLine("Group: " + r[6].ToString());
+            }
+
+            if (!String.IsNullOrEmpty(r[6].ToString()))
+            {
+                sb.AppendLine("---");
+                sb.AppendLine(GlobalStringResources.ResourceManager.GetString("CommandInThisGroup", GLOBAL.CurrentCulture));
+                int index = 1;
+                foreach (DataRow row in this.CommandListView.ToTable().Rows)
+                {
+                    
+                    if (row[6].ToString() == r[6].ToString())
+                    {
+                        sb.AppendLine("#" + index + ": " + row[0].ToString());
+                        sb.AppendLine("Description: " + row[2].ToString());
+                        index++;
+                    }
+                }
+            }
+
+            
+            CommandInfo.Text = sb.ToString();
 
         }
         private void mSearchTextBox_TextChanged(object sender, EventArgs e)
         {
             if (CommandListView == null) return;
+            //if (string.IsNullOrEmpty(mSearchTextBox.Text)) return;
             if (mSearchTextBox.Text != mSearchTextBox.SearchWaterMark)
             {
                 CommandListView.RowFilter = string.Format("Commands like '%{0}%' OR Description like '%{0}%'", mSearchTextBox.Text);
                 PopulateListView(CommandListView);
             }
         }
+        HashSet<string> CommandGroups = null;
         public void PopulateListView(DataView dv)
         {
             mCommandList.Items.Clear();
+
+            ImageList hasGroupImageList = new ImageList();
+            hasGroupImageList.ColorDepth = ColorDepth.Depth32Bit;
+            hasGroupImageList.Images.AddRange(new Image[] {
+                    GlobalResource.has_group
+                });
+            mCommandList.SmallImageList = hasGroupImageList;
+            CommandGroups = new HashSet<string>();
+
             foreach (DataRow r in dv.ToTable().Rows)
             {
-                ListViewItem lvi = new ListViewItem(new string[] { r[0].ToString(), r[2].ToString() });
-                lvi.Tag = r;
-                mCommandList.Items.Add(lvi);
+                // If Commands have Command Group
+                // we want to show only MAIN command in this group
+                if (!String.IsNullOrEmpty(r[6].ToString()))
+                {
+                    CommandGroups.Add(r[6].ToString());
+                }
+                else
+                {
+                    ListViewItem lvi = new ListViewItem(new string[] { r[0].ToString(), r[2].ToString() });
+                    lvi.Tag = r;
+                    mCommandList.Items.Add(lvi);
+                }
             }
+            foreach (string s in CommandGroups)
+            {
+                //MessageBox.Show(s);
+                List<string> cmds = new List<string>();
+                int index = 0;
+                foreach (DataRow r in dv.ToTable().Rows)
+                {
+                    if (r[6].ToString() == s)
+                    {
+                        index++;
+                        cmds.Add(r[0].ToString());
+                    }
+                }
+                cmds.OrderBy(name => name.Length);
+                foreach (DataRow r in dv.ToTable().Rows)
+                {
+                    if (r[0].ToString() == cmds.First())
+                    {
+                        ListViewItem lvi = new ListViewItem(new string[] { r[0].ToString(), r[2].ToString() }, 0);
+                        lvi.Tag = r;
+                        mCommandList.Items.Add(lvi);
+                    }
+                }
+            }
+            mCommandList.Sorting = SortOrder.Ascending;
         }
         
 
@@ -243,7 +313,19 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             };
             CommandInfo.Text = StartupText;
             CommandInfo.LinkClicked += CommandInfo_LinkClicked;
+            CommandInfo.TextChanged += CommandInfo_TextChanged;
             InfoGroup.Controls.Add(CommandInfo);
+        }
+
+        void CommandInfo_TextChanged(object sender, EventArgs e)
+        {
+            this.HighlightKeyword("Command:", System.Drawing.SystemColors.ControlDark, 0);
+            this.HighlightKeyword("Tag:", System.Drawing.SystemColors.ControlDark, 0);
+            this.HighlightKeyword("Description:", System.Drawing.SystemColors.ControlDark, 0);
+            this.HighlightKeyword("Author:", System.Drawing.SystemColors.ControlDark, 0);
+            this.HighlightKeyword("Email:", System.Drawing.SystemColors.ControlDark, 0);
+            this.HighlightKeyword("Help Link:", System.Drawing.SystemColors.ControlDark, 0);
+            this.HighlightKeyword("Group:", System.Drawing.SystemColors.ControlDark, 0);
         }
 
         string StartupText
@@ -255,10 +337,27 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                 StringBuilder startupText = new StringBuilder();
                 startupText.AppendLine("EnesyCAD version " + currentVersion);
                 startupText.AppendLine("---------------------------");
-                startupText.AppendLine("EnesyCAD is powerful library for AutoCAD, it's contains many modules to help you work on AutoCAD faster and better.");
-                startupText.AppendLine("For more information, visit our website: " + "https://enesyteam.github.io" + ".");
-                startupText.AppendLine("Enesy Team");
+                startupText.AppendLine(Enesy.EnesyCAD.StringResources.GlobalStringResources.ResourceManager.GetString("EnesyCADDescription", GLOBAL.CurrentCulture));
+                startupText.AppendLine();
+                startupText.AppendLine("© 2016 Enesy Team");
                 return startupText.ToString();
+            }
+        }
+
+        private void HighlightKeyword(string word, Color color, int startIndex)
+        {
+            if (this.CommandInfo.Text.Contains(word))
+            {
+                int index = -1;
+                int selectStart = this.CommandInfo.SelectionStart;
+
+                while ((index = this.CommandInfo.Text.IndexOf(word, (index + 1))) != -1)
+                {
+                    this.CommandInfo.Select((index + startIndex), word.Length);
+                    this.CommandInfo.SelectionColor = color;
+                    this.CommandInfo.Select(selectStart, 0);
+                    this.CommandInfo.SelectionColor = Color.Black;
+                }
             }
         }
 
@@ -280,7 +379,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
         }
         public void RestoreFromCurrentData(bool updateIA)
         {
-            this.mCommandList.ClearCommandList();
+            //this.mCommandList.ClearCommandList();
             if (this.mCurDocData == null)
             {
                 return;
@@ -307,6 +406,17 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                 this.mbtnExpand.ToolTip = this.mbtnExpand.ToolTip;
                 this.mGroupPane.RepairToolTips();
             }
+        }
+        public void ReloadUILanguage()
+        {
+            if (CommandListView == null) return;
+            // reload commands
+            EneApplication.EneDatabase.ReloadULF();
+            // update to UI
+            PopulateListView(CommandListView);
+            // reload startup text
+            CommandInfo.Text = StartupText;
+            
         }
         public void SetStatusRegionText(string sNewText)
         {
@@ -523,7 +633,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                     //    return;
                     this.mBottomPanel.Height = 0;
                     Size size = new Size(esw.Size.Width, esw.Size.Height + num + 10);
-                    //esw.MinimumSize = new Size(CMNControl.UIData.mESWMinSize.Width, visible ? size.Height : CMNControl.UIData.mESWMinSize.Height);
+                    esw.MinimumSize = new Size(CMNControl.UIData.mESWMinSize.Width, visible ? size.Height : CMNControl.UIData.mESWMinSize.Height);
                     esw.Size = size;
                 //}
             }
@@ -552,7 +662,7 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
             eSW.MinimumSize = new System.Drawing.Size(CMNControl.UIData.mESWMinSize.Width, (visible ? size1.Height : CMNControl.UIData.mESWMinSize.Height));
             eSW.Size = size1;
         }
-        void ResizeControls()
+        public void ResizeControls()
         {
             bool visible = this.mGroupPane.Visible;
             int num = (visible ? -(this.mBottomPanel.Height - this.mbtnExpand.Bottom) : this.mPaneHeight);
@@ -721,5 +831,17 @@ namespace Enesy.EnesyCAD.CommandManager.Ver2
                 this.mStatusRegion.BackColor = this.BackColor;
             this.Invalidate();
         }
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

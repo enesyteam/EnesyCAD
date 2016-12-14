@@ -16,6 +16,7 @@ namespace Enesy.EnesyCAD.DatabaseServices
             this.Columns.Add("Author", typeof(string));
             this.Columns.Add("Email", typeof(string));
             this.Columns.Add("Help", typeof(string));
+            this.Columns.Add("Group", typeof(string));
         }
 
         /// <summary>
@@ -33,12 +34,13 @@ namespace Enesy.EnesyCAD.DatabaseServices
                 dr["Author"] = cmd.Author;
                 dr["Email"] = cmd.Email;
                 dr["Help"] = cmd.Help;
+                dr["Group"] = cmd.Category;
                 this.Rows.Add(dr);
             }
         }
 
         public void Add(string name, string tag, string description, string author,
-            string email, string help)
+            string email, string help, string category)
         {
             if (!this.Contains(name))
             {
@@ -49,6 +51,7 @@ namespace Enesy.EnesyCAD.DatabaseServices
                 dr["Author"] = author;
                 dr["Email"] = email;
                 dr["Help"] = help;
+                dr["Group"] = category;
                 this.Rows.Add(dr);
             }
         }

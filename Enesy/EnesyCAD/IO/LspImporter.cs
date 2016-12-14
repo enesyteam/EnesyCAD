@@ -269,7 +269,8 @@ namespace Enesy.EnesyCAD.IO
                         r["Description"].ToString(),
                         r["Author"].ToString(),
                         r["Email"].ToString(),
-                        r["Help"].ToString()
+                        r["Help"].ToString(),
+                        r["Group"].ToString()
                         );
                 }
             }

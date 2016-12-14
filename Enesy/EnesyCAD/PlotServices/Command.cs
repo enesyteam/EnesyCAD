@@ -27,6 +27,7 @@ namespace Enesy.EnesyCAD.Utilities
             "quandt@enesy.vn",
             CommandsHelp.MultiplePlot
             )]
+        [EnesyCAD.Runtime.CommandGroup("MP")]
         public void QuickPlot()
         {
             if (m_ps == null)

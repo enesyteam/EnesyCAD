@@ -15,11 +15,32 @@ namespace Enesy.EnesyCAD.CoreTeamCommands.Test
         public void Test1()
         {
             MyControl = new UserControl();
-            MyPaletteHeader = "Test1";
+            MyPaletteHeader = "Test";
             MyControl.Controls.Add(new TextBox() { Text = "Some Text"});
 
-            base.DoCommand();
-            CMNApplication.ESWCmn.ESW.Activate(CMNApplication.ESWCmn.ESW.Count - 1);
+            base.Active();
+            //CMNApplication.ESWCmn.ESW.Activate(CMNApplication.ESWCmn.ESW.Count - 1);
+        }
+    }
+    public class AnotherTestCommands : HavePaletteCommandBase
+    {
+        public AnotherTestCommands()
+            : base()
+        {
+        }
+
+        [CommandMethod("TTT")]
+        public void Test1()
+        {
+            MyControl = new UserControl();
+            MyPaletteHeader = "Another Test";
+            //MyControl.Controls.Add(new TextBox() { Text = "Another Text" });
+
+            UserControl1 uc = new UserControl1();
+            MyControl = uc;
+
+            base.Active();
+            //CMNApplication.ESWCmn.ESW.Activate(CMNApplication.ESWCmn.ESW.Count - 1);
         }
     }
 }

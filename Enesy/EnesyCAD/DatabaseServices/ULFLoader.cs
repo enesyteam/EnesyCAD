@@ -28,7 +28,8 @@ namespace Enesy.EnesyCAD.DatabaseServices
                         node.ChildNodes.Item(2).InnerText,         // description
                         node.ChildNodes.Item(3).InnerText,         // author
                         node.ChildNodes.Item(4).InnerText.Trim(),   // email
-                        node.ChildNodes.Item(5).InnerText.Trim()   // help
+                        node.ChildNodes.Item(5).InnerText.Trim(),   // help
+                        node.ChildNodes.Item(6).InnerText.Trim()
                         );
                     this.CmdTableRecord.Add(cmd);
                 }

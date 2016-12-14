@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Reflection;
 using System.Data;
-
 using Enesy.EnesyCAD.Runtime;
 using Autodesk.AutoCAD.Runtime;
 using Enesy.EnesyCAD.DatabaseServices;
+using Enesy.EnesyCAD.StringResources;
 
 namespace Enesy.EnesyCAD.DatabaseServices
 {
@@ -24,6 +24,14 @@ namespace Enesy.EnesyCAD.DatabaseServices
 
             // Just get the commands for this assembly
             Assembly asm = Assembly.GetExecutingAssembly();
+
+            // for command category
+            object[] categorys = asm.GetCustomAttributes(typeof(CommandGroup), true);
+            Type[] catTypes;
+            int catNumtypes = categorys.Length;
+
+
+
 
             // Get EnesyCommandMethod attributes
             object[] objs = asm.GetCustomAttributes(typeof(EnesyCADCommandMethod), true);
@@ -63,36 +71,53 @@ namespace Enesy.EnesyCAD.DatabaseServices
                         EnesyCADCommandMethod attb = (EnesyCADCommandMethod)obj;
                         if (!attb.IsTest)
                         {
+                            // get command category
+                            object[] cats = meth.GetCustomAttributes(typeof(CommandGroup), true);
+                            string category = "";
+                            int index = 0;
+                            foreach (object c in cats)
+                            {
+                                index++;
+                                CommandGroup commandCat = c as CommandGroup;
+                                //GLOBAL.WriteMessage("Command " + attb.GlobalName + " - Category: " + commandCat.Category);
+                                category = commandCat.Category;
+                            }
+                            //GLOBAL.WriteMessage("\nCategory " + index + "");
+                            //
                             CmdRecord cmd = new CmdRecord(attb.GlobalName,
                                                         attb.Tag,
                                                         attb.Description,
                                                         attb.Author,
                                                         attb.Email,
-                                                        attb.WebLink
+                                                        attb.WebLink,
+                                                        category
                                                         );
                             // Check if Database contains this cmd
                             if (!this.CmdTableRecord.Contains(attb.GlobalName))
                             {
-                                //System.Data.DataRow dr = this.CmdTableRecord.NewRow();
-                                //dr[0] = attb.GlobalName;
-                                //dr[1] = attb.Tag;
-                                //dr[2] = attb.Description;
-                                //dr[3] = attb.Author;
-                                //dr[4] = attb.Email;
-                                //dr[5] = attb.WebLink;
-                                //this.CmdTableRecord.Rows.Add(dr);
                                 this.CmdTableRecord.Add(attb.GlobalName,
                                     attb.Tag,
-                                    attb.Description,
+                                    !String.IsNullOrEmpty(attb.Tag) ? "[" + attb.Tag + "] " + GetCommandDescription(attb.Description) : GetCommandDescription(attb.Description),
                                     attb.Author,
                                     attb.Email,
-                                    attb.WebLink
+                                    attb.WebLink,
+                                    category
                                     );
+                                //if (!String.IsNullOrEmpty(cat.Category))
+                                //{
+                                //    GLOBAL.WriteMessage("Category: " + cat.Category);
+                                //}
                             }
                         }
                     }
                 }
             }
+            //
         }
-    }
+        private string GetCommandDescription(string des)
+        {
+            string s = CommandMethodResources.ResourceManager.GetString(des, GLOBAL.CurrentCulture);
+            return !string.IsNullOrEmpty(s) ? s : des;
+        }
+    } // end class
 }

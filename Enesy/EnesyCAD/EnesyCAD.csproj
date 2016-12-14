@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,6 +76,7 @@
     <Compile Include="AboutDialog\AboutDialog.Designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommandBase\EnesyCADCommandBase.cs" />
     <Compile Include="CommandManager\Ver2\CheckForUpdate\CheckForUpdate.cs" />
     <Compile Include="CommandBase\HavePaletteCommandBase.cs" />
     <Compile Include="CommandBase\IhavePaletteSet.cs" />
@@ -157,7 +159,48 @@
     <Compile Include="CommandManager\Ver2\ToolTipButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CoreTeamCommands\AutoNumber\AutoNumber.cs" />
+    <Compile Include="CoreTeamCommands\AutoNumber\AutoNumberControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CoreTeamCommands\AutoNumber\AutoNumberControl.Designer.cs">
+      <DependentUpon>AutoNumberControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoreTeamCommands\AutoNumber\TextBounds.cs" />
+    <Compile Include="CoreTeamCommands\AutoNumber\Rectangle.cs" />
+    <Compile Include="CoreTeamCommands\Distance\DistanceCommand.cs" />
+    <Compile Include="CoreTeamCommands\Distance\DistanceCommandControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CoreTeamCommands\Distance\DistanceCommandControl.Designer.cs">
+      <DependentUpon>DistanceCommandControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoreTeamCommands\Distance\DistanceOnCurve.cs" />
+    <Compile Include="CoreTeamCommands\Distance\DistanceType.cs" />
+    <Compile Include="CoreTeamCommands\Distance\OutputMode.cs" />
+    <Compile Include="CoreTeamCommands\Others\EntitiesJig\XlineJig.cs" />
+    <Compile Include="CoreTeamCommands\Others\ObjectSnap\Class1.cs" />
+    <Compile Include="CoreTeamCommands\Others\ObjectSnap\ObjectSnapCommands.cs" />
+    <Compile Include="CoreTeamCommands\Test\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CoreTeamCommands\Test\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoreTeamCommands\XLine\CreateAngleXLine.cs" />
+    <Compile Include="Runtime\CommandGroup.cs" />
+    <Compile Include="StringResources\CommandMethodResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommandMethodResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CoreTeamCommands\CommandStringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommandStringResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="CoreTeamCommands\Test\Test.cs" />
+    <Compile Include="CoreTeamCommands\Text\CloneTargetTextCommand.cs" />
     <Compile Include="DatabaseServices\CmdTableRecord.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -191,6 +234,13 @@
     <Compile Include="Forms\Testing\TestCommands.cs" />
     <Compile Include="Forms\Testing\Toolbar.cs" />
     <Compile Include="Geometry\RectangleEx.cs" />
+    <Compile Include="GLOBAL.cs" />
+    <Compile Include="StringResources\GlobalStringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalStringResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\EntitySelector.cs" />
     <Compile Include="Helper\Point2d.cs" />
     <Compile Include="Helper\Point3d.cs" />
     <Compile Include="Helper\PromptHelper.cs" />
@@ -229,7 +279,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Runtime\CommandMethod.cs" />
+    <Compile Include="Runtime\EnesyCADCommandMethod.cs" />
     <Compile Include="ApplicationServices\EneApplication.cs" />
     <Compile Include="Utilities\CivilWorks\RebarArrangment\Commands.cs" />
     <Compile Include="Utilities\CivilWorks\RebarArrangment\Dialogs\GetDimensions.cs">
@@ -264,7 +314,6 @@
     <Compile Include="Utilities\Text\Aligment\TextAligment.Designer.cs">
       <DependentUpon>TextAligment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\Text\AutoNumber\AutoNumber.cs" />
     <Compile Include="Utilities\Text\Paragraph\Commands.cs" />
     <Compile Include="Utilities\Text\Paragraph\Paragraph.cs">
       <SubType>Form</SubType>
@@ -312,6 +361,27 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CoreTeamCommands\AutoNumber\AutoNumberControl.resx">
+      <DependentUpon>AutoNumberControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoreTeamCommands\Distance\DistanceCommandControl.resx">
+      <DependentUpon>DistanceCommandControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoreTeamCommands\Test\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources\CommandMethodResources.en-US.resx" />
+    <EmbeddedResource Include="StringResources\CommandMethodResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommandMethodResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources\CommandMethodResources.vi-VN.resx" />
+    <EmbeddedResource Include="CoreTeamCommands\CommandStringResources.en-US.resx" />
+    <EmbeddedResource Include="CoreTeamCommands\CommandStringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommandStringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoreTeamCommands\CommandStringResources.vi-VN.resx" />
     <EmbeddedResource Include="Forms\Testing\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,6 +395,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="StringResources\GlobalStringResources.en-US.resx" />
+    <EmbeddedResource Include="StringResources\GlobalStringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalStringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources\GlobalStringResources.vi-VN.resx" />
     <EmbeddedResource Include="PlotServices\PaletteControl.resx">
       <DependentUpon>PaletteControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +429,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationServices\Readme.txt" />
+    <EmbeddedResource Include="CommandManager\Ver2\Resources\has_group.png" />
     <Content Include="VersionInfo.txt" />
     <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_clear.bmp" />
     <EmbeddedResource Include="CommandManager\Ver2\Resources\calc_clear_hist.bmp" />

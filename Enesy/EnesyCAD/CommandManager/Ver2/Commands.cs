@@ -50,7 +50,7 @@ namespace Enesy.EnesyCAD.CommandManager
         }
 
         [CommandMethod("CE", CommandFlags.Transparent)]
-        public void quickcalc()
+        public void commandmanager()
         {
             Commands.current_ = this;
             try
@@ -83,14 +83,13 @@ namespace Enesy.EnesyCAD.CommandManager
                     //    Autodesk.AutoCAD.Internal.Utils.WriteToCommandLine(message + " ");
                     //else
                     //    Autodesk.AutoCAD.Internal.Utils.WriteToCommandLine(message);
-                    Autodesk.AutoCAD.Internal.Utils.WriteToCommandLine("X1111111111");
+                    Autodesk.AutoCAD.Internal.Utils.WriteToCommandLine("CE");
                 }
                 else
                 {
-                    Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nEnesyCAD version " + CMNApplication.CurrentVersion);
+                    //Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage("\nEnesyCAD version " + CMNApplication.CurrentVersion);
                     CMNApplication.ShowESWCmn();
                 }
-                    //Autodesk.AutoCAD.Internal.Utils.WriteToCommandLine("X222222");
             }
             catch
             {
@@ -107,12 +106,18 @@ namespace Enesy.EnesyCAD.CommandManager
             Commands.current_ = this;
             try
             {
-                CMNApplication.HideESWCalculator(true);
+                CMNApplication.HideESWCmn(true);
             }
             finally
             {
                 Commands.current_ = null;
             }
+        }
+        [CommandMethod("CEINIT", CommandFlags.Transparent)]
+        public void reloadcommandlist()
+        {
+            if (CMNApplication.ESWCmn.CmnControl == null) return;
+            CMNApplication.ESWCmn.CmnControl.ReloadUILanguage();
         }
     }
 }

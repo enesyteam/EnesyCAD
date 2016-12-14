@@ -9,6 +9,6 @@ namespace Enesy.EnesyCAD
     {
         UserControl MyControl { get; set; }
         string MyPaletteHeader { get; set; }
-        void DoCommand();
+        void Active();
     }
 }

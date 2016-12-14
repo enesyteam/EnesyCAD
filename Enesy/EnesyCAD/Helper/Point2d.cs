@@ -31,5 +31,9 @@ namespace Enesy.EnesyCAD.Helper
         {
             return new Point2d(point.X + deltaX, point.Y + deltaY);
         }
+        internal static Point2d ToPoint2d(Point3d p)
+        {
+            return new Point2d(p.X, p.Y);
+        }
     }
 }

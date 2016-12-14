@@ -62,3 +62,12 @@ C:\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Properties.Resou
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.dll
 C:\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.pdb
+C:\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csprojResolveAssemblyReference.cache
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.dll
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\bin\Debug\Enesy.pdb
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Drawing.Icons.resources
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Forms.SearchBox.resources
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.Properties.Resources.resources
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.csproj.GenerateResource.Cache
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.dll
+E:\data\Data\Projects\enesyteam\EnesyCAD\Enesy\Enesy\obj\Debug\Enesy.pdb
